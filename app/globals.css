@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    overscroll-behavior: none;
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Clash Grotesk", sans-serif;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    margin: 0;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y; /* Ensure touch events are not blocked */
+    overflow-x: hidden;
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+@font-face {
+    font-family: "Clash Grotesk";
+    src: url("/fonts/ClashGrotesk-Extralight.ttf") format("truetype");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Clash Grotesk";
+    src: url("/fonts/ClashGrotesk-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Clash Grotesk";
+    src: url("/fonts/ClashGrotesk-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Clash Grotesk";
+    src: url("/fonts/ClashGrotesk-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Clash Display";
+    src: url("/fonts/ClashDisplay-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Clash Display";
+    src: url("/fonts/ClashDisplay-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Clash Display";
+    src: url("/fonts/ClashDisplay-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    fonf-family: "Clash Display" !important;
+}
+
+p {
+    line-height: 1.7 !important;
+}
+
+.custom-dashed {
+    border: 4px dashed rgba(255, 255, 255, 0.1);
+    border-spacing: 4px;
+}
