@@ -6,9 +6,8 @@ import "./globals.css";
 const typo = Archivo({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Optiks | Providing Financial Optiks + Strategies for Startups",
-  description:
-    "Your trusted financial advisor to grow the value of your company",
+  title: "Gewinn Solutions",
+  description: "Construyendo fitness center con maestría",
 };
 
 export default function RootLayout({
