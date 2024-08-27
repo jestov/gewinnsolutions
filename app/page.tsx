@@ -321,7 +321,7 @@ const servicesTabs = [
 const Home: FC = () => {
   const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const carouselRef = useRef(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(0);
   const [quantity, setQuantity] = useState(1);
 
@@ -329,7 +329,8 @@ const Home: FC = () => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1024);
       if (carouselRef.current) {
-        const card = carouselRef.current.querySelector(".carousel-item");
+        const card =
+          carouselRef.current.querySelector<HTMLDivElement>(".carousel-item");
         if (card) {
           setCardWidth(card.offsetWidth);
         }

@@ -11,7 +11,7 @@ export default function ArrowIcon({ dark = false, className }: ArrowIconProps) {
       height="24"
       fill="none"
       viewBox="0 0 24 24"
-      class={className}
+      className={className}
     >
       <path
         stroke={dark ? "black" : "white"} // Conditionally set the stroke color

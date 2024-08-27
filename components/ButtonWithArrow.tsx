@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
-import ArrowIcon from "../components/icons/ArrowIcon"; // Adjust the import path as needed
+import ArrowIcon from "../components/icons/ArrowIcon";
 
 interface ButtonWithArrowProps {
   children: ReactNode;
@@ -9,8 +9,8 @@ interface ButtonWithArrowProps {
   fullWidth?: boolean;
   target?: "_blank" | "_self" | "_parent" | "_top";
   onClick?: () => void;
-  type?: "link" | "submit" | "button" | "reset";
-  dark?: boolean; // Add dark mode prop
+  type?: "submit" | "button" | "reset"; // Se eliminó "link" de aquí
+  dark?: boolean;
 }
 
 export default function ButtonWithArrow({
@@ -20,11 +20,11 @@ export default function ButtonWithArrow({
   fullWidth = false,
   target = "_self",
   onClick,
-  type = "link",
-  dark = false, // Default to false
+  type = "button", // Cambiado el valor por defecto a "button"
+  dark = false,
 }: ButtonWithArrowProps) {
   const baseClasses =
-    "border-2 flex font-medium justify-between items-center cursor-pointer transition font-clash text-base tracking-wide duration-300  rounded-r-[26px] !leading-5";
+    "border-2 flex font-medium justify-between items-center cursor-pointer transition font-clash text-base tracking-wide duration-300 rounded-r-[26px] !leading-5";
 
   const fullWidthClass = fullWidth ? "w-full" : "";
 
@@ -33,7 +33,7 @@ export default function ButtonWithArrow({
 
   const combinedClasses = `${baseClasses} ${dark ? darkClasses : lightClasses} ${fullWidthClass} ${className}`;
 
-  if (type === "link" && href) {
+  if (href) {
     return (
       <Link href={href} target={target}>
         <div className={combinedClasses}>

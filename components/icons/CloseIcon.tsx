@@ -1,11 +1,10 @@
 import React from "react";
 
 interface CloseIconProps {
-  className: string;
-  color: string;
+  className?: string;
 }
 
-const CloseIcon: React.FC<CloseIconProps> = ({ className, color }) => {
+const CloseIcon: React.FC<CloseIconProps> = ({ className }) => {
   return (
     <svg
       width="60"

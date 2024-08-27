@@ -1,6 +1,8 @@
-import { useState, useRef } from "react";
+import { ChangeEvent, useState, useRef } from "react";
 import ArrowIcon from "./icons/ArrowIcon";
 import ButtonWithArrow from "./ButtonWithArrow";
+
+type InputFieldName = "name" | "email" | "company" | "message";
 
 function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -13,15 +15,20 @@ function Contact() {
     message: "",
   });
 
-  const textareaRef = useRef(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setInputValues({
-      ...inputValues,
-      [name]: value,
-    });
-    if (name === "message") {
+
+    // Garantiza que name es una de las claves válidas
+    setInputValues((prevValues) => ({
+      ...prevValues,
+      [name as InputFieldName]: value,
+    }));
+
+    if (name === "message" && textareaRef.current) {
       const textarea = textareaRef.current;
       textarea.style.height = "auto";
       textarea.style.height = `${textarea.scrollHeight}px`;
@@ -66,7 +73,7 @@ function Contact() {
     },
   ];
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -76,12 +83,12 @@ function Contact() {
       },
       body: JSON.stringify({
         access_key: "2591a97a-9754-456e-a33b-5b876a0e370e",
-        name: e.target.name.value,
-        email: e.target.email.value,
-        company: e.target.company.value,
-        services: e.target.services.value,
-        budget: e.target.budget.value,
-        message: e.target.message.value,
+        name: inputValues.name,
+        email: inputValues.email,
+        company: inputValues.company,
+        services: selectedServices,
+        budget: selectedBudget,
+        message: inputValues.message,
       }),
     });
     const result = await response.json();
@@ -119,7 +126,9 @@ function Contact() {
       {fields.map((field, index) => (
         <div
           key={field.id}
-          className={`flex flex-col gap-0 w-full text-lg font-clash ${field.type === "textarea" ? "col-span-2" : ""}`}
+          className={`flex flex-col gap-0 w-full text-lg font-clash ${
+            field.type === "textarea" ? "col-span-2" : ""
+          }`}
         >
           <label
             htmlFor={field.id}
@@ -128,7 +137,7 @@ function Contact() {
               (field.id === "budget" && selectedBudget) ||
               (field.id !== "services" &&
                 field.id !== "budget" &&
-                inputValues[field.id])
+                inputValues[field.id as InputFieldName])
                 ? "text-white text-opacity-40"
                 : ""
             }`}
@@ -141,50 +150,11 @@ function Contact() {
               id={field.id}
               name={field.id}
               required={field.required}
-              rows="1"
+              rows={1}
               placeholder={field.placeholder}
               className="appearance-none bg-transparent min-h-[30px] h-auto text-xl lg:text-2xl font-clash resize-none py-4 md:py-5 w-full placeholder-white placeholder-opacity-40 !outline-none col-span-2"
               onChange={handleInputChange}
             ></textarea>
-          ) : field.type === "select" ? (
-            <div className="relative group cursor-pointer flex justify-start">
-              <select
-                id={field.id}
-                name={field.id}
-                required={field.required}
-                className={`mr-auto cursor-pointer text-2xl lg:text-3xl -tracking-[1.25px] bg-transparent py-4 md:py-5 appearance-none ${field.id === "services" && !selectedServices ? "text-secondaryGray" : ""} ${field.id === "budget" && !selectedBudget ? "text-secondaryGray" : ""}`}
-                value={
-                  field.id === "services"
-                    ? selectedServices
-                    : field.id === "budget"
-                      ? selectedBudget
-                      : ""
-                }
-                onChange={(e) =>
-                  field.id === "services"
-                    ? setSelectedServices(e.target.value)
-                    : setSelectedBudget(e.target.value)
-                }
-              >
-                {field.options.map((option) => (
-                  <option
-                    key={option}
-                    value={
-                      option === "Select a service" ||
-                      option === "Select a budget"
-                        ? ""
-                        : option
-                    }
-                    disabled={
-                      option === "Select a service" ||
-                      option === "Select a budget"
-                    }
-                  >
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </div>
           ) : (
             <input
               id={field.id}

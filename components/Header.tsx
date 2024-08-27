@@ -161,10 +161,7 @@ export default function Menu() {
             <div className="flex h-full gap-4">
               <ul className="flex gap-4 lg:gap-2 items-center">
                 <li>
-                  <button
-                    onClick={() => handleMenuClick(option.path)}
-                    className="cursor-pointer"
-                  >
+                  <button className="cursor-pointer">
                     <span
                       className={`inline-flex font-clash text-white !leading-loose px-4 py-3.5 rounded-full hover:bg-gray-100 transition duration-500 ${activeSection === "/contacto" ? "bg-secondary text-white hover:bg-secondary hover:text-white" : ""}`}
                     >
@@ -206,20 +203,6 @@ export default function Menu() {
                           {option.name}
                         </span>
                       </button>
-                    </li>
-                  ))}
-                </ul>
-                <ul className="flex gap-6 items-center p-6">
-                  {socialOptions.map((social, index) => (
-                    <li key={index}>
-                      <a
-                        href={social.link}
-                        target="_blank"
-                        className="text-inherit hover:opacity-85 transition duration-500"
-                        rel="noopener noreferrer"
-                      >
-                        {social.icon}
-                      </a>
                     </li>
                   ))}
                 </ul>

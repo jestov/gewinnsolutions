@@ -5,7 +5,7 @@ import PlayIcon from "@/components/icons/PlayIcon";
 import CloseIcon from "@/components/icons/CloseIcon";
 
 const VideoPlayer = () => {
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   const handlePlay = () => {
@@ -24,7 +24,7 @@ const VideoPlayer = () => {
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
-      video.play();
+      video.muted = false;
     }
   }, []);
 
