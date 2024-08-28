@@ -66,7 +66,7 @@ export default function Footer() {
   };
 
   return (
-    <div className="w-full bg-secondary">
+    <div className="w-full bg-secondary relative z-30">
       <footer className="flex flex-col py-12 md:py-24 px-[30px] xl:px-24 gap-12 lg:gap-24 text-white relative z-1 w-full max-w-[1800px] mx-auto">
         <div className="flex flex-col gap-8 md:gap-0 items-center md:flex-row justify-center md:justify-between w-full border-y border-mainGray border-opacity-20 py-12">
           <LogoWhite className="h-[90px]" />

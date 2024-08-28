@@ -14,6 +14,7 @@ import BrandStripClients from "@/components/BrandStripClients";
 import ArrowIcon from "@/components/icons/ArrowIcon";
 import Marquee from "react-fast-marquee";
 import AddCartIcon from "@/components/icons/AddCartIcon";
+import ChevronIcon from "@/components/icons/ChevronIcon";
 
 const products = [
   {
@@ -38,7 +39,7 @@ const products = [
     name: "Aeromic Fitness Headmic",
     price: 3800,
     currency: "MXN",
-    image: "/img/products/aeromic.jpg",
+    image: "/img/products/aeormic.jpg",
   },
   {
     id: 4,
@@ -47,6 +48,46 @@ const products = [
     price: 3800,
     currency: "MXN",
     image: "/img/products/cyclemic.jpg",
+  },
+  {
+    id: 5,
+    category: "Bikes",
+    name: "Stages SC1",
+    price: 3800,
+    currency: "MXN",
+    image: "/img/products/bike.jpg",
+  },
+  {
+    id: 6,
+    category: "Micrófonos",
+    name: "Fitness Audio  SM716 UHF",
+    price: 3800,
+    currency: "MXN",
+    image: "/img/products/smf.jpg",
+  },
+  {
+    id: 7,
+    category: "Micrófonos",
+    name: "Aeromic Fitness Headmic",
+    price: 3800,
+    currency: "MXN",
+    image: "/img/products/aeormic.jpg",
+  },
+  {
+    id: 8,
+    category: "Micrófonos",
+    name: "Cyclemic for Studio Cycling Instructors",
+    price: 3800,
+    currency: "MXN",
+    image: "/img/products/cyclemic.jpg",
+  },
+  {
+    id: 9,
+    category: "Micrófonos",
+    name: "Aeromic Fitness Headmic",
+    price: 3800,
+    currency: "MXN",
+    image: "/img/products/aeormic.jpg",
   },
   // Agrega más productos según sea necesario
 ];
@@ -323,7 +364,7 @@ const Home: FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(0);
-  const [quantity, setQuantity] = useState(1);
+  const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
 
   useEffect(() => {
     const handleResize = () => {
@@ -357,12 +398,18 @@ const Home: FC = () => {
   const progressWidth =
     products.length > 3 ? (current / (products.length - 3)) * 100 : 0;
 
-  const incrementQuantity = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
+  const incrementQuantity = (id: number) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: (prevQuantities[id] || 1) + 1,
+    }));
   };
 
-  const decrementQuantity = () => {
-    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+  const decrementQuantity = (id: number) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: Math.max(1, (prevQuantities[id] || 1) - 1),
+    }));
   };
 
   const [activeTab, setActiveTab] = useState(1);
@@ -370,66 +417,79 @@ const Home: FC = () => {
 
   return (
     <div className="relative">
-      <main className="m-[5px] flex flex-col justify-center items-center min-h-[98.95vh] gap-32 md:gap-44 pb-12 md:pb-28 px-[20px] rounded-b-[64px] overflow-hidden relative bg-cover text-white before:absolute before:inset-0 before:bg-gradient-to-t before:from-secondary/60 before:to-secondary/5 before:z-20 z-4">
-        <video
-          autoPlay
-          loop
-          muted
-          className="absolute z-10 w-auto min-h-[110vh] max-w-none"
-        >
-          <source src="/videos/1.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <div className="sticky top-[5px] z-0">
+        <main className="mx-[5px] sticky top-[5px] z-0 flex flex-col justify-center items-center min-h-[93vh] gap-32 md:gap-44 pb-12 md:pb-28 px-[20px] rounded-b-[64px] overflow-hidden bg-cover text-white before:absolute before:inset-0 before:bg-gradient-to-t before:from-secondary/60 before:to-secondary/5 before:z-20 z-4">
+          <video
+            autoPlay
+            loop
+            muted
+            className="absolute z-10 w-auto min-h-[110vh] max-w-none"
+          >
+            <source src="/videos/1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
 
-        <div className="relative w-full max-w-[1600px] flex flex-col justify-center items-center text-center mt-auto mx-auto gap-8 lg:px-4 px-[10px] z-20">
-          <div className="flex flex-col gap-10 max-w-6xl z-11 relative">
-            <h1 className="text-2xl lg:text-8xl text-white font-clashdisplay font-light !leading-none">
-              Construyendo
-              <br />
-              <span className="font-medium">{typedText}</span>
-              <br />
-              con maestría
-            </h1>
+          <div className="relative w-full max-w-[1600px] flex flex-col justify-center items-center text-center mt-auto mx-auto gap-8 lg:px-4 px-[10px] z-20">
+            <div className="flex flex-col gap-10 max-w-6xl z-11 relative">
+              <h1 className="text-2xl lg:text-8xl text-white font-clashdisplay font-light !leading-none">
+                Construyendo
+                <br />
+                <span className="font-medium">{typedText}</span>
+                <br />
+                con maestría
+              </h1>
+            </div>
           </div>
-        </div>
-      </main>
-      <div className="mx-auto w-32 h-32 rounded-full bg-white -mt-16 relative z-40 flex flex-col justify-center items-center gap-2">
+        </main>
+      </div>
+      <div className="mx-auto w-32 h-32 rounded-full bg-white -mt-14 relative z-40 flex flex-col justify-center items-center gap-2">
         <ArrowIcon className="rotate-90 h-12 w-12" dark={true} />
         <span className="text-mainGray font-extralight tracking-wide text-xs">
           SCROLL
         </span>
       </div>
-      <section className="bg-white px-[20px] pt-6 pb-12 md:pt-24 md:pb-32 min-h-[60vh] rounded-t-3xl z-4 sticky -top-[150vh] max-w-[1100px] mx-auto flex flex-col items-start gap-8">
-        <h2 className="text-5xl font-clash font-light !leading-snug tracking-tight">
-          <span className="text-mainGray text-xl relative font-light font-sans -top-0.5 tracking-normal">
-            (01) Nosotros
-          </span>{" "}
-          <span className="font-medium">Nuestra misión</span> es diseñar y
-          construir{" "}
-          <span className="font-medium">
-            espacios de fitness que cumplan con los más altos estándares de
-            funcionalidad y estética
-          </span>{" "}
-          y además que inspiren a las personas a alcanzar sus objetivos de salud
-          y bienestar
-        </h2>
-        <ButtonWithArrow href="/nosotros">
-          Conoce nuestra historia
-        </ButtonWithArrow>
+      <section className="bg-white px-[20px] w-full z-20 -mt-16  rounded-t-3xl z-4 relative">
+        <div className=" max-w-[1100px] mx-auto flex flex-col items-start gap-8 pt-12 pb-6 md:pt-32 md:pb-24 min-h-[60vh]">
+          <h2 className="text-5xl font-clash font-light !leading-snug tracking-tight">
+            <span className="text-mainGray text-xl relative font-light font-sans -top-0.5 tracking-normal">
+              (01) Nosotros
+            </span>{" "}
+            <span className="font-medium">Nuestra misión</span> es diseñar y
+            construir{" "}
+            <span className="font-medium">
+              espacios de fitness que cumplan con los más altos estándares de
+              funcionalidad y estética
+            </span>{" "}
+            y además que inspiren a las personas a alcanzar sus objetivos de
+            salud y bienestar
+          </h2>
+          <ButtonWithArrow href="/nosotros">
+            Conoce nuestra historia
+          </ButtonWithArrow>
+        </div>
       </section>
-      <section className="m-[5px] rounded-t-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center">
-        <VideoPlayer />
-        <div className="absolute w-3/4 bg-white py-8 flex flex-col justify-center items-center gap-12 bottom-0 z-40 rounded-t-[64px]">
+      <section className="p-[20px] bg-cover text-white z-20 h-[91vh] bg-white top-[74px]  sticky">
+        <div className="flex justify-center rounded-[64px] relative overflow-hidden h-full">
+          <VideoPlayer />
+        </div>
+      </section>
+
+      <section className="mx-auto text-center w-3/4 bg-white z-20 relative rounded-t-[64px] border-t border-mainGray border-opacity-20">
+        <div className=" w-full bg-white py-8 flex flex-col justify-center items-center gap-12 bottom-0 z-40 rounded-t-[64px]">
           <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain"></div>
           <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain rotate-90"></div>
           <BrandStrip />
-        </div>
+        </div>{" "}
       </section>
-      <section className="py-24">
-        <Image src="/img/animated1.svg" width={800} height={800} alt="" />
+      <section className="py-24 bg-white relative z-30">mhmm</section>
+      <section className="pt-12 bg-white relative z-30 text-center">
+        <span className="text-mainGray text-xl relative font-light font-sans tracking-normal  mx-auto -bottom-[15px]">
+          (02) Soluciones
+        </span>
       </section>
-      <section>
-        <div className="m-[5px] rounded-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center items-center min-h-[98vh]">
+
+      <section className="w-full bg-white relative z-20 py-12">
+        <div className="mx-[20px] rounded-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center items-center min-h-[87vh]">
           <video
             key={activeTab} // Ensure video reloads when tab changes
             autoPlay
@@ -444,13 +504,11 @@ const Home: FC = () => {
             Your browser does not support the video tag.
           </video>
 
-          <div className="absolute w-4/6 bg-white pb-8 flex justify-center gap-12 -top-[5px] z-40 rounded-b-[64px] h-[120px]">
+          <div className="absolute w-7/12 bg-white pb-8 flex flex-col justify-center items-center gap-2 -top-[5px] z-40 rounded-b-[64px] h-[124px]">
             <div className="absolute top-[5px] -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract2.svg')] bg-no-repeat bg-contain"></div>
             <div className="absolute top-[5px] -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain rotate-180"></div>
-            <span className="text-mainGray text-xl relative font-light font-sans -top-0.5 tracking-normal">
-              (02) Soluciones
-            </span>
-            <h3 className="text-2xl lg:text-4xl text-left text-primary font-clashdisplay font-extralight">
+
+            <h3 className="text-2xl lg:text-4xl text-primary text-center font-clashdisplay font-extralight">
               Especialistas en{" "}
               <span className="font-medium">
                 espacios fitness y<br /> experiencias de entrenamiento
@@ -458,7 +516,7 @@ const Home: FC = () => {
             </h3>
           </div>
 
-          <div className="absolute w-4/6 flex flex-col justify-center items-center gap-4 bottom-0 z-40">
+          <div className="absolute w-7/12 flex flex-col justify-center items-center gap-4 bottom-0 z-40">
             <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain"></div>
             <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain rotate-90"></div>
 
@@ -493,28 +551,89 @@ const Home: FC = () => {
           </p>
         </div>
       </section>
-      <hr />
-      <section className="py-32 mx-auto max-w-[1200px] flex flex-col gap-24">
-        <div className="flex flex-col gap-8">
-          <div className="flex gap-8 justify-between">
-            <h3 className="text-2xl lg:text-3xl text-left text-primary font-clashdisplay font-extralight w-full">
-              Soluciones por{" "}
-              <span className="font-medium">
-                partners
-                <br />
-                especializados
-              </span>
-            </h3>
-            <p className="font-extralight text-lg">
-              Descubre nuestras soluciones integrales ofrecidas a través de{" "}
-              <span className="font-semibold">
-                socios confiables, diseñadas para satisfacer todas las
-                necesidades de tu gimnasio.
-              </span>
-            </p>
+      <hr className="h-px bg-gray-200 border-0 relative w-full z-20" />
+      <section className="py-32 bg-white relative z-20">
+        <div className="mx-auto max-w-[1200px] flex flex-col gap-24">
+          <div className="flex flex-col gap-8">
+            <div className="flex gap-8 justify-between">
+              <h3 className="text-2xl lg:text-3xl text-left text-primary font-clashdisplay font-extralight w-full">
+                Soluciones por{" "}
+                <span className="font-medium">
+                  partners
+                  <br />
+                  especializados
+                </span>
+              </h3>
+              <p className="font-extralight text-lg">
+                Descubre nuestras soluciones integrales ofrecidas a través de{" "}
+                <span className="font-semibold">
+                  socios confiables, diseñadas para satisfacer todas las
+                  necesidades de tu gimnasio.
+                </span>
+              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-[30px]">
+              {cards.slice(0, 3).map((card) => (
+                <div
+                  key={card.id}
+                  className={`relative w-full bg-cover bg-center rounded-xl overflow-hidden flex flex-col p-6 aspect-vertical border border-primary border-opacity-15 text-white ${
+                    card.theme === "dark" ? "bg-black" : "bg-white"
+                  }`}
+                >
+                  <div
+                    className="absolute inset-0 bg-cover top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-xl"
+                    style={{ backgroundImage: `url(${card.image})` }}
+                  ></div>
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-b  from-black to-transparent opacity-70 top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-xl`}
+                  ></div>
+
+                  <div className="z-20 relative flex flex-col gap-1 font-clashdisplay">
+                    <span className="font-extralight text-2xl">
+                      {card.number}
+                    </span>
+                    <br />
+                    <h3 className="text-4xl font-medium">{card.title}</h3>
+                  </div>
+
+                  <div className="absolute bottom-6 left-6">{card.icon}</div>
+
+                  <div
+                    className={`absolute bottom-0 right-0 ${
+                      card.theme === "dark"
+                        ? "bg-primary before:bg-[url('/img/substract3.svg')] after:bg-[url('/img/substract3.svg')]"
+                        : "bg-white before:bg-[url('/img/substract2.svg')] after:bg-[url('/img/substract2.svg')]"
+                    } p-8 rounded-tl-[32px] cursor-pointer before:absolute before:bottom-1.5 before:-left-[32px] before:w-[32px] before:h-[32px]  before:bg-no-repeat before:bg-contain before:rotate-90
+                         after:absolute after:-top-[32px] after:right-1.5 after:w-[32px] after:h-[32px]  after:bg-no-repeat after:bg-contain after:rotate-90`}
+                  >
+                    <ArrowIcon
+                      dark={card.theme === "light"}
+                      className="h-8 w-8 relative -right-[4px]"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="grid grid-cols-3 gap-[30px]">
-            {cards.slice(0, 3).map((card) => (
+            <div className="flex flex-col gap-8">
+              <h3 className="text-2xl lg:text-3xl text-left text-primary font-clashdisplay font-extralight w-full">
+                Soluciones{" "}
+                <span className="font-medium">
+                  <br />
+                  complementarias
+                </span>
+              </h3>
+              <p className="font-extralight text-lg">
+                Nuestras soluciones independientes están diseñadas para ofrecer{" "}
+                <span className="font-semibold">seguridad y conectividad</span>{" "}
+                sin igual, garantizando que{" "}
+                <span className="font-semibold">
+                  tu <i>fitness center </i> opere de manera óptima y segura.
+                </span>
+              </p>
+            </div>
+            {cards.slice(3, 5).map((card) => (
               <div
                 key={card.id}
                 className={`relative w-full bg-cover bg-center rounded-xl overflow-hidden flex flex-col p-6 aspect-vertical border border-primary border-opacity-15 text-white ${
@@ -556,66 +675,9 @@ const Home: FC = () => {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-[30px]">
-          <div className="flex flex-col gap-8">
-            <h3 className="text-2xl lg:text-3xl text-left text-primary font-clashdisplay font-extralight w-full">
-              Soluciones{" "}
-              <span className="font-medium">
-                <br />
-                complementarias
-              </span>
-            </h3>
-            <p className="font-extralight text-lg">
-              Nuestras soluciones independientes están diseñadas para ofrecer{" "}
-              <span className="font-semibold">seguridad y conectividad</span>{" "}
-              sin igual, garantizando que{" "}
-              <span className="font-semibold">
-                tu <i>fitness center </i> opere de manera óptima y segura.
-              </span>
-            </p>
-          </div>
-          {cards.slice(3, 5).map((card) => (
-            <div
-              key={card.id}
-              className={`relative w-full bg-cover bg-center rounded-xl overflow-hidden flex flex-col p-6 aspect-vertical border border-primary border-opacity-15 text-white ${
-                card.theme === "dark" ? "bg-black" : "bg-white"
-              }`}
-            >
-              <div
-                className="absolute inset-0 bg-cover top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-xl"
-                style={{ backgroundImage: `url(${card.image})` }}
-              ></div>
-              <div
-                className={`absolute inset-0 bg-gradient-to-b  from-black to-transparent opacity-70 top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-xl`}
-              ></div>
-
-              <div className="z-20 relative flex flex-col gap-1 font-clashdisplay">
-                <span className="font-extralight text-2xl">{card.number}</span>
-                <br />
-                <h3 className="text-4xl font-medium">{card.title}</h3>
-              </div>
-
-              <div className="absolute bottom-6 left-6">{card.icon}</div>
-
-              <div
-                className={`absolute bottom-0 right-0 ${
-                  card.theme === "dark"
-                    ? "bg-primary before:bg-[url('/img/substract3.svg')] after:bg-[url('/img/substract3.svg')]"
-                    : "bg-white before:bg-[url('/img/substract2.svg')] after:bg-[url('/img/substract2.svg')]"
-                } p-8 rounded-tl-[32px] cursor-pointer before:absolute before:bottom-1.5 before:-left-[32px] before:w-[32px] before:h-[32px]  before:bg-no-repeat before:bg-contain before:rotate-90
-                         after:absolute after:-top-[32px] after:right-1.5 after:w-[32px] after:h-[32px]  after:bg-no-repeat after:bg-contain after:rotate-90`}
-              >
-                <ArrowIcon
-                  dark={card.theme === "light"}
-                  className="h-8 w-8 relative -right-[4px]"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
-      <section className="py-24 mx-auto max-w-[1300px]">
-        <div className="grid grid-cols-2 bg-primary rounded-[64px] overflow-hidden min-h-[75vh]">
+      <section className="py-24 bg-white z-20 w-full sticky top-[60px]">
+        <div className="grid grid-cols-2 bg-primary rounded-[64px] overflow-hidden min-h-[75vh] mx-auto max-w-[1300px]">
           <div className="w-full h-full relative">
             <Image
               src="/img/ft_bg.jpg"
@@ -655,15 +717,14 @@ const Home: FC = () => {
           </div>
         </div>
       </section>
-      <section className="ml-auto max-w-[1350px] py-8 bg-primary rounded-tl-[64px] relative">
+      <section className="ml-auto max-w-[1350px] py-8 bg-primary rounded-tl-[64px] relative z-30">
         <div className="w-full bg-primary flex flex-col justify-center items-center gap-8 bottom-0 z-40 rounded-t-[64px]">
           <div className="absolute -top-[61px] right-0 w-[61px] h-[61px] bg-[url('/img/substract3.svg')] bg-no-repeat bg-contain rotate-90"></div>
           <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract3.svg')] bg-no-repeat bg-contain rotate-90"></div>
           <BrandStripClients />
         </div>
       </section>
-
-      <section>
+      <section className="bg-primary z-30 relative">
         <div className="flex w-full bg-primary py-24">
           <div className="w-2/12 flex flex-col justify-center items-center text-white py-10 px-4">
             <div className="font-light text-mainGray text-lg">
@@ -714,16 +775,16 @@ const Home: FC = () => {
                       <div className="flex items-center mt-4 border-2 border-black overflow-hidden">
                         <button
                           className="w-10 h-10 flex items-center justify-center !text-4xl font-clash text-mainGray"
-                          onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                          onClick={() => decrementQuantity(product.id)}
                         >
                           -
                         </button>
                         <span className="w-10 h-10 flex items-center justify-center font-clash font-medium text-primary">
-                          {quantity.toString().padStart(2, "0")}
+                          {String(quantities[product.id] || 1).padStart(2, "0")}
                         </span>
                         <button
                           className="w-10 h-10 flex items-center justify-center !text-3xl font-clash text-mainGray"
-                          onClick={() => setQuantity((q) => q + 1)}
+                          onClick={() => incrementQuantity(product.id)}
                         >
                           +
                         </button>
@@ -742,21 +803,12 @@ const Home: FC = () => {
                 Ver todos los productos
               </ButtonWithArrow>
               <div className="flex items-center space-x-4 px-12">
-                <button
-                  onClick={prevSlide}
-                  className={`focus:outline-none transform rotate-180 ${
-                    current === 0 ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
-                  disabled={current === 0}
-                >
-                  <ArrowIcon className="h-6 lg:h-8 text-white" />
-                </button>
                 <div className="text-white font-clash">
                   {String(current + 1).padStart(2, "0")}
                 </div>
-                <div className="relative w-[200px] h-1 bg-secondaryGray">
+                <div className="relative w-[200px] h-[1px] bg-mainGray bg-opacity-40">
                   <div
-                    className="absolute top-0 left-0 h-full bg-white transition duration-300"
+                    className="absolute -top-[1px] left-0 h-[3.5px]  bg-white transition duration-300"
                     style={{ width: `${progressWidth}%` }}
                   ></div>
                 </div>
@@ -764,22 +816,31 @@ const Home: FC = () => {
                   {String(products.length).padStart(2, "0")}
                 </div>
                 <button
+                  onClick={prevSlide}
+                  className={`focus:outline-none transform  ${
+                    current === 0 ? "opacity-30 cursor-not-allowed" : ""
+                  }`}
+                  disabled={current === 0}
+                >
+                  <ChevronIcon className="h-7 text-white" />
+                </button>
+                <button
                   onClick={nextSlide}
-                  className={`focus:outline-none ${
+                  className={`focus:outline-none rotate-180 ${
                     current === products.length - 3
-                      ? "opacity-50 cursor-not-allowed"
+                      ? "opacity-30 cursor-not-allowed"
                       : ""
                   }`}
                   disabled={current === products.length - 3}
                 >
-                  <ArrowIcon className="h-6 lg:h-8 text-white" />
+                  <ChevronIcon className="h-7 text-white" />
                 </button>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="bg-gradient-to-b from-primary to-secondary py-24 -mt-20">
+      <section className="bg-gradient-to-b from-primary to-secondary py-24 -mt-20 relative z-30">
         <Marquee speed={40}>
           <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
             Boutique Studio Fitness Centers · Indoor Cycling · Boutique Studio

@@ -3,21 +3,15 @@
 @tailwind utilities;
 
 html {
-    overscroll-behavior: none;
     margin: 0;
     width: 100%;
-    overflow-x: hidden;
 }
 
 body {
     font-family: "Clash Grotesk", sans-serif;
     height: 100%;
     width: 100%;
-    overflow: auto;
     margin: 0;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-x pan-y; /* Ensure touch events are not blocked */
-    overflow-x: hidden;
 }
 
 @layer utilities {

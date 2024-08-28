@@ -10,10 +10,10 @@ export default function Menu() {
   const [isScrolledPastMain, setIsScrolledPastMain] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const pathname = usePathname();
   const [activeSection, setActiveSection] = useState<string>("");
 
-  // Verifica si la vista es móvil
   useEffect(() => {
     const checkIfMobileView = () => {
       setIsMobileView(window.innerWidth <= 1024);
@@ -55,88 +55,53 @@ export default function Menu() {
     };
   }, []);
 
-  // Maneja la apertura y cierre del menú móvil
   useEffect(() => {
-    const handleToggleMenu = () => {
-      if (isMobileMenuOpen) {
-        document.body.style.overflow = "hidden"; // Bloquea el scroll
-      } else {
-        document.body.style.overflow = ""; // Habilita el scroll
-      }
-    };
-
-    handleToggleMenu();
-
+    document.body.style.overflow =
+      isMobileMenuOpen || isMegaMenuOpen ? "hidden" : "";
     return () => {
-      document.body.style.overflow = ""; // Asegura que el scroll se habilite cuando se desmonte el componente
+      document.body.style.overflow = "";
     };
-  }, [isMobileMenuOpen]);
-
-  // Maneja los cambios en el hash de la URL
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        setActiveSection(hash);
-      } else {
-        setActiveSection("");
-      }
-    };
-
-    handleHashChange(); // Verificación inicial
-    window.addEventListener("hashchange", handleHashChange);
-
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
-
-  // Verifica el pathname para resetear la sección activa cuando no hay hash
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (!hash) {
-      setActiveSection("");
-    } else {
-      setActiveSection(hash);
-    }
-  }, [pathname]);
+  }, [isMobileMenuOpen, isMegaMenuOpen]);
 
   const menuOptions = [
     { name: "Nosotros", path: "/nosotros" },
-    { name: "Soluciones", path: "#" },
+    {
+      name: "Soluciones",
+      path: "#",
+      isMegaMenu: true,
+    },
     { name: "Catálogo", path: "/productos" },
   ];
 
-  const iconColor = "#3b46ba";
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
-  const handleMenuClick = (path: string) => {
-    const element = document.getElementById(path.replace("#", ""));
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: "smooth",
-      });
-      window.history.pushState(null, "", path);
-      setActiveSection(path);
+  const handleMenuClick = (option: any) => {
+    if (option.isMegaMenu) {
+      setIsMegaMenuOpen(!isMegaMenuOpen);
+    } else {
+      const element = document.getElementById(option.path.replace("#", ""));
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop,
+          behavior: "smooth",
+        });
+        window.history.pushState(null, "", option.path);
+        setActiveSection(option.path);
+      }
+      setIsMobileMenuOpen(false);
+      setIsMegaMenuOpen(false); // Cierra el megamenú si se abre un enlace normal
     }
-    closeMobileMenu();
   };
 
-  const headerClasses = `flex mt-[2.5px] bg-primary bg-opacity-10 gap-12 md:gap-6 items-center justify-center w-full mx-auto inline-block transition-all duration-300 z-50 fixed max-w-[100vw] ${isScrolledPastMain ? "" : ""} ${isMobileMenuOpen ? "" : ""}`;
+  const closeMegaMenu = () => {
+    setIsMegaMenuOpen(false);
+  };
 
   return (
     <>
-      <nav className={headerClasses}>
-        <div className="desktop-menu flex gap-5 w-full justify-start mx-auto border-b border-white border-opacity-30 items-center">
-          <div className="flex justify-between w-full items-center gap-8 lg:gap-12 2xl:gap-20">
+      <nav
+        className={`flex bg-primary bg-opacity-10 transition duration-300 ${isScrolledPastMain ? "bg-secondary bg-opacity-100" : "mt-[2.5px]"} fixed w-full z-50`}
+      >
+        <div className="desktop-menu flex gap-5 w-full justify-start mx-auto items-center ">
+          <div className="flex justify-between w-full items-center gap-8 lg:gap-12 2xl:gap-20 border-white border-b border-opacity-30">
             <div className="flex h-full gap-4">
               <div className="border-white border-r border-opacity-30 h-full p-5">
                 <Logo className="h-8" />
@@ -144,16 +109,38 @@ export default function Menu() {
               <ul className="flex gap-4 lg:gap-2 items-center">
                 {menuOptions.map((option, index) => (
                   <li key={index}>
-                    <button
-                      onClick={() => handleMenuClick(option.path)}
-                      className="cursor-pointer"
-                    >
-                      <span
-                        className={`inline-flex font-clash text-white !leading-loose px-4 py-3.5 rounded-full hover:bg-gray-100 transition duration-500 ${activeSection === option.path ? "bg-secondary text-white hover:bg-secondary hover:text-white" : ""}`}
+                    {option.isMegaMenu ? (
+                      <button
+                        onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
+                        className="cursor-pointer"
+                      >
+                        <span
+                          className={`inline-flex font-clash text-white !leading-loose px-4 py-3.5 rounded-full hover:bg-gray-100 transition duration-500 ${
+                            isMegaMenuOpen
+                              ? "text-white bg-secondary hover:bg-secondary hover:text-white"
+                              : ""
+                          }`}
+                        >
+                          {option.name}
+                        </span>
+                      </button>
+                    ) : (
+                      <a
+                        href={option.path}
+                        onClick={() => {
+                          setActiveSection(option.path);
+                          setIsMobileMenuOpen(false); // Cierra el menú móvil si está abierto
+                          setIsMegaMenuOpen(false); // Cierra el megamenú si está abierto
+                        }}
+                        className={`inline-flex font-clash text-white !leading-loose px-4 py-3.5 rounded-full hover:bg-gray-100 transition duration-500 ${
+                          activeSection === option.path
+                            ? "text-white bg-secondary hover:bg-secondary hover:text-white"
+                            : ""
+                        }`}
                       >
                         {option.name}
-                      </span>
-                    </button>
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -170,47 +157,77 @@ export default function Menu() {
                   </button>
                 </li>
               </ul>
-              <Button href="/cotizador" className="-mt-[2.5px]">
+              <Button href="/cotizador">
                 <QuoteIcon />
                 Cotizador (2)
               </Button>
             </div>
           </div>
         </div>
-
-        {isMobileView && (
-          <div className="flex justify-between w-full bg-white p-3 items-center rounded-full fixed z-50 top-[20px] mx-[10px] max-w-[95vw]">
-            <div className="h-full border-white border-r ">
-              <Logo />
-            </div>
-            <button className="hamburger-icon" onClick={toggleMobileMenu}>
-              <div className={`line ${isMobileMenuOpen ? "open" : ""}`}></div>
-              <div className={`line ${isMobileMenuOpen ? "open" : ""}`}></div>
-              <div className={`line ${isMobileMenuOpen ? "open" : ""}`}></div>
-            </button>
-            {isMobileMenuOpen && (
-              <div className="mobile-menu bg-primary text-white transition duration-300">
-                <ul className="flex flex-col gap-10 py-5 px-2.5 items-start">
-                  {menuOptions.map((option, index) => (
-                    <li key={index}>
-                      <button
-                        onClick={() => handleMenuClick(option.path)}
-                        className="cursor-pointer"
-                      >
-                        <span
-                          className={`text-secondaryBlue cursor-pointer font-monument uppercase tracking-wider text-[12px] px-5 py-3.5 rounded-full hover:bg-gray-100 transition duration-500  ${activeSection === option.path ? "bg-greenLighter hover:bg-greenLighter" : ""}`}
-                        >
-                          {option.name}
-                        </span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        )}
       </nav>
+
+      {isMobileView && isMobileMenuOpen && (
+        <div className="mobile-menu bg-primary text-white transition duration-300 fixed inset-0 z-50">
+          <ul className="flex flex-col gap-10 py-5 px-2.5 items-start">
+            {menuOptions.map((option, index) => (
+              <li key={index}>
+                <button
+                  onClick={() => handleMenuClick(option)}
+                  className="cursor-pointer"
+                >
+                  <span
+                    className={`text-secondaryBlue cursor-pointer font-monument uppercase tracking-wider text-[12px] px-5 py-3.5 rounded-full hover:bg-gray-100 transition duration-500  ${activeSection === option.path ? "bg-greenLighter hover:bg-greenLighter" : ""}`}
+                  >
+                    {option.name}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {isMegaMenuOpen && (
+        <div className="mega-menu fixed inset-0 bg-white p-8 z-50">
+          <div className="flex justify-end">
+            <button onClick={closeMegaMenu} className="text-black">
+              X
+            </button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+            <div className="col-span-1">
+              <h3 className="text-secondary font-monument">
+                Soluciones especializadas
+              </h3>
+              <ul className="mt-4">
+                <li>01 Audio</li>
+                <li>02 Iluminación</li>
+                <li>03 Diseño</li>
+                <li>04 Fitness Total</li>
+              </ul>
+            </div>
+            <div className="col-span-1">
+              <h3 className="text-secondary font-monument">
+                Soluciones by partners especializados
+              </h3>
+              <ul className="mt-4">
+                <li>05 Stages Indoor Bikes</li>
+                <li>06 Equipamiento de Gimnasios</li>
+                <li>07 Piso para Gimnasios</li>
+              </ul>
+            </div>
+            <div className="col-span-1">
+              <h3 className="text-secondary font-monument">
+                Soluciones adicionales
+              </h3>
+              <ul className="mt-4">
+                <li>08 Circuito Cerrado de TV</li>
+                <li>09 Infraestructura de Red</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         .hamburger-icon {
@@ -261,9 +278,14 @@ export default function Menu() {
             transform: translateX(${isMobileMenuOpen ? "0" : "-100%"});
             transition: transform 0.3s ease-in-out;
           }
-          .mobile-menu.open {
-            transform: translateX(0);
-          }
+        }
+        .mega-menu {
+          display: block;
+          background-color: #ffffff;
+          position: fixed;
+          inset: 0;
+          z-index: 1000;
+          overflow-y: auto;
         }
       `}</style>
     </>
