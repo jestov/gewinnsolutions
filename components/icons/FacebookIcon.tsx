@@ -1,11 +1,11 @@
 import React from "react";
 
-interface CloseIconProps {
+interface FacebookIconProps {
   className: string;
   color: string;
 }
 
-const CloseIcon: React.FC<CloseIconProps> = ({ className, color }) => {
+const FacebookIcon: React.FC<FacebookIconProps> = ({ className, color }) => {
   return (
     <svg
       width="auto"
@@ -23,4 +23,4 @@ const CloseIcon: React.FC<CloseIconProps> = ({ className, color }) => {
   );
 };
 
-export default CloseIcon;
+export default FacebookIcon;

@@ -29,7 +29,7 @@ const VideoPlayer = () => {
   }, []);
 
   return (
-    <div className={`relative ${isFullscreen ? "fixed inset-0 z-50" : ""}`}>
+    <div className={`relative ${isFullscreen ? "fixed inset-0 z-50" : "z-30"}`}>
       <video
         ref={videoRef}
         autoPlay

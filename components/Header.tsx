@@ -148,13 +148,13 @@ export default function Menu() {
             <div className="flex h-full gap-4">
               <ul className="flex gap-4 lg:gap-2 items-center">
                 <li>
-                  <button className="cursor-pointer">
+                  <a href="/contacto">
                     <span
                       className={`inline-flex font-clash text-white !leading-loose px-4 py-3.5 rounded-full hover:bg-gray-100 transition duration-500 ${activeSection === "/contacto" ? "bg-secondary text-white hover:bg-secondary hover:text-white" : ""}`}
                     >
                       Contacto
                     </span>
-                  </button>
+                  </a>
                 </li>
               </ul>
               <Button href="/cotizador">
