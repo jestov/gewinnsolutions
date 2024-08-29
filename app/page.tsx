@@ -572,7 +572,7 @@ const Home: FC = () => {
                 </span>
               </p>
             </div>
-            <div className="grid grid-cols-3 gap-[30px]">
+            <div className="grid grid-cols-3 gap-[40px]">
               {cards.slice(0, 3).map((card) => (
                 <div
                   key={card.id}
