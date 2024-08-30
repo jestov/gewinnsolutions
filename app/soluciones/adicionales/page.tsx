@@ -435,7 +435,7 @@ const Nosotros: FC = () => {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-primary to-secondary py-24 relative z-30">
+      <section className="bg-gradient-to-b from-primary to-secondary pt-24 relative z-30">
         <Marquee speed={40}>
           <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
             Boutique Studio Fitness Centers · Indoor Cycling · Boutique Studio

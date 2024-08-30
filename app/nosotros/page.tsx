@@ -105,7 +105,7 @@ const Nosotros: FC = () => {
           </p>
 
           <div>
-            <div className="flex flex-col lg:flex-row justify-between items-center py-12 border-b border-primary border-opacity-20">
+            <div className="flex justify-between items-center py-12 border-b border-primary border-opacity-20">
               <h3 className="text-xl lg:text-3xl font-medium font-clash">
                 Excelencia
               </h3>
@@ -118,7 +118,7 @@ const Nosotros: FC = () => {
               </p>
             </div>
 
-            <div className="flex flex-col lg:flex-row justify-between items-center py-12 border-b border-primary border-opacity-20">
+            <div className="flex justify-between items-center py-12 border-b border-primary border-opacity-20">
               <h3 className="text-xl lg:text-3xl font-medium font-clash">
                 Innovación
               </h3>
@@ -129,7 +129,7 @@ const Nosotros: FC = () => {
               </p>
             </div>
 
-            <div className="flex flex-col lg:flex-row justify-between items-center py-12 border-b border-primary border-opacity-20">
+            <div className="flex justify-between items-center py-12 border-b border-primary border-opacity-20">
               <h3 className="text-xl lg:text-3xl font-medium font-clash">
                 Colaboración
               </h3>
@@ -146,7 +146,7 @@ const Nosotros: FC = () => {
               </p>
             </div>
 
-            <div className="flex flex-col lg:flex-row justify-between items-center py-12">
+            <div className="flex justify-between items-center py-12">
               <h3 className="text-xl lg:text-3xl font-medium font-clash">
                 Compromiso
               </h3>
@@ -171,7 +171,7 @@ const Nosotros: FC = () => {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-primary to-secondary py-24 relative z-30">
+      <section className="bg-gradient-to-b from-primary to-secondary pt-24 relative z-30">
         <Marquee speed={40}>
           <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
             Boutique Studio Fitness Centers · Indoor Cycling · Boutique Studio

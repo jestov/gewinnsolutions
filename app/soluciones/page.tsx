@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsappIcon";
 import BrandStripClients from "@/components/BrandStripClients";
 import Marquee from "react-fast-marquee";
+import Image from "next/image";
 
 const Soluciones: FC = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -17,6 +18,15 @@ const Soluciones: FC = () => {
       description:
         "Desarrollamos sistemas de sonido personalizados, con equipos especializados en fitness, contamos con la mayor experiencia en estudios boutique fitness. Nos involucramos en el tratamiento acústico desde el inicio del proyecto, para garantizar la mayor eficiencia sonora y con diseños personalizados para cada proyecto.",
       videoSrc: "/videos/1.mp4",
+      img: ["/img/audio-1.jpg", "/img/audio-2.jpg", "/img/audio-3.jpg"],
+      whyService:
+        "Nuestro equipo de arquitectos se especializa en el diseño de espacios fitness que combinan funcionalidad y estética. Cada proyecto es personalizado para asegurar que se maximice el rendimiento del espacio y se cree una atmósfera motivadora y atractiva.",
+      benefits: [
+        "Diseño personalizado",
+        "Renders de Alta Calidad",
+        "Optimización del espacio",
+        "Materiales y Acabados Premium",
+      ],
     },
     {
       id: 2,
@@ -24,6 +34,19 @@ const Soluciones: FC = () => {
       description:
         "Creamos ambientes únicos con soluciones de iluminación personalizadas para mejorar la experiencia de entrenamiento.",
       videoSrc: "/videos/2.mp4",
+      img: [
+        "/img/iluminacion-1.jpg",
+        "/img/iluminacion-2.jpg",
+        "/img/iluminacion-3.jpg",
+      ],
+      whyService:
+        "La iluminación adecuada puede transformar un espacio y potenciar la motivación durante el entrenamiento. Nuestro enfoque personalizado asegura que cada proyecto tenga la atmósfera ideal.",
+      benefits: [
+        "Diseño de iluminación a medida",
+        "Tecnología LED avanzada",
+        "Control de ambientes",
+        "Integración estética y funcional",
+      ],
     },
     {
       id: 3,
@@ -31,6 +54,15 @@ const Soluciones: FC = () => {
       description:
         "Diseñamos espacios que reflejan la identidad de cada proyecto, optimizando la funcionalidad y estética.",
       videoSrc: "/videos/1.mp4",
+      img: ["/img/diseno-1.jpg", "/img/diseno-2.jpg", "/img/diseno-3.jpg"],
+      whyService:
+        "Cada espacio fitness debe ser único y representar la identidad de la marca. Nuestro equipo se enfoca en el diseño integral que fusiona estética con funcionalidad.",
+      benefits: [
+        "Diseño arquitectónico",
+        "Selección de materiales",
+        "Visualización en 3D",
+        "Coordinación del proyecto",
+      ],
     },
     {
       id: 4,
@@ -38,8 +70,22 @@ const Soluciones: FC = () => {
       description:
         "Un servicio integral que incluye diseño, instalación, equipos y seguridad para crear un espacio fitness de primera clase.",
       videoSrc: "/videos/2.mp4",
+      img: [
+        "/img/fitness-total-1.jpg",
+        "/img/fitness-total-2.jpg",
+        "/img/fitness-total-3.jpg",
+      ],
+      whyService:
+        "Con nuestro servicio Fitness Total, no solo diseñamos y equipamos, sino que también nos encargamos de la instalación y seguridad, ofreciendo una solución completa para espacios fitness.",
+      benefits: [
+        "Servicio llave en mano",
+        "Equipos de alta calidad",
+        "Instalación profesional",
+        "Seguridad y networking",
+      ],
     },
   ];
+
   return (
     <div className="relative bg-primary">
       <main className="p-[20px] bg-cover text-white z-20 bg-primary flex flex-col gap-20 pt-40">
@@ -95,20 +141,53 @@ const Soluciones: FC = () => {
         </div>
         {/* Tab Content */}
         <div className="text-white z-20 w-4/6 mx-auto py-20 text-xl flex font-extralight flex-col gap-8">
-          <div className="flex justify-between items-center">
-            <h2 className="font-medium text-4xl font-clashdisplay">
-              {servicesTabs[activeTab - 1].title}
-            </h2>
-          </div>
-          <p className="text-white text-opacity-80">
+          <h2 className="font-medium text-5xl font-clashdisplay">
+            {servicesTabs[activeTab - 1].title}
+          </h2>
+          <p className="text-white text-opacity-80 mt-4">
             {servicesTabs[activeTab - 1].description}
           </p>
+        </div>
+        <div className="grid grid-cols-3 relative w-full min-h-[500px]">
+          {servicesTabs[activeTab - 1].img.map((image, index) => (
+            <Image
+              key={index}
+              src={image}
+              alt={`Service Image ${index + 1}`}
+              className="w-full"
+              width={500}
+              height={500}
+            />
+          ))}
+        </div>
+        <div className="grid grid-cols-2 gap-20 mx-auto max-w-[1200px] pt-20 items-start">
+          <div className="flex flex-col gap-8 pt-12">
+            <h2 className="font-medium text-4xl font-clashdisplay text-white">
+              ¿Por qué necesito este servicio?
+            </h2>
+            <p className="text-white text-lg">
+              {servicesTabs[activeTab - 1].whyService}
+            </p>
+          </div>
+          <ul className="space-y-2 text-white">
+            {servicesTabs[activeTab - 1].benefits.map((benefit, index) => (
+              <li
+                key={index}
+                className="flex lg:flex-row items-center py-12 border-b border-white border-opacity-20 text-2xl lg:text-3xl font-clash font-medium gap-6"
+              >
+                <span className="font-extralight">
+                  {String(index + 1).padStart(2, "0")}
+                </span>{" "}
+                {benefit}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       <section
         id="contact"
-        className="flex flex-col justify-end items-end gap-12 md:gap-32 pt-4 md:pt-36 pb-12 md:pb-20 px-[30px]  md:px-[60px] bg-no-repeat bg-center bg-cover relative text-white before:absolute before:rounded-t-[64px] before:inset-0  before:z-0 z-40"
+        className="flex flex-col justify-end items-end gap-12 md:gap-32 pt-4 lg:pt-24 pb-12 md:pb-20 px-[30px]  md:px-[60px] bg-no-repeat bg-center bg-cover relative text-white before:absolute before:rounded-t-[64px] before:inset-0  before:z-0 z-40"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-4 max-w-[1400px] mx-auto z-2 relative w-full bg-white text-primary p-28 rounded-[64px]">
           <div className="flex flex-col gap-14 items-center md:items-start">
@@ -155,7 +234,7 @@ const Soluciones: FC = () => {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-primary to-secondary py-24 relative z-30">
+      <section className="bg-gradient-to-b from-primary to-secondary pt-24 relative z-30">
         <Marquee speed={40}>
           <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
             Boutique Studio Fitness Centers · Indoor Cycling · Boutique Studio

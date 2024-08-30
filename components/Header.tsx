@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Logo from "../components/Logo";
+import LogoDark from "../components/LogoDark";
 import Button from "../components/Button";
 import QuoteIcon from "./icons/QuoteIcon";
 
@@ -18,9 +19,6 @@ export default function Menu() {
     const checkIfMobileView = () => {
       setIsMobileView(window.innerWidth <= 1024);
     };
-
-    window.addEventListener("resize", checkIfMobileView);
-    checkIfMobileView();
 
     const handleScroll = () => {
       const sections = document.querySelectorAll("section");
@@ -39,21 +37,29 @@ export default function Menu() {
 
       setActiveSection(`#${currentSection}`);
 
-      const main = document.querySelector("main");
-      if (main) {
-        const mainOffset =
-          main.offsetTop + main.offsetHeight - (main.offsetHeight - 100);
-        setIsScrolledPastMain(window.pageYOffset > mainOffset);
+      if (pathname === "/") {
+        const main = document.querySelector("main");
+        if (main) {
+          const mainOffset =
+            main.offsetTop + main.offsetHeight - (main.offsetHeight - 100);
+          setIsScrolledPastMain(window.pageYOffset > mainOffset);
+        }
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    checkIfMobileView();
+    if (pathname === "/") {
+      window.addEventListener("scroll", handleScroll);
+    }
+    window.addEventListener("resize", checkIfMobileView);
 
     return () => {
       window.removeEventListener("resize", checkIfMobileView);
-      window.removeEventListener("scroll", handleScroll);
+      if (pathname === "/") {
+        window.removeEventListener("scroll", handleScroll);
+      }
     };
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow =
@@ -95,31 +101,80 @@ export default function Menu() {
     setIsMegaMenuOpen(false);
   };
 
+  const getNavBarStyles = () => {
+    if (pathname === "/soluciones") {
+      return "bg-primary text-white border-white border-opacity-30";
+    } else if (pathname === "/") {
+      return isScrolledPastMain
+        ? "bg-secondary bg-opacity-100 text-white border-b border-white border-opacity-30"
+        : "bg-transparent text-white border-b border-white border-opacity-20";
+    } else {
+      return "bg-white text-black border-b border-primary border-opacity-20";
+    }
+  };
+
+  const getButtonStyles = () => {
+    return pathname !== "/" && pathname !== "/soluciones"
+      ? "!bg-primary text-white"
+      : "bg-transparent text-black";
+  };
+
+  const getLogoComponent = () => {
+    if (pathname === "/soluciones" || pathname !== "/") {
+      return <LogoDark className="h-8" />;
+    }
+    return <Logo className="h-8" />;
+  };
+
+  const getHoverBackgroundClass = () => {
+    if (pathname === "/soluciones" || pathname === "/") {
+      return "hover:bg-black-200";
+    } else {
+      return "hover:bg-gray-100";
+    }
+  };
+
+  const getMegaMenuBackgroundClass = () => {
+    if (pathname === "/soluciones" || pathname === "/") {
+      return "bg-black-200";
+    } else {
+      return "bg-white";
+    }
+  };
+
   return (
     <>
       <nav
-        className={`flex bg-primary bg-opacity-10 transition duration-300 ${isScrolledPastMain ? "bg-secondary bg-opacity-100" : "mt-[2.5px]"} fixed w-full z-50`}
+        className={`flex ${getNavBarStyles()} transition duration-300 fixed w-full z-50`}
       >
-        <div className="desktop-menu flex gap-5 w-full justify-start mx-auto items-center ">
-          <div className="flex justify-between w-full items-center gap-8 lg:gap-12 2xl:gap-20 border-white border-b border-opacity-30">
-            <div className="flex h-full gap-4">
-              <div className="border-white border-r border-opacity-30 h-full p-5">
-                <Logo className="h-8" />
+        <div className="desktop-menu flex gap-5 w-full justify-start mx-auto items-center">
+          <div className="flex justify-between w-full items-center gap-8 lg:gap-12 2xl:gap-20">
+            <div className="flex h-full">
+              <div
+                className={`border-r h-full p-5 ${
+                  pathname === "/" || pathname === "/soluciones"
+                    ? "border-white border-opacity-30"
+                    : "border-primary border-opacity-20"
+                }`}
+              >
+                {getLogoComponent()}
               </div>
-              <ul className="flex gap-4 lg:gap-2 items-center">
+              <ul className="flex gap-4 lg:gap-2 items-center h-full">
                 {menuOptions.map((option, index) => (
                   <li key={index}>
                     {option.isMegaMenu ? (
                       <button
                         onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
-                        className="cursor-pointer"
+                        className="cursor-pointer h-full"
                       >
                         <span
-                          className={`inline-flex font-clash text-white !leading-loose px-4 py-3.5 rounded-full hover:bg-gray-100 transition duration-500 ${
+                          className={`inline-flex font-clash !leading-loose px-4 py-5 transition min-h-full duration-500 ${
                             isMegaMenuOpen
-                              ? "text-white bg-secondary hover:bg-secondary hover:text-white"
-                              : ""
-                          }`}
+                              ? "text-white bg-secondary"
+                              : pathname === "/" || pathname === "/soluciones"
+                                ? "text-white"
+                                : "text-black"
+                          } ${getHoverBackgroundClass()}`}
                         >
                           {option.name}
                         </span>
@@ -132,10 +187,12 @@ export default function Menu() {
                           setIsMobileMenuOpen(false); // Cierra el menú móvil si está abierto
                           setIsMegaMenuOpen(false); // Cierra el megamenú si está abierto
                         }}
-                        className={`inline-flex font-clash text-white !leading-loose px-4 py-3.5 rounded-full hover:bg-gray-100 transition duration-500 ${
+                        className={`inline-flex font-clash !leading-loose px-6 py-5 ${getHoverBackgroundClass()} transition duration-500 ${
                           activeSection === option.path
                             ? "text-white bg-secondary hover:bg-secondary hover:text-white"
-                            : ""
+                            : pathname === "/" || pathname === "/soluciones"
+                              ? "text-white"
+                              : "text-black"
                         }`}
                       >
                         {option.name}
@@ -145,19 +202,25 @@ export default function Menu() {
                 ))}
               </ul>
             </div>
-            <div className="flex h-full gap-4">
+            <div className="flex h-full">
               <ul className="flex gap-4 lg:gap-2 items-center">
                 <li>
                   <a href="/contacto">
                     <span
-                      className={`inline-flex font-clash text-white !leading-loose px-4 py-3.5 rounded-full hover:bg-gray-100 transition duration-500 ${activeSection === "/contacto" ? "bg-secondary text-white hover:bg-secondary hover:text-white" : ""}`}
+                      className={`inline-flex font-clash !leading-loose px-6 py-5 ${getHoverBackgroundClass()} transition duration-500 ${
+                        activeSection === "/contacto"
+                          ? "bg-secondary text-white hover:bg-secondary hover:text-white"
+                          : pathname === "/" || pathname === "/soluciones"
+                            ? "text-white"
+                            : "text-black"
+                      }`}
                     >
                       Contacto
                     </span>
                   </a>
                 </li>
               </ul>
-              <Button href="/cotizador">
+              <Button href="/cotizador" className={getButtonStyles()}>
                 <QuoteIcon />
                 Cotizador (2)
               </Button>
@@ -176,7 +239,11 @@ export default function Menu() {
                   className="cursor-pointer"
                 >
                   <span
-                    className={`text-secondaryBlue cursor-pointer font-monument uppercase tracking-wider text-[12px] px-5 py-3.5 rounded-full hover:bg-gray-100 transition duration-500  ${activeSection === option.path ? "bg-greenLighter hover:bg-greenLighter" : ""}`}
+                    className={`text-secondaryBlue cursor-pointer font-monument uppercase tracking-wider text-[12px] px-5 py-3.5 rounded-full ${getHoverBackgroundClass()} transition duration-500 ${
+                      activeSection === option.path
+                        ? "bg-greenLighter hover:bg-greenLighter"
+                        : ""
+                    }`}
                   >
                     {option.name}
                   </span>
@@ -188,7 +255,9 @@ export default function Menu() {
       )}
 
       {isMegaMenuOpen && (
-        <div className="mega-menu fixed inset-0 bg-white p-8 z-50">
+        <div
+          className={`mega-menu fixed inset-0 ${getMegaMenuBackgroundClass()} p-8 z-50`}
+        >
           <div className="flex justify-end">
             <button onClick={closeMegaMenu} className="text-black">
               X
@@ -281,7 +350,6 @@ export default function Menu() {
         }
         .mega-menu {
           display: block;
-          background-color: #ffffff;
           position: fixed;
           inset: 0;
           z-index: 1000;
