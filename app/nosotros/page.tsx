@@ -8,7 +8,6 @@ import WhatsAppIcon from "@/components/icons/WhatsappIcon";
 import VideoPlayer from "@/components/videoPlayer";
 import BrandStrip from "@/components/BrandStrip";
 import BrandStripClients from "@/components/BrandStripClients";
-import ArrowIcon from "@/components/icons/ArrowIcon";
 import Marquee from "react-fast-marquee";
 
 const Nosotros: FC = () => {

@@ -1,23 +1,29 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Logo from "../components/Logo";
 import LogoDark from "../components/LogoDark";
 import Button from "../components/Button";
 import QuoteIcon from "./icons/QuoteIcon";
 import Link from "next/link";
-import PlusIcon from "./icons/PlusIcon"; // Importa el icono PlusIcon
+import PlusIcon from "./icons/PlusIcon";
 
 export default function Menu() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
   const [isScrolledPastMain, setIsScrolledPastMain] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+  const [searchParams, setSearchParams] = useState<string | null>(null);
   const pathname = usePathname();
+  const router = useRouter();
   const [activeSection, setActiveSection] = useState<string>("");
+
+  // Set searchParams using useEffect to ensure it's only used on the client-side
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setSearchParams(params.get("tab"));
+  }, []);
 
   useEffect(() => {
     const checkIfMobileView = () => {

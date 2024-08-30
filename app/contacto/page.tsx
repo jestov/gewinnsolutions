@@ -13,7 +13,7 @@ import ContactLight from "@/components/ContactLight";
 import FacebookIcon from "@/components/icons/FacebookIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 
-const Nosotros: FC = () => {
+const Contacto: FC = () => {
   return (
     <div className="relative">
       <main className="p-[20px] bg-cover text-white z-20 bg-white flex flex-col gap-20 pt-40">
@@ -139,4 +139,4 @@ const Nosotros: FC = () => {
   );
 };
 
-export default Nosotros;
+export default Contacto;

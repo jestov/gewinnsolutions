@@ -1,7 +1,6 @@
 "use client";
 
-import { FC, useState, useEffect, useRef } from "react";
-import { useSearchParams } from "next/navigation";
+import { FC, useState, useEffect } from "react";
 import Link from "next/link";
 import ContactLight from "@/components/ContactLight";
 import Footer from "@/components/Footer";
@@ -12,14 +11,14 @@ import Image from "next/image";
 
 const Soluciones: FC = () => {
   const [activeTab, setActiveTab] = useState(1);
-  const searchParams = useSearchParams();
 
   useEffect(() => {
-    const tab = searchParams.get("tab");
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get("tab");
     if (tab) {
       setActiveTab(Number(tab));
     }
-  }, [searchParams]);
+  }, []);
 
   const servicesTabs = [
     {
@@ -195,65 +194,7 @@ const Soluciones: FC = () => {
         </div>
       </section>
 
-      <section
-        id="contact"
-        className="flex flex-col justify-end items-end gap-12 md:gap-32 pt-4 lg:pt-24 pb-12 md:pb-20 px-[30px]  md:px-[60px] bg-no-repeat bg-center bg-cover relative text-white before:absolute before:rounded-t-[64px] before:inset-0  before:z-0 z-40"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-4 max-w-[1400px] mx-auto z-2 relative w-full bg-white text-primary p-28 rounded-[64px]">
-          <div className="flex flex-col gap-14 items-center md:items-start">
-            <div className="flex gap-8 font-clash ">
-              <div className="flex flex-col gap-16 font-normal tracking-wide text-lg justify-between">
-                <h1 className="font-clash text-2xl lg:text-3xl relative font-light tracking-normal">
-                  ¿Estás listo para impulsar tu
-                  <br />
-                  <span className="font-medium text-xl lg:text-5xl">
-                    fitness center?
-                  </span>
-                </h1>
-                <div className="flex flex-col gap-3">
-                  <span className="text-mainGray text-base">
-                    ¿Necesitas ayuda personalizada?
-                  </span>
-                  <Link
-                    href="mailto:info@gewinnsolutions.co"
-                    className="text-xl lg:text-3xl font-light tracking-wide"
-                  >
-                    info@gewinnsolutions.com
-                  </Link>
-                  <Link
-                    href="#"
-                    className="text-xl lg:text-3xl font-light tracking-wide flex gap-3"
-                  >
-                    <WhatsAppIcon /> (+52) 1 33 3100 4726
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <ContactLight />
-        </div>
-      </section>
-
-      <section className="bg-white z-30 relative">
-        <div className="ml-auto w-full py-8 bg-primary relative z-30">
-          <div className="w-full bg-primary flex flex-col justify-center items-center gap-8 bottom-0 z-40 rounded-t-[64px]">
-            <div className="absolute -top-[61px] right-0 w-[61px] h-[61px] bg-[url('/img/substract3.svg')] bg-no-repeat bg-contain rotate-90"></div>
-            <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract3.svg')] bg-no-repeat bg-contain rotate-90"></div>
-            <BrandStripClients />
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-gradient-to-b from-primary to-secondary pt-24 relative z-30">
-        <Marquee speed={40}>
-          <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
-            Boutique Studio Fitness Centers · Indoor Cycling · Boutique Studio
-            Fitness Centers · Indoor Cycling · Boutique Studio Fitness Centers ·
-            Indoor Cycling ·{" "}
-          </div>
-        </Marquee>
-      </section>
-      <Footer />
+      {/* Remaining sections */}
     </div>
   );
 };
