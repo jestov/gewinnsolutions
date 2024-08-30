@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, useState, useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import ContactLight from "@/components/ContactLight";
 import Footer from "@/components/Footer";
@@ -11,6 +12,15 @@ import Image from "next/image";
 
 const Soluciones: FC = () => {
   const [activeTab, setActiveTab] = useState(1);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    if (tab) {
+      setActiveTab(Number(tab));
+    }
+  }, [searchParams]);
+
   const servicesTabs = [
     {
       id: 1,

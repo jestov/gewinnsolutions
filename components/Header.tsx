@@ -1,13 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import Logo from "../components/Logo";
 import LogoDark from "../components/LogoDark";
 import Button from "../components/Button";
 import QuoteIcon from "./icons/QuoteIcon";
+import Link from "next/link";
+import PlusIcon from "./icons/PlusIcon"; // Importa el icono PlusIcon
 
 export default function Menu() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const [isScrolledPastMain, setIsScrolledPastMain] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -69,6 +73,10 @@ export default function Menu() {
     };
   }, [isMobileMenuOpen, isMegaMenuOpen]);
 
+  useEffect(() => {
+    setIsMegaMenuOpen(false);
+  }, [pathname]);
+
   const menuOptions = [
     { name: "Nosotros", path: "/nosotros" },
     {
@@ -83,22 +91,24 @@ export default function Menu() {
     if (option.isMegaMenu) {
       setIsMegaMenuOpen(!isMegaMenuOpen);
     } else {
-      const element = document.getElementById(option.path.replace("#", ""));
-      if (element) {
-        window.scrollTo({
-          top: element.offsetTop,
-          behavior: "smooth",
-        });
-        window.history.pushState(null, "", option.path);
-        setActiveSection(option.path);
-      }
+      setActiveSection(option.path);
       setIsMobileMenuOpen(false);
-      setIsMegaMenuOpen(false); // Cierra el megamenú si se abre un enlace normal
+      setIsMegaMenuOpen(false);
     }
   };
 
   const closeMegaMenu = () => {
     setIsMegaMenuOpen(false);
+  };
+
+  const handleMegaMenuClick = (tabId) => {
+    setIsMegaMenuOpen(false);
+    router.push(`/soluciones?tab=${tabId}`);
+  };
+
+  const handleAdicionalesMenuClick = (cardId) => {
+    setIsMegaMenuOpen(false);
+    router.push(`/soluciones/adicionales?card=${cardId}`);
   };
 
   const getNavBarStyles = () => {
@@ -120,10 +130,13 @@ export default function Menu() {
   };
 
   const getLogoComponent = () => {
-    if (pathname === "/soluciones" || pathname !== "/") {
+    if (pathname === "/soluciones") {
+      return <Logo className="h-8" />;
+    } else if (pathname === "/") {
+      return <Logo className="h-8" />;
+    } else {
       return <LogoDark className="h-8" />;
     }
-    return <Logo className="h-8" />;
   };
 
   const getHoverBackgroundClass = () => {
@@ -151,11 +164,7 @@ export default function Menu() {
           <div className="flex justify-between w-full items-center gap-8 lg:gap-12 2xl:gap-20">
             <div className="flex h-full">
               <div
-                className={`border-r h-full p-5 ${
-                  pathname === "/" || pathname === "/soluciones"
-                    ? "border-white border-opacity-30"
-                    : "border-primary border-opacity-20"
-                }`}
+                className={`border-r h-full p-5 ${pathname === "/" || pathname === "/soluciones" ? "border-white border-opacity-30" : "border-primary border-opacity-20"}`}
               >
                 {getLogoComponent()}
               </div>
@@ -163,40 +172,51 @@ export default function Menu() {
                 {menuOptions.map((option, index) => (
                   <li key={index}>
                     {option.isMegaMenu ? (
-                      <button
-                        onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
-                        className="cursor-pointer h-full"
-                      >
+                      <Link href={option.path}>
                         <span
-                          className={`inline-flex font-clash !leading-loose px-4 py-5 transition min-h-full duration-500 ${
+                          onClick={() => handleMenuClick(option)}
+                          className={`inline-flex items-center font-clash !leading-loose px-6 py-5 ${getHoverBackgroundClass()} transition duration-500 ${
                             isMegaMenuOpen
-                              ? "text-white bg-secondary"
-                              : pathname === "/" || pathname === "/soluciones"
+                              ? "text-primary bg-gray-50"
+                              : pathname === "/soluciones" || pathname === "/"
                                 ? "text-white"
                                 : "text-black"
-                          } ${getHoverBackgroundClass()}`}
+                          }`}
+                        >
+                          <PlusIcon
+                            dark={
+                              isMegaMenuOpen ||
+                              (pathname !== "/" &&
+                                (!pathname.startsWith("/soluciones") ||
+                                  pathname === "/soluciones/adicionales"))
+                                ? true
+                                : false
+                            }
+                            className={`mr-2 w-4 h-4 transition-transform duration-300 ${
+                              isMegaMenuOpen
+                                ? "transform rotate-45"
+                                : "transform rotate-0"
+                            }`}
+                          />
+
+                          {option.name}
+                        </span>
+                      </Link>
+                    ) : (
+                      <Link href={option.path}>
+                        <span
+                          onClick={() => handleMenuClick(option)}
+                          className={`inline-flex font-clash !leading-loose px-6 py-5 ${getHoverBackgroundClass()} transition duration-500 ${
+                            pathname === option.path
+                              ? "text-primary bg-gray-50"
+                              : pathname === "/soluciones" || pathname === "/"
+                                ? "text-white"
+                                : "text-black"
+                          }`}
                         >
                           {option.name}
                         </span>
-                      </button>
-                    ) : (
-                      <a
-                        href={option.path}
-                        onClick={() => {
-                          setActiveSection(option.path);
-                          setIsMobileMenuOpen(false); // Cierra el menú móvil si está abierto
-                          setIsMegaMenuOpen(false); // Cierra el megamenú si está abierto
-                        }}
-                        className={`inline-flex font-clash !leading-loose px-6 py-5 ${getHoverBackgroundClass()} transition duration-500 ${
-                          activeSection === option.path
-                            ? "text-white bg-secondary hover:bg-secondary hover:text-white"
-                            : pathname === "/" || pathname === "/soluciones"
-                              ? "text-white"
-                              : "text-black"
-                        }`}
-                      >
-                        {option.name}
-                      </a>
+                      </Link>
                     )}
                   </li>
                 ))}
@@ -205,21 +225,22 @@ export default function Menu() {
             <div className="flex h-full">
               <ul className="flex gap-4 lg:gap-2 items-center">
                 <li>
-                  <a href="/contacto">
+                  <Link href="/contacto">
                     <span
                       className={`inline-flex font-clash !leading-loose px-6 py-5 ${getHoverBackgroundClass()} transition duration-500 ${
-                        activeSection === "/contacto"
-                          ? "bg-secondary text-white hover:bg-secondary hover:text-white"
-                          : pathname === "/" || pathname === "/soluciones"
+                        pathname === "/contacto"
+                          ? "bg-gray-50 text-primary"
+                          : pathname === "/soluciones" || pathname === "/"
                             ? "text-white"
                             : "text-black"
                       }`}
                     >
                       Contacto
                     </span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
+
               <Button href="/cotizador" className={getButtonStyles()}>
                 <QuoteIcon />
                 Cotizador (2)
@@ -256,42 +277,89 @@ export default function Menu() {
 
       {isMegaMenuOpen && (
         <div
-          className={`mega-menu fixed inset-0 ${getMegaMenuBackgroundClass()} p-8 z-50`}
+          className={`mega-menu fixed !top-[72px] ${getMegaMenuBackgroundClass()} p-8 z-50 h-[50vh] border-b border-secondary border-opacity-20 bg-gray-50 transition duration-300`}
         >
-          <div className="flex justify-end">
-            <button onClick={closeMegaMenu} className="text-black">
-              X
-            </button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 mx-auto max-w-[1400px]">
             <div className="col-span-1">
-              <h3 className="text-secondary font-monument">
-                Soluciones especializadas
+              <h3 className="text-primary font-extralight text-2xl font-clashdisplay !leading-none">
+                Soluciones
+                <br />
+                <span className="font-medium">especializadas</span>
               </h3>
-              <ul className="mt-4">
-                <li>01 Audio</li>
-                <li>02 Iluminación</li>
-                <li>03 Diseño</li>
-                <li>04 Fitness Total</li>
+              <ul className="mt-12 text-2xl flex flex-col gap-6">
+                <li
+                  onClick={() => handleMegaMenuClick(1)}
+                  className="font-clash font-medium flex gap-2 cursor-pointer"
+                >
+                  <span className="font-extralight">01</span> Audio
+                </li>
+                <li
+                  onClick={() => handleMegaMenuClick(2)}
+                  className="font-clash font-medium flex gap-2 cursor-pointer"
+                >
+                  <span className="font-extralight">02</span> Iluminación
+                </li>
+                <li
+                  onClick={() => handleMegaMenuClick(3)}
+                  className="font-clash font-medium flex gap-2 cursor-pointer"
+                >
+                  <span className="font-extralight">03</span> Diseño
+                </li>
+                <li
+                  onClick={() => handleMegaMenuClick(4)}
+                  className="font-clash font-medium flex gap-2 cursor-pointer"
+                >
+                  <span className="font-extralight">04</span> Fitness Total
+                </li>
               </ul>
             </div>
             <div className="col-span-1">
-              <h3 className="text-secondary font-monument">
-                Soluciones by partners especializados
+              <h3 className="text-primary font-extralight text-2xl font-clashdisplay !leading-none">
+                Soluciones by
+                <br />
+                <span className="font-medium">partners especializados</span>
               </h3>
-              <ul className="mt-4">
-                <li>05 Stages Indoor Bikes</li>
-                <li>06 Equipamiento de Gimnasios</li>
-                <li>07 Piso para Gimnasios</li>
+              <ul className="mt-12 text-2xl flex flex-col gap-6">
+                <li className="font-clash font-medium flex gap-2 cursor-pointer">
+                  <Link href="/soluciones/adicionales">
+                    <span className="font-extralight">05</span> Stages Indoor
+                    Bikes
+                  </Link>
+                </li>
+                <li className="font-clash font-medium flex gap-2 cursor-pointer">
+                  <Link href="/soluciones/adicionales">
+                    <span className="font-extralight">06</span> Equipamiento de
+                    Gimnasios
+                  </Link>
+                </li>
+                <li className="font-clash font-medium flex gap-2 cursor-pointer">
+                  <Link href="/soluciones/adicionales">
+                    <span className="font-extralight">07</span> Piso para
+                    Gimnasios
+                  </Link>
+                </li>
               </ul>
             </div>
+
             <div className="col-span-1">
-              <h3 className="text-secondary font-monument">
-                Soluciones adicionales
+              <h3 className="text-primary font-extralight text-2xl font-clashdisplay !leading-none">
+                Soluciones
+                <br />
+                <span className="font-medium">adicionales</span>
               </h3>
-              <ul className="mt-4">
-                <li>08 Circuito Cerrado de TV</li>
-                <li>09 Infraestructura de Red</li>
+              <ul className="mt-12 text-2xl flex flex-col gap-6">
+                <li className="font-clash font-medium flex gap-2 cursor-pointer">
+                  <Link href="/soluciones/adicionales">
+                    <span className="font-extralight">08</span> Circuito Cerrado
+                    de TV
+                  </Link>
+                </li>
+                <li className="font-clash font-medium flex gap-2 cursor-pointer">
+                  <Link href="/soluciones/adicionales">
+                    <span className="font-extralight">09</span> Infraestructura
+                    de Red
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
