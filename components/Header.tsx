@@ -101,14 +101,9 @@ export default function Menu() {
     setIsMegaMenuOpen(false);
   };
 
-  const handleMegaMenuClick = (tabId) => {
+  const handleMegaMenuClick = (tabId: number) => {
     setIsMegaMenuOpen(false);
     router.push(`/soluciones?tab=${tabId}`);
-  };
-
-  const handleAdicionalesMenuClick = (cardId) => {
-    setIsMegaMenuOpen(false);
-    router.push(`/soluciones/adicionales?card=${cardId}`);
   };
 
   const getNavBarStyles = () => {

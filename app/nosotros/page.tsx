@@ -1,11 +1,9 @@
 "use client";
 
-import { FC, useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import { FC } from "react";
 import Link from "next/link";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import ButtonWithArrow from "@/components/ButtonWithArrow";
 import WhatsAppIcon from "@/components/icons/WhatsappIcon";
 import VideoPlayer from "@/components/videoPlayer";
 import BrandStrip from "@/components/BrandStrip";

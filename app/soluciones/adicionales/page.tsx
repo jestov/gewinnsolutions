@@ -6,12 +6,11 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsappIcon";
 import BrandStripClients from "@/components/BrandStripClients";
-import ArrowIcon from "@/components/icons/ArrowIcon";
 import Marquee from "react-fast-marquee";
 
 import PlusIcon from "@/components/icons/PlusIcon";
 
-const Nosotros: FC = () => {
+const SolucionesAdd: FC = () => {
   const cards = [
     {
       id: 1,
@@ -449,4 +448,4 @@ const Nosotros: FC = () => {
   );
 };
 
-export default Nosotros;
+export default SolucionesAdd;
