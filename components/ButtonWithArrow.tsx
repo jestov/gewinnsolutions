@@ -28,7 +28,7 @@ export default function ButtonWithArrow({
 
   const fullWidthClass = fullWidth ? "w-full" : "";
 
-  const lightClasses = "bg-white border-primary text-primary";
+  const lightClasses = "bg-transparent border-primary text-primary";
   const darkClasses = "bg-transparent border-white text-white";
 
   const combinedClasses = `${baseClasses} ${dark ? darkClasses : lightClasses} ${fullWidthClass} ${className}`;

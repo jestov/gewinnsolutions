@@ -474,21 +474,20 @@ const Home: FC = () => {
         </div>
       </section>
 
-      <section className="mx-auto text-center w-3/4 bg-white z-20 relative rounded-t-[64px] border-t border-mainGray border-opacity-20">
-        <div className=" w-full bg-white py-8 flex flex-col justify-center items-center gap-12 bottom-0 z-40 rounded-t-[64px]">
-          <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain"></div>
-          <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain rotate-90"></div>
-          <BrandStrip />
+      <section className="mx-auto text-center w-3/4 bg-gray-50 z-20 relative rounded-t-[64px] border-t border-mainGray border-opacity-20">
+        <div className=" w-full bg-[#f1f3f5] py-8 flex flex-col justify-center items-center gap-12 bottom-0 z-40 rounded-t-[64px]">
+          <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain"></div>
+          <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-90"></div>
+          <BrandStrip gradientColor={true} />
         </div>{" "}
       </section>
-      <section className="py-24 bg-white relative z-30">mhmm</section>
-      <section className="pt-12 bg-white relative z-30 text-center">
+      <section className="pt-24 bg-[#f1f3f5] relative z-30 text-center">
         <span className="text-mainGray text-xl relative font-light font-sans tracking-normal  mx-auto -bottom-[15px]">
           (02) Soluciones
         </span>
       </section>
 
-      <section className="w-full bg-white relative z-20 py-12">
+      <section className="w-full bg-[#f1f3f5] relative z-20 py-12">
         <div className="mx-[20px] rounded-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center items-center min-h-[87vh]">
           <video
             key={activeTab} // Ensure video reloads when tab changes
@@ -504,9 +503,9 @@ const Home: FC = () => {
             Your browser does not support the video tag.
           </video>
 
-          <div className="absolute w-7/12 bg-white pb-8 flex flex-col justify-center items-center gap-2 -top-[5px] z-40 rounded-b-[64px] h-[124px]">
-            <div className="absolute top-[5px] -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract2.svg')] bg-no-repeat bg-contain"></div>
-            <div className="absolute top-[5px] -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain rotate-180"></div>
+          <div className="absolute w-7/12 bg-[#f1f3f5] pb-8 flex flex-col justify-center items-center gap-2 -top-[5px] z-40 rounded-b-[64px] h-[124px]">
+            <div className="absolute top-[5px] -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract5.svg')] bg-no-repeat bg-contain"></div>
+            <div className="absolute top-[5px] -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-180"></div>
 
             <h3 className="text-2xl lg:text-4xl text-primary text-center font-clashdisplay font-extralight">
               Especialistas en{" "}
@@ -517,18 +516,18 @@ const Home: FC = () => {
           </div>
 
           <div className="absolute w-7/12 flex flex-col justify-center items-center gap-4 bottom-0 z-40">
-            <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain"></div>
-            <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain rotate-90"></div>
+            <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain"></div>
+            <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-90"></div>
 
             {/* Tab Navigation */}
-            <div className="w-full h-full grid grid-cols-4 rounded-t-[32px] border-t-4 border-l-4 border-r-4 border-white overflow-hidden">
+            <div className="w-full h-full grid grid-cols-4 rounded-t-[32px] border-t-4 border-l-4 border-r-4 border-[#f1f3f5] overflow-hidden">
               {servicesTabs.map((service) => (
                 <button
                   key={service.id}
-                  className={`px-4 py-9 h-[120px] border-r-4 border-white "> ${
+                  className={`px-4 py-9 h-[120px] border-r-4 border-[#f1f3f5] "> ${
                     activeTab === service.id
-                      ? "bg-white text-primary text-2xl font-clashdisplay font-medium"
-                      : "bg-transparent text-white hover:bg-white hover:bg-opacity-15 last:border-none text-2xl font-clashdisplay font-medium transition ease-in-out duration-500 relative first:before:absolute first:before:-bottom-[0px] first:before:-left-[0px] first:before:w-[32px] first:before:h-[32px] first:before:bg-[url('/img/substract2.svg')] first:before:bg-no-repeat first:before:bg-contain first:before:rotate-180 last:before:absolute last:before:bottom-0 last:before:-right-[0px] last:before:w-[32px] last:before:h-[32px] last:before:bg-[url('/img/substract.svg')] last:before:bg-no-repeat last:before:bg-contain"
+                      ? "bg-[#f1f3f5] text-primary text-2xl font-clashdisplay font-medium"
+                      : "bg-transparent text-white hover:bg-white hover:bg-opacity-15 last:border-none text-2xl font-clashdisplay font-medium transition ease-in-out duration-500 relative first:before:absolute first:before:-bottom-[0px] first:before:-left-[0px] first:before:w-[32px] first:before:h-[32px] first:before:bg-[url('/img/substract5.svg')] first:before:bg-no-repeat first:before:bg-contain first:before:rotate-180 last:before:absolute last:before:bottom-0 last:before:-right-[0px] last:before:w-[32px] last:before:h-[32px] last:before:bg-[url('/img/substract4.svg')] last:before:bg-no-repeat last:before:bg-contain"
                   }`}
                   onClick={() => setActiveTab(service.id)}
                 >

@@ -1,112 +1,32 @@
 "use client";
 
-import { FC, useState, useEffect, useRef } from "react";
+import { FC, useState } from "react";
 import Link from "next/link";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppIcon from "@/components/icons/WhatsappIcon";
 import BrandStripClients from "@/components/BrandStripClients";
 import Marquee from "react-fast-marquee";
-
 import PlusIcon from "@/components/icons/PlusIcon";
 
 const SolucionesAdd: FC = () => {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+
   const cards = [
     {
       id: 1,
       number: "04",
       title: "Stages Indoor Bikes",
       image: "/img/cycling.jpg",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="64"
-          height="64"
-          viewBox="0 0 64 64"
-          fill="none"
-        >
-          <path
-            d="M37.3333 18.6667C40.2789 18.6667 42.6667 16.2789 42.6667 13.3333C42.6667 10.3878 40.2789 8 37.3333 8C34.3878 8 32 10.3878 32 13.3333C32 16.2789 34.3878 18.6667 37.3333 18.6667Z"
-            stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M48 56C52.4183 56 56 52.4183 56 48C56 43.5817 52.4183 40 48 40C43.5817 40 40 43.5817 40 48C40 52.4183 43.5817 56 48 56Z"
-            stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M16 56C20.4183 56 24 52.4183 24 48C24 43.5817 20.4183 40 16 40C11.5817 40 8 43.5817 8 48C8 52.4183 11.5817 56 16 56Z"
-            stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M30.6667 47.9998L34.6667 37.3332L21.6472 31.9998L29.6479 22.6667L37.6479 29.3333L46.9812 29.3333"
-            stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      ),
-      theme: "light", // Options: "light" or "dark"
+      description: "Descubre nuestras bicicletas indoor de alta calidad.",
+      theme: "light",
     },
     {
       id: 2,
       number: "05",
       title: "Equipamiento de Gimnasios",
       image: "/img/equipamiento.jpg",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="65"
-          height="64"
-          viewBox="0 0 65 64"
-          fill="none"
-        >
-          <path
-            d="M21.0499 18.6667H12.2833C11.7586 18.6667 11.3333 19.092 11.3333 19.6167V44.3834C11.3333 44.908 11.7586 45.3334 12.2833 45.3334H21.0499C21.5746 45.3334 21.9999 44.908 21.9999 44.3834V19.6167C21.9999 19.092 21.5746 18.6667 21.0499 18.6667Z"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M53.0499 18.6667H44.2833C43.7586 18.6667 43.3333 19.092 43.3333 19.6167V44.3834C43.3333 44.908 43.7586 45.3334 44.2833 45.3334H53.0499C53.5746 45.3334 53.9999 44.908 53.9999 44.3834V19.6167C53.9999 19.092 53.5746 18.6667 53.0499 18.6667Z"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M3.3335 39.05V24.95C3.3335 24.4253 3.75883 24 4.2835 24H10.3835C10.9082 24 11.3335 24.4253 11.3335 24.95V39.05C11.3335 39.5747 10.9082 40 10.3835 40H4.2835C3.75883 40 3.3335 39.5747 3.3335 39.05Z"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M62 39.05V24.95C62 24.4253 61.5747 24 61.05 24H54.95C54.4253 24 54 24.4253 54 24.95V39.05C54 39.5747 54.4253 40 54.95 40H61.05C61.5747 40 62 39.5747 62 39.05Z"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M22 32H43.3333"
-            stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      ),
+      description: "El mejor equipamiento para gimnasios de alto rendimiento.",
       theme: "dark",
     },
     {
@@ -114,65 +34,7 @@ const SolucionesAdd: FC = () => {
       number: "06",
       title: "Pisos para Gimnasios",
       image: "/img/pisos.jpg",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="56"
-          height="55"
-          viewBox="0 0 56 55"
-          fill="none"
-        >
-          <path
-            d="M2.625 48.125L9.82738 6.875H45.8393L53.0417 48.125H2.625Z"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M4.91675 37.8125H50.7501"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M7.20837 27.5H48.4584"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M9.5 17.1875H46.1667"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M27.8334 6.875V48.125"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M18.6667 8.02081L15.2292 46.9791"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M37 8.02081L40.4375 46.9791"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      ),
+      description: "Pisos de alta resistencia diseñados para gimnasios.",
       theme: "light",
     },
     {
@@ -180,23 +42,7 @@ const SolucionesAdd: FC = () => {
       number: "08",
       title: "Videovigilancia",
       image: "/img/video.jpg",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="80"
-          height="80"
-          viewBox="0 0 80 80"
-          fill="none"
-        >
-          <path
-            d="M50 40V50.6667C50 53.9804 47.3137 56.6667 44 56.6667H23C15.8203 56.6667 10 50.8464 10 43.6667V36.3333C10 29.1536 15.8203 23.3333 23 23.3333H43C46.866 23.3333 50 26.4673 50 30.3333V40ZM50 40L65.0795 27.4338C67.0334 25.8055 70 27.1949 70 29.7385V50.2615C70 52.8051 67.0334 54.1945 65.0794 52.5662L50 40Z"
-            stroke="white"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      ),
+      description: "Sistemas de videovigilancia avanzados para seguridad.",
       theme: "dark",
     },
     {
@@ -204,48 +50,14 @@ const SolucionesAdd: FC = () => {
       number: "09",
       title: "Infraestructura de Red",
       image: "/img/wifi.jpg",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="65"
-          height="64"
-          viewBox="0 0 65 64"
-          fill="none"
-        >
-          <path
-            d="M32.6667 52.0267L32.6934 51.997"
-            stroke="white"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M6.00012 21.3333C22.0001 9.33333 43.3335 9.33334 59.3335 21.3333"
-            stroke="white"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M14.0001 32C24.6668 24 40.6668 24 51.3335 32"
-            stroke="white"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M23.3334 41.3333C29.3346 37.6 35.9996 37.599 42.0003 41.3333"
-            stroke="white"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      ),
+      description: "Infraestructura de red robusta y confiable.",
       theme: "light",
     },
-    // Add more cards
   ];
+
+  const toggleDescription = (id: number) => {
+    setActiveCard(activeCard === id ? null : id);
+  };
 
   return (
     <div className="relative">
@@ -295,7 +107,7 @@ const SolucionesAdd: FC = () => {
                     style={{ backgroundImage: `url(${card.image})` }}
                   ></div>
                   <div
-                    className={`absolute inset-0 bg-gradient-to-b  from-black to-transparent opacity-70 top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-xl`}
+                    className={`absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-70 top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-xl`}
                   ></div>
 
                   <div className="z-20 relative flex flex-col gap-1 font-clashdisplay">
@@ -306,21 +118,26 @@ const SolucionesAdd: FC = () => {
                     <h3 className="text-4xl font-medium">{card.title}</h3>
                   </div>
 
-                  <div className="absolute bottom-6 left-6">{card.icon}</div>
-
                   <div
                     className={`absolute bottom-0 right-0 ${
                       card.theme === "dark"
                         ? "bg-primary before:bg-[url('/img/substract3.svg')] after:bg-[url('/img/substract3.svg')]"
                         : "bg-white before:bg-[url('/img/substract2.svg')] after:bg-[url('/img/substract2.svg')]"
-                    } p-8 rounded-tl-[32px] cursor-pointer before:absolute before:bottom-1.5 before:-left-[32px] before:w-[32px] before:h-[32px]  before:bg-no-repeat before:bg-contain before:rotate-90
-                           after:absolute after:-top-[32px] after:right-1.5 after:w-[32px] after:h-[32px]  after:bg-no-repeat after:bg-contain after:rotate-90`}
+                    } p-8 rounded-tl-[32px] cursor-pointer before:absolute before:bottom-1.5 before:-left-[32px] before:w-[32px] before:h-[32px] before:bg-no-repeat before:bg-contain before:rotate-90
+                           after:absolute after:-top-[32px] after:right-1.5 after:w-[32px] after:h-[32px] after:bg-no-repeat after:bg-contain after:rotate-90`}
+                    onClick={() => toggleDescription(card.id)}
                   >
                     <PlusIcon
                       dark={card.theme === "light"}
                       className="h-8 w-8 relative -right-[2px]"
                     />
                   </div>
+
+                  {activeCard === card.id && (
+                    <div className="z-20 relative mt-4 p-4 bg-opacity-80 bg-primary text-white  rounded-2xl font-clash">
+                      <p>{card.description}</p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -355,7 +172,7 @@ const SolucionesAdd: FC = () => {
                   style={{ backgroundImage: `url(${card.image})` }}
                 ></div>
                 <div
-                  className={`absolute inset-0 bg-gradient-to-b  from-black to-transparent opacity-70 top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-xl`}
+                  className={`absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-70 top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-xl`}
                 ></div>
 
                 <div className="z-20 relative flex flex-col gap-1 font-clashdisplay">
@@ -366,21 +183,26 @@ const SolucionesAdd: FC = () => {
                   <h3 className="text-4xl font-medium">{card.title}</h3>
                 </div>
 
-                <div className="absolute bottom-6 left-6">{card.icon}</div>
-
                 <div
                   className={`absolute bottom-0 right-0 ${
                     card.theme === "dark"
                       ? "bg-primary before:bg-[url('/img/substract3.svg')] after:bg-[url('/img/substract3.svg')]"
                       : "bg-white before:bg-[url('/img/substract2.svg')] after:bg-[url('/img/substract2.svg')]"
-                  } p-8 rounded-tl-[32px] cursor-pointer before:absolute before:bottom-1.5 before:-left-[32px] before:w-[32px] before:h-[32px]  before:bg-no-repeat before:bg-contain before:rotate-90
+                  } p-8 rounded-tl-[32px] cursor-pointer before:absolute before:bottom-1.5 before:-left-[32px] before:w-[32px] before:h-[32px] before:bg-no-repeat before:bg-contain before:rotate-90
                            after:absolute after:-top-[32px] after:right-1.5 after:w-[32px] after:h-[32px]  after:bg-no-repeat after:bg-contain after:rotate-90`}
+                  onClick={() => toggleDescription(card.id)}
                 >
                   <PlusIcon
                     dark={card.theme === "light"}
                     className="h-8 w-8 relative -right-[2px]"
                   />
                 </div>
+
+                {activeCard === card.id && (
+                  <div className="z-20 relative mt-4 p-4 bg-opacity-80 bg-primary text-white rounded-lg font-clash">
+                    <p>{card.description}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>

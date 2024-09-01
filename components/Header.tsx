@@ -114,7 +114,7 @@ export default function Menu() {
 
   const getNavBarStyles = () => {
     if (pathname === "/soluciones") {
-      return "bg-primary text-white border-white border-opacity-30";
+      return "bg-primary text-white border-b border-white border-opacity-30";
     } else if (pathname === "/") {
       return isScrolledPastMain
         ? "bg-secondary bg-opacity-100 text-white border-b border-white border-opacity-30"
@@ -156,6 +156,10 @@ export default function Menu() {
     }
   };
 
+  const isNavbarWhite = () => {
+    return pathname !== "/" && pathname !== "/soluciones";
+  };
+
   return (
     <>
       <nav
@@ -178,7 +182,7 @@ export default function Menu() {
                           onClick={() => handleMenuClick(option)}
                           className={`inline-flex items-center font-clash !leading-loose px-6 py-5 ${getHoverBackgroundClass()} transition duration-500 ${
                             isMegaMenuOpen
-                              ? "text-primary bg-gray-50"
+                              ? "text-primary bg-[#F1F3F5]"
                               : pathname === "/soluciones" || pathname === "/"
                                 ? "text-white"
                                 : "text-black"
@@ -243,7 +247,7 @@ export default function Menu() {
               </ul>
 
               <Button href="/cotizador" className={getButtonStyles()}>
-                <QuoteIcon />
+                <QuoteIcon dark={!isNavbarWhite()} />
                 Cotizador (2)
               </Button>
             </div>
@@ -278,9 +282,9 @@ export default function Menu() {
 
       {isMegaMenuOpen && (
         <div
-          className={`mega-menu fixed !top-[72px] ${getMegaMenuBackgroundClass()} p-8 z-50 h-[50vh] border-b border-secondary border-opacity-20 bg-gray-50 transition duration-300`}
+          className={`mega-menu flex fixed !top-[72px] ${getMegaMenuBackgroundClass()} p-4 z-50 h-[45vh] border-b border-x border-secondary border-opacity-20 bg-[#F1F3F5] transition duration-300 rounded-b-[64px] items-center`}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 mx-auto max-w-[1400px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 m-auto max-w-[1400px] h-full items-center">
             <div className="col-span-1">
               <h3 className="text-primary font-extralight text-2xl font-clashdisplay !leading-none">
                 Soluciones

@@ -6,7 +6,6 @@ import Image from "next/image";
 const brands = [
   { id: 1, name: "Hiiver", image: "/img/clients/hiiver.svg" },
   { id: 2, name: "Refuse", image: "/img/clients/refuse.svg" },
-
   { id: 4, name: "Kardio Fitness Hall", image: "/img/clients/kardio.png" },
   {
     id: 5,
@@ -19,7 +18,7 @@ const brands = [
   { id: 8, name: "369 cycling", image: "/img/clients/369.png" },
   { id: 9, name: "Dopamine", image: "/img/clients/dopamine.png" },
   { id: 10, name: "La Loma Golf", image: "/img/clients/laloma.png" },
-  { id: 10, name: "Space Studio", image: "/img/clients/spacestudio.svg" },
+  { id: 11, name: "Space Studio", image: "/img/clients/spacestudio.svg" },
 ];
 
 const useIsMobile = () => {
@@ -41,7 +40,7 @@ const useIsMobile = () => {
   return isMobile;
 };
 
-const BrandStrip = () => {
+const BrandStrip = ({ gradientColor }) => {
   const isMobile = useIsMobile();
 
   return (
@@ -53,12 +52,11 @@ const BrandStrip = () => {
         <div className="marquee-container w-full">
           <Marquee
             gradient={true}
+            gradientColor={gradientColor ? "#F1F3F5" : undefined}
             gradientWidth={40}
             speed={isMobile ? 50 : 70}
             className="py-1 overflow-hidden"
           >
-            {" "}
-            {/* Set speed based on device */}
             {brands.map((brand) => (
               <div
                 key={brand.id}
