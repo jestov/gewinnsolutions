@@ -18,7 +18,8 @@ const SolucionesAdd: FC = () => {
       number: "04",
       title: "Stages Indoor Bikes",
       image: "/img/cycling.jpg",
-      description: "Descubre nuestras bicicletas indoor de alta calidad.",
+      description:
+        "En colaboración con nuestros partners especializados, ofrecemos stages de indoor cycling diseñados para soportar el uso intensivo y ofrecer una experiencia de usuario superior.",
       theme: "light",
     },
     {
@@ -134,7 +135,7 @@ const SolucionesAdd: FC = () => {
                   </div>
 
                   {activeCard === card.id && (
-                    <div className="z-20 relative mt-4 p-4 bg-opacity-80 bg-primary text-white  rounded-2xl font-clash">
+                    <div className="z-20 relative mt-4 p-4 bg-opacity-80 bg-primary text-white  rounded-2xl font-clash text-lg font-extralight">
                       <p>{card.description}</p>
                     </div>
                   )}
