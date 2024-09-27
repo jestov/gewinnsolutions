@@ -339,8 +339,8 @@ export default function Menu() {
                 </li>
                 <li className="font-clash font-medium flex gap-2 cursor-pointer">
                   <Link href="/soluciones/adicionales">
-                    <span className="font-extralight">07</span> Piso para
-                    Gimnasios
+                    <span className="font-extralight">07</span> Redes y
+                    Seguridad
                   </Link>
                 </li>
               </ul>
