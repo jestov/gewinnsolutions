@@ -1,6 +1,5 @@
 "use client";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 import { FC, useState, useEffect } from "react";
 import Link from "next/link";
 import ContactLight from "@/components/ContactLight";
