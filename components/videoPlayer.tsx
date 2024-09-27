@@ -36,7 +36,7 @@ const VideoPlayer = () => {
         autoPlay
         loop
         muted={!isFullscreen} // Esto establecerá muted en true cuando no esté en pantalla completa
-        className={`w-full object-cover ${isFullscreen ? "h-full" : "h-screen"}`}
+        className={`w-full object-cover ${isFullscreen ? "h-full" : "h-full"}`}
       >
         <source src="/videos/2.mp4" type="video/mp4" />
         Your browser does not support the video tag.

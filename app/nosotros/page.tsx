@@ -26,7 +26,7 @@ const Nosotros: FC = () => {
             </span>
           </h3>
         </div>
-        <div className="flex rounded-[64px] relative overflow-hidden h-full">
+        <div className="flex rounded-[64px] relative overflow-hidden h-[70vh]">
           <div className="absolute ml-32 w-6/12 bg-white pb-8 px-14 flex flex-col justify-center items-center gap-2 -top-[5px] rounded-b-[64px] h-[124px] z-40">
             <div className="absolute top-[5px] -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract2.svg')] bg-no-repeat bg-contain"></div>
             <div className="absolute top-[5px] -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain rotate-180"></div>

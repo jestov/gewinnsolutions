@@ -61,7 +61,7 @@ const BrandStrip: React.FC<BrandStripProps> = ({ gradientColor }) => {
             gradientColor={gradientColor ? "#F1F3F5" : undefined}
             gradientWidth={40}
             speed={isMobile ? 50 : 70}
-            className="py-1 overflow-hidden"
+            className="py-0.5 overflow-hidden"
           >
             {brands.map((brand) => (
               <div

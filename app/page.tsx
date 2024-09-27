@@ -356,7 +356,7 @@ const Home: FC = () => {
   };
 
   return (
-    <div className="relative">
+    <div>
       <div className="relative top-[5px] z-0">
         <main className="mx-[5px] sticky top-[5px] z-0 flex flex-col justify-center items-center min-h-[70vh] gap-32 md:gap-44 pb-12 md:pb-28 px-[20px] rounded-b-[64px] overflow-hidden bg-cover text-white before:absolute before:inset-0 before:bg-gradient-to-t before:from-secondary/60 before:to-secondary/5 before:z-20 z-4">
           <video
@@ -415,18 +415,28 @@ const Home: FC = () => {
       </section>
 
       <section className="mx-auto text-center w-3/4 bg-gray-50 z-20 relative rounded-t-[64px] border-t border-mainGray border-opacity-20">
-        <div className=" w-full bg-[#f1f3f5] py-8 flex flex-col justify-center items-center gap-12 bottom-0 z-40 rounded-t-[64px]">
+        <div className=" w-full bg-[#f1f3f5] py-6 flex flex-col justify-center items-center gap-12 bottom-0 z-40 rounded-t-[64px]">
           <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain"></div>
           <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-90"></div>
-          <BrandStrip />
+          <BrandStrip gradientColor={true} />
         </div>{" "}
+      </section>
+      <section className="pt-40 pb-28 bg-[#f1f3f5] w-full relative z-20 px-[20px] lg:px-64">
+        {" "}
+        <p className=" max-w-[1200px] mx-auto text-center container font-light text-2xl lg:text-5xl font-clash tracking-tight">
+          "Con{" "}
+          <span className="font-medium">
+            pasión por la excelencia, hemos dejado una huella significativa en
+            la industria del fitness,
+          </span>{" "}
+          creando ambientes que inspiran bienestar."
+        </p>
       </section>
       <section className="pt-24 bg-[#f1f3f5] relative z-30 text-center">
         <span className="text-mainGray text-xl relative font-light font-sans tracking-normal  mx-auto -bottom-[15px]">
           (02) Soluciones
         </span>
       </section>
-
       <section className="w-full bg-[#f1f3f5] relative z-20 py-12">
         <div className="mx-[20px] rounded-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center items-center min-h-[70vh]">
           <video
@@ -443,7 +453,7 @@ const Home: FC = () => {
             Your browser does not support the video tag.
           </video>
 
-          <div className="absolute w-7/12 bg-[#f1f3f5] pb-8 flex flex-col justify-center items-center gap-2 -top-[5px] z-40 rounded-b-[64px] h-[124px]">
+          <div className="absolute w-7/12 bg-[#f1f3f5] pb-6 flex flex-col justify-center items-center gap-2 -top-[5px] z-40 rounded-b-[64px] h-[114px]">
             <div className="absolute top-[5px] -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract5.svg')] bg-no-repeat bg-contain"></div>
             <div className="absolute top-[5px] -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-180"></div>
 
