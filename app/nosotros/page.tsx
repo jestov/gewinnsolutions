@@ -13,7 +13,7 @@ import Marquee from "react-fast-marquee";
 const Nosotros: FC = () => {
   return (
     <div className="relative">
-      <main className="p-[20px] bg-cover text-white z-20 min-h-[70vh] bg-white flex flex-col gap-20 pt-40">
+      <main className="p-[20px] bg-cover text-white z-20 min-h-[91vh] bg-white flex flex-col gap-20 pt-40">
         <div className="px-44 flex flex-col gap-12">
           <div className="flex gap-8 text-primary items-center -ml-10">
             <div className="h-2 w-2 bg-primary"></div>
@@ -26,7 +26,7 @@ const Nosotros: FC = () => {
             </span>
           </h3>
         </div>
-        <div className="flex rounded-[64px] relative overflow-hidden h-[70vh]">
+        <div className="flex rounded-[64px] relative overflow-hidden h-full">
           <div className="absolute ml-32 w-6/12 bg-white pb-8 px-14 flex flex-col justify-center items-center gap-2 -top-[5px] rounded-b-[64px] h-[124px] z-40">
             <div className="absolute top-[5px] -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract2.svg')] bg-no-repeat bg-contain"></div>
             <div className="absolute top-[5px] -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain rotate-180"></div>
@@ -84,7 +84,7 @@ const Nosotros: FC = () => {
         <div className=" w-full bg-white py-8 flex flex-col justify-center items-center gap-12 bottom-0 z-40 rounded-t-[64px]">
           <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain"></div>
           <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain rotate-90"></div>
-          <BrandStrip />
+          <BrandStrip gradientColor={false} />
         </div>{" "}
       </section>
 
@@ -94,12 +94,11 @@ const Nosotros: FC = () => {
             Principios <span className="font-extralight">que nos</span> impulsan
           </h2>
           <p className="text-center text-lg font-light mb-20 lg:w-2/4 mx-auto">
-            Guiados por la perfección, buscamos{" "}
+            Con pasión por la excelencia{" "}
             <span className="font-semibold">
-              generar un impacto positivo y duradero, creando espacios que
-              inspiran
-            </span>{" "}
-            y mejoran la calidad de vida.
+              hemos dejado una huella significativa en la industria del fitness
+            </span>
+            , creando ambientes que inspiran bienestar.
           </p>
 
           <div>
@@ -173,8 +172,8 @@ const Nosotros: FC = () => {
         <Marquee speed={40}>
           <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
             Boutique Studio · Fitness Centers · Indoor Cycling · Boutique Studio
-            · Fitness Centers · Indoor Cycling · Boutique Studio · Fitness
-            Centers · Indoor Cycling ·{" "}
+            Fitness Centers · Indoor Cycling · Boutique Studio · Fitness Centers
+            · Indoor Cycling ·{" "}
           </div>
         </Marquee>
       </section>

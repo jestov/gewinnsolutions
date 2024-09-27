@@ -101,6 +101,44 @@ const cards = [
     image: "/img/cycling.jpg",
     description: "Descubre nuestras bicicletas indoor de alta calidad.",
     theme: "light", // Options: "light" or "dark"
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="64"
+        height="64"
+        viewBox="0 0 64 64"
+        fill="none"
+      >
+        <path
+          d="M37.3333 18.6667C40.2789 18.6667 42.6667 16.2789 42.6667 13.3333C42.6667 10.3878 40.2789 8 37.3333 8C34.3878 8 32 10.3878 32 13.3333C32 16.2789 34.3878 18.6667 37.3333 18.6667Z"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M48 56C52.4183 56 56 52.4183 56 48C56 43.5817 52.4183 40 48 40C43.5817 40 40 43.5817 40 48C40 52.4183 43.5817 56 48 56Z"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M16 56C20.4183 56 24 52.4183 24 48C24 43.5817 20.4183 40 16 40C11.5817 40 8 43.5817 8 48C8 52.4183 11.5817 56 16 56Z"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M30.6667 47.9998L34.6667 37.3332L21.6472 31.9998L29.6479 22.6667L37.6479 29.3333L46.9812 29.3333"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
   },
   {
     id: 2,
@@ -109,6 +147,51 @@ const cards = [
     image: "/img/equipamiento.jpg",
     description: "El mejor equipamiento para gimnasios de alto rendimiento.",
     theme: "dark",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="65"
+        height="64"
+        viewBox="0 0 65 64"
+        fill="none"
+      >
+        <path
+          d="M21.0499 18.6667H12.2833C11.7586 18.6667 11.3333 19.092 11.3333 19.6167V44.3834C11.3333 44.908 11.7586 45.3334 12.2833 45.3334H21.0499C21.5746 45.3334 21.9999 44.908 21.9999 44.3834V19.6167C21.9999 19.092 21.5746 18.6667 21.0499 18.6667Z"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M53.0499 18.6667H44.2833C43.7586 18.6667 43.3333 19.092 43.3333 19.6167V44.3834C43.3333 44.908 43.7586 45.3334 44.2833 45.3334H53.0499C53.5746 45.3334 53.9999 44.908 53.9999 44.3834V19.6167C53.9999 19.092 53.5746 18.6667 53.0499 18.6667Z"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M3.3335 39.05V24.95C3.3335 24.4253 3.75883 24 4.2835 24H10.3835C10.9082 24 11.3335 24.4253 11.3335 24.95V39.05C11.3335 39.5747 10.9082 40 10.3835 40H4.2835C3.75883 40 3.3335 39.5747 3.3335 39.05Z"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M62 39.05V24.95C62 24.4253 61.5747 24 61.05 24H54.95C54.4253 24 54 24.4253 54 24.95V39.05C54 39.5747 54.4253 40 54.95 40H61.05C61.5747 40 62 39.5747 62 39.05Z"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M22 32H43.3333"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    ),
   },
   {
     id: 3,
@@ -117,6 +200,65 @@ const cards = [
     image: "/img/video.jpg",
     description: "Pisos de alta resistencia diseñados para gimnasios.",
     theme: "light",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="56"
+        height="55"
+        viewBox="0 0 56 55"
+        fill="none"
+      >
+        <path
+          d="M2.625 48.125L9.82738 6.875H45.8393L53.0417 48.125H2.625Z"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M4.91675 37.8125H50.7501"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M7.20837 27.5H48.4584"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M9.5 17.1875H46.1667"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M27.8334 6.875V48.125"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M18.6667 8.02081L15.2292 46.9791"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M37 8.02081L40.4375 46.9791"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    ),
   },
   // Add more cards
 ];
@@ -276,7 +418,7 @@ const Home: FC = () => {
         <div className=" w-full bg-[#f1f3f5] py-8 flex flex-col justify-center items-center gap-12 bottom-0 z-40 rounded-t-[64px]">
           <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain"></div>
           <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-90"></div>
-          <BrandStrip gradientColor={true} />
+          <BrandStrip />
         </div>{" "}
       </section>
       <section className="pt-24 bg-[#f1f3f5] relative z-30 text-center">

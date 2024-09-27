@@ -20,7 +20,6 @@ const VideoPlayer = () => {
   const handleClose = () => {
     setIsFullscreen(false);
     const video = videoRef.current;
-    video.muted = true;
   };
 
   useEffect(() => {

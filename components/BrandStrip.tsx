@@ -41,7 +41,12 @@ const useIsMobile = () => {
   return isMobile;
 };
 
-const BrandStrip = ({ gradientColor }) => {
+// Definición del tipo de las props del componente
+interface BrandStripProps {
+  gradientColor?: boolean;
+}
+
+const BrandStrip: React.FC<BrandStripProps> = ({ gradientColor }) => {
   const isMobile = useIsMobile();
 
   return (
