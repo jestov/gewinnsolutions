@@ -13,6 +13,9 @@ body {
     width: 100%;
     margin: 0;
 }
+.rfm-marquee-container {
+    overflow: hidden;
+}
 
 @layer utilities {
     .text-balance {

@@ -13,7 +13,7 @@ import Marquee from "react-fast-marquee";
 const Nosotros: FC = () => {
   return (
     <div className="relative">
-      <main className="p-[20px] bg-cover text-white z-20 min-h-[91vh] bg-white flex flex-col gap-20 pt-40">
+      <main className="p-[20px] bg-cover text-white z-20 min-h-[70vh] bg-white flex flex-col gap-20 pt-40">
         <div className="px-44 flex flex-col gap-12">
           <div className="flex gap-8 text-primary items-center -ml-10">
             <div className="h-2 w-2 bg-primary"></div>
@@ -26,7 +26,7 @@ const Nosotros: FC = () => {
             </span>
           </h3>
         </div>
-        <div className="flex rounded-[64px] relative overflow-hidden h-full">
+        <div className="flex rounded-[64px] relative overflow-hidden h-[70vh]">
           <div className="absolute ml-32 w-6/12 bg-white pb-8 px-14 flex flex-col justify-center items-center gap-2 -top-[5px] rounded-b-[64px] h-[124px] z-40">
             <div className="absolute top-[5px] -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract2.svg')] bg-no-repeat bg-contain"></div>
             <div className="absolute top-[5px] -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain rotate-180"></div>
@@ -50,7 +50,7 @@ const Nosotros: FC = () => {
           través del diseño personalizado de sistemas de audio e iluminación
           para estudios{" "}
           <span className="font-semibold">
-            <i>boutique y fitness centers.</i> Desde la concepción
+            <i>boutique y Fitness Centers.</i> Desde la concepción
             arquitectónica hasta la instalación final,
           </span>{" "}
           cada proyecto es una obra de pasión y precisión.{" "}
@@ -94,11 +94,12 @@ const Nosotros: FC = () => {
             Principios <span className="font-extralight">que nos</span> impulsan
           </h2>
           <p className="text-center text-lg font-light mb-20 lg:w-2/4 mx-auto">
-            Con pasión por la excelencia{" "}
+            Guiados por la perfección, buscamos{" "}
             <span className="font-semibold">
-              hemos dejado una huella significativa en la industria del fitness
-            </span>
-            , creando ambientes que inspiran bienestar.
+              generar un impacto positivo y duradero, creando espacios que
+              inspiran
+            </span>{" "}
+            y mejoran la calidad de vida.
           </p>
 
           <div>
@@ -171,9 +172,9 @@ const Nosotros: FC = () => {
       <section className="bg-gradient-to-b from-primary to-secondary pt-24 relative z-30">
         <Marquee speed={40}>
           <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
-            Boutique Studio Fitness Centers · Indoor Cycling · Boutique Studio
-            Fitness Centers · Indoor Cycling · Boutique Studio Fitness Centers ·
-            Indoor Cycling ·{" "}
+            Boutique Studio · Fitness Centers · Indoor Cycling · Boutique Studio
+            · Fitness Centers · Indoor Cycling · Boutique Studio · Fitness
+            Centers · Indoor Cycling ·{" "}
           </div>
         </Marquee>
       </section>
@@ -191,7 +192,7 @@ const Nosotros: FC = () => {
                   ¿Estás listo para impulsar tu
                   <br />
                   <span className="font-medium text-xl lg:text-5xl">
-                    fitness center?
+                    Fitness Center?
                   </span>
                 </h1>
                 <div className="flex flex-col gap-3">
@@ -199,10 +200,10 @@ const Nosotros: FC = () => {
                     ¿Necesitas ayuda personalizada?
                   </span>
                   <Link
-                    href="mailto:info@gewinnsolutions.co"
+                    href="mailto:contacto@gewinnsolutions.co"
                     className="text-xl lg:text-3xl font-light tracking-wide"
                   >
-                    info@gewinnsolutions.com
+                    contacto@gewinnsolutions.com
                   </Link>
                   <Link
                     href="#"

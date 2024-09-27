@@ -108,7 +108,7 @@ const Productos: FC = () => {
           </div>
           <h3 className="text-3xl lg:text-6xl text-primary font-clashdisplay font-extralight">
             <span className="font-medium">Equipamiento</span> para tu{" "}
-            <span className="font-medium">fitness center:</span> Innovación y
+            <span className="font-medium">Fitness Center:</span> Innovación y
             excelencia a tu alcance
           </h3>
           <p className="text-primary font-extralight text-lg lg:max-w-xl">
@@ -188,9 +188,9 @@ const Productos: FC = () => {
       <section className="bg-gradient-to-b from-primary to-secondary pt-24 relative z-30">
         <Marquee speed={40}>
           <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
-            Boutique Studio Fitness Centers · Indoor Cycling · Boutique Studio
-            Fitness Centers · Indoor Cycling · Boutique Studio Fitness Centers ·
-            Indoor Cycling ·{" "}
+            Boutique Studio · Fitness Centers · Indoor Cycling · Boutique Studio
+            · Fitness Centers · Indoor Cycling · Boutique Studio · Fitness
+            Centers · Indoor Cycling ·{" "}
           </div>
         </Marquee>
       </section>

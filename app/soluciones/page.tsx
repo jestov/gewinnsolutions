@@ -1,5 +1,6 @@
 "use client";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { FC, useState, useEffect } from "react";
 import Link from "next/link";
 import ContactLight from "@/components/ContactLight";
@@ -25,7 +26,7 @@ const Soluciones: FC = () => {
       id: 1,
       title: "01 Audio",
       description:
-        "Desarrollamos sistemas de sonido personalizados, con equipos especializados en fitness, contamos con la mayor experiencia en estudios boutique fitness. Nos involucramos en el tratamiento acústico desde el inicio del proyecto, para garantizar la mayor eficiencia sonora y con diseños personalizados para cada proyecto.",
+        "Desarrollamos <strong>sistemas de sonido personalizados</strong>, con equipos especializados en fitness, contamos con la mayor experiencia en estudios boutique fitness. Nos involucramos en el <strong>tratamiento acústico</strong> desde el inicio del proyecto, para garantizar la mayor eficiencia sonora y con diseños personalizados para cada proyecto.",
       videoSrc: "/videos/1.mp4",
       img: ["/img/audio-1.jpg", "/img/audio-2.jpg", "/img/audio-3.jpg"],
       whyService:
@@ -41,7 +42,7 @@ const Soluciones: FC = () => {
       id: 2,
       title: "02 Iluminación",
       description:
-        "Creamos ambientes únicos con soluciones de iluminación personalizadas para mejorar la experiencia de entrenamiento.",
+        "Creamos <strong>ambientes únicos</strong> con soluciones de iluminación personalizadas para mejorar la <strong>experiencia de entrenamiento</strong>.",
       videoSrc: "/videos/2.mp4",
       img: [
         "/img/iluminacion-1.jpg",
@@ -61,7 +62,7 @@ const Soluciones: FC = () => {
       id: 3,
       title: "03 Diseño",
       description:
-        "Diseñamos espacios que reflejan la identidad de cada proyecto, optimizando la funcionalidad y estética.",
+        "Diseñamos <strong>espacios que reflejan la identidad</strong> de cada proyecto, optimizando la <strong>funcionalidad</strong> y estética.",
       videoSrc: "/videos/1.mp4",
       img: ["/img/diseno-1.jpg", "/img/diseno-2.jpg", "/img/diseno-3.jpg"],
       whyService:
@@ -77,7 +78,7 @@ const Soluciones: FC = () => {
       id: 4,
       title: "04 Fitness Total",
       description:
-        "Un servicio integral que incluye diseño, instalación, equipos y seguridad para crear un espacio fitness de primera clase.",
+        "Un <strong>servicio integral</strong> que incluye diseño, instalación, equipos y seguridad para crear un <strong>espacio fitness de primera clase</strong>.",
       videoSrc: "/videos/2.mp4",
       img: [
         "/img/fitness-total-1.jpg",
@@ -111,13 +112,13 @@ const Soluciones: FC = () => {
       </main>
 
       <section className="w-full bg-primary relative z-20 py-12">
-        <div className="mx-[20px] rounded-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center items-center min-h-[87vh]">
+        <div className="mx-[20px] rounded-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center items-center min-h-[70vh]">
           <video
-            key={activeTab} // Ensure video reloads when tab changes
+            key={activeTab}
             autoPlay
             loop
             muted
-            className="absolute z-10 w-full object-cover min-h-[105vh] max-w-none"
+            className="absolute z-10 w-full object-cover min-h-[70vh] max-w-none"
           >
             <source
               src={servicesTabs[activeTab - 1].videoSrc}
@@ -150,14 +151,17 @@ const Soluciones: FC = () => {
         </div>
         {/* Tab Content */}
         <div className="text-white z-20 w-4/6 mx-auto py-20 text-xl flex font-extralight flex-col gap-8">
-          <h2 className="font-medium text-5xl font-clashdisplay">
+          <h2 className="font-medium text-3xl lg:text-5xl font-clashdisplay">
             {servicesTabs[activeTab - 1].title}
           </h2>
-          <p className="text-white text-opacity-80 mt-4">
-            {servicesTabs[activeTab - 1].description}
-          </p>
+          <p
+            className="text-white lg:text-xl text-opacity-80 mt-4"
+            dangerouslySetInnerHTML={{
+              __html: servicesTabs[activeTab - 1].description,
+            }}
+          ></p>
         </div>
-        <div className="grid grid-cols-3 relative w-full min-h-[500px]">
+        <div className="grid grid-cols-4 relative w-full min-h-[500px]">
           {servicesTabs[activeTab - 1].img.map((image, index) => (
             <Image
               key={index}
@@ -206,7 +210,7 @@ const Soluciones: FC = () => {
                   ¿Estás listo para impulsar tu
                   <br />
                   <span className="font-medium text-xl lg:text-5xl">
-                    fitness center?
+                    Fitness Center?
                   </span>
                 </h1>
                 <div className="flex flex-col gap-3">
@@ -214,10 +218,10 @@ const Soluciones: FC = () => {
                     ¿Necesitas ayuda personalizada?
                   </span>
                   <Link
-                    href="mailto:info@gewinnsolutions.co"
+                    href="mailto:contacto@gewinnsolutions.co"
                     className="text-xl lg:text-3xl font-light tracking-wide"
                   >
-                    info@gewinnsolutions.com
+                    contacto@gewinnsolutions.com
                   </Link>
                   <Link
                     href="#"
@@ -246,9 +250,9 @@ const Soluciones: FC = () => {
       <section className="bg-gradient-to-b from-primary to-secondary pt-24 relative z-30">
         <Marquee speed={40}>
           <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
-            Boutique Studio Fitness Centers · Indoor Cycling · Boutique Studio
-            Fitness Centers · Indoor Cycling · Boutique Studio Fitness Centers ·
-            Indoor Cycling ·{" "}
+            Boutique Studio · Fitness Centers · Indoor Cycling · Boutique Studio
+            · Fitness Centers · Indoor Cycling · Boutique Studio · Fitness
+            Centers · Indoor Cycling ·{" "}
           </div>
         </Marquee>
       </section>

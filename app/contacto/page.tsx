@@ -24,7 +24,7 @@ const Contacto: FC = () => {
           </div>
           <h3 className="text-3xl lg:text-6xl text-primary font-clashdisplay font-extralight">
             ¿Estás listo para impulsar tu
-            <br /> <span className="font-medium">fitness center?</span>
+            <br /> <span className="font-medium">Fitness Center?</span>
           </h3>
         </div>
       </main>
@@ -43,10 +43,10 @@ const Contacto: FC = () => {
                     ¿Necesitas ayuda personalizada?
                   </span>
                   <Link
-                    href="mailto:info@gewinnsolutions.co"
+                    href="mailto:contacto@gewinnsolutions.co"
                     className="text-xl lg:text-3xl font-light tracking-wide"
                   >
-                    info@gewinnsolutions.com
+                    contacto@gewinnsolutions.com
                   </Link>
                   <Link
                     href="#"
@@ -128,9 +128,9 @@ const Contacto: FC = () => {
       <section className="bg-gradient-to-b from-primary to-secondary py-24 relative z-30">
         <Marquee speed={40}>
           <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
-            Boutique Studio Fitness Centers · Indoor Cycling · Boutique Studio
-            Fitness Centers · Indoor Cycling · Boutique Studio Fitness Centers ·
-            Indoor Cycling ·{" "}
+            Boutique Studio · Fitness Centers · Indoor Cycling · Boutique Studio
+            · Fitness Centers · Indoor Cycling · Boutique Studio · Fitness
+            Centers · Indoor Cycling ·{" "}
           </div>
         </Marquee>
       </section>

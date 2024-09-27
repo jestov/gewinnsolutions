@@ -54,7 +54,7 @@ function Contact() {
       id: "phone",
       type: "text",
       required: false,
-      placeholder: "+52 81 450 0000",
+      placeholder: "81 450 0000",
       label: "Teléfono",
     },
     {

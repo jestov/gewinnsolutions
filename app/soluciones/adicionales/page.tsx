@@ -33,25 +33,9 @@ const SolucionesAdd: FC = () => {
     {
       id: 3,
       number: "06",
-      title: "Pisos para Gimnasios",
-      image: "/img/pisos.jpg",
-      description: "Pisos de alta resistencia diseñados para gimnasios.",
-      theme: "light",
-    },
-    {
-      id: 4,
-      number: "08",
-      title: "Videovigilancia",
+      title: "Redes y seguridad",
       image: "/img/video.jpg",
-      description: "Sistemas de videovigilancia avanzados para seguridad.",
-      theme: "dark",
-    },
-    {
-      id: 5,
-      number: "09",
-      title: "Infraestructura de Red",
-      image: "/img/wifi.jpg",
-      description: "Infraestructura de red robusta y confiable.",
+      description: "Pisos de alta resistencia diseñados para gimnasios.",
       theme: "light",
     },
   ];
@@ -143,70 +127,6 @@ const SolucionesAdd: FC = () => {
               ))}
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-[30px]">
-            <div className="flex flex-col gap-8">
-              <h3 className="text-2xl lg:text-3xl text-left text-primary font-clashdisplay font-extralight w-full">
-                Soluciones{" "}
-                <span className="font-medium">
-                  <br />
-                  complementarias
-                </span>
-              </h3>
-              <p className="font-extralight text-lg">
-                Nuestras soluciones independientes están diseñadas para ofrecer{" "}
-                <span className="font-semibold">seguridad y conectividad</span>{" "}
-                sin igual, garantizando que{" "}
-                <span className="font-semibold">
-                  tu <i>fitness center </i> opere de manera óptima y segura.
-                </span>
-              </p>
-            </div>
-            {cards.slice(3, 5).map((card) => (
-              <div
-                key={card.id}
-                className={`relative w-full bg-cover bg-center rounded-xl overflow-hidden flex flex-col p-6 aspect-vertical border border-primary border-opacity-15 text-white ${
-                  card.theme === "dark" ? "bg-black" : "bg-white"
-                }`}
-              >
-                <div
-                  className="absolute inset-0 bg-cover top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-xl"
-                  style={{ backgroundImage: `url(${card.image})` }}
-                ></div>
-                <div
-                  className={`absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-70 top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-xl`}
-                ></div>
-
-                <div className="z-20 relative flex flex-col gap-1 font-clashdisplay">
-                  <span className="font-extralight text-2xl">
-                    {card.number}
-                  </span>
-                  <br />
-                  <h3 className="text-4xl font-medium">{card.title}</h3>
-                </div>
-
-                <div
-                  className={`absolute bottom-0 right-0 ${
-                    card.theme === "dark"
-                      ? "bg-primary before:bg-[url('/img/substract3.svg')] after:bg-[url('/img/substract3.svg')]"
-                      : "bg-white before:bg-[url('/img/substract2.svg')] after:bg-[url('/img/substract2.svg')]"
-                  } p-8 rounded-tl-[32px] cursor-pointer before:absolute before:bottom-1.5 before:-left-[32px] before:w-[32px] before:h-[32px] before:bg-no-repeat before:bg-contain before:rotate-90
-                           after:absolute after:-top-[32px] after:right-1.5 after:w-[32px] after:h-[32px]  after:bg-no-repeat after:bg-contain after:rotate-90`}
-                  onClick={() => toggleDescription(card.id)}
-                >
-                  <PlusIcon
-                    dark={card.theme === "light"}
-                    className="h-8 w-8 relative -right-[2px]"
-                  />
-                </div>
-
-                {activeCard === card.id && (
-                  <div className="z-20 relative mt-4 p-4 bg-opacity-80 bg-primary text-white rounded-lg font-clash">
-                    <p>{card.description}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -222,7 +142,7 @@ const SolucionesAdd: FC = () => {
                   ¿Estás listo para impulsar tu
                   <br />
                   <span className="font-medium text-xl lg:text-5xl">
-                    fitness center?
+                    Fitness Center?
                   </span>
                 </h1>
                 <div className="flex flex-col gap-3">
@@ -230,10 +150,10 @@ const SolucionesAdd: FC = () => {
                     ¿Necesitas ayuda personalizada?
                   </span>
                   <Link
-                    href="mailto:info@gewinnsolutions.co"
+                    href="mailto:contacto@gewinnsolutions.co"
                     className="text-xl lg:text-3xl font-light tracking-wide"
                   >
-                    info@gewinnsolutions.com
+                    contacto@gewinnsolutions.com
                   </Link>
                   <Link
                     href="#"
@@ -260,9 +180,9 @@ const SolucionesAdd: FC = () => {
       <section className="bg-gradient-to-b from-primary to-secondary pt-24 relative z-30">
         <Marquee speed={40}>
           <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
-            Boutique Studio Fitness Centers · Indoor Cycling · Boutique Studio
-            Fitness Centers · Indoor Cycling · Boutique Studio Fitness Centers ·
-            Indoor Cycling ·{" "}
+            Boutique Studio · Fitness Centers · Indoor Cycling · Boutique Studio
+            · Fitness Centers · Indoor Cycling · Boutique Studio · Fitness
+            Centers · Indoor Cycling ·{" "}
           </div>
         </Marquee>
       </section>

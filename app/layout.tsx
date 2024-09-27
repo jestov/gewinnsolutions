@@ -7,7 +7,7 @@ const typo = Archivo({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Gewinn Solutions",
-  description: "Construyendo fitness center con maestría",
+  description: "Construyendo Fitness Center con maestría",
 };
 
 export default function RootLayout({

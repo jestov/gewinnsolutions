@@ -26,7 +26,7 @@ const menuItems = [
     links: [
       { name: "Nosotros", href: "/nosotros" },
       { name: "Soluciones", href: "#" },
-      { name: "Catálogo", href: "/catalogo" },
+      { name: "Tienda", href: "/productos" },
     ],
   },
 ];
@@ -80,10 +80,8 @@ export default function Footer() {
                   <li key={linkIndex}>
                     <Link
                       href={link.href}
-                      className={`inline-flex text-mainGray hover:text-secondaryBlue !leading-loose font-clash font-normal text-lg px-5 py-3.5 rounded-full hover:bg-gray-100 transition duration-500 ${
-                        isActive(link.href)
-                          ? "!text-secondaryBlue bg-greenLighter hover:bg-greenLighter"
-                          : ""
+                      className={`inline-flex text-mainGray hover:text-white !leading-loose font-clash font-normal text-lg px-5 py-3.5 rounded-full transition duration-500 ${
+                        isActive(link.href) ? "!text-white" : ""
                       }`}
                     >
                       {link.name}

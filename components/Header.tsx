@@ -90,7 +90,7 @@ export default function Menu() {
       path: "#",
       isMegaMenu: true,
     },
-    { name: "Catálogo", path: "/productos" },
+    { name: "Tienda", path: "/productos" },
   ];
 
   const handleMenuClick = (option: any) => {
@@ -248,7 +248,7 @@ export default function Menu() {
 
               <Button href="/cotizador" className={getButtonStyles()}>
                 <QuoteIcon dark={!isNavbarWhite()} />
-                Cotizador (2)
+                Carrito (2)
               </Button>
             </div>
           </div>
@@ -282,16 +282,16 @@ export default function Menu() {
 
       {isMegaMenuOpen && (
         <div
-          className={`mega-menu flex fixed !top-[72px] ${getMegaMenuBackgroundClass()} p-4 z-50 h-[45vh] border-b border-x border-secondary border-opacity-20 bg-[#F1F3F5] transition duration-300 rounded-b-[64px] items-center`}
+          className={`mega-menu flex flex-col fixed !top-[72px] ${getMegaMenuBackgroundClass()} p-4 z-50 h-[30vh] border-b border-x border-secondary border-opacity-20 bg-[#F1F3F5] transition duration-300 rounded-b-[64px] items-center`}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 m-auto max-w-[1400px] h-full items-center">
-            <div className="col-span-1">
+          <div className="flex flex-col w-full gap-12 m-auto max-w-[1400px] h-full items-center justify-center">
+            <div className="flex gap-12 justify-between w-full items-center">
               <h3 className="text-primary font-extralight text-2xl font-clashdisplay !leading-none">
                 Soluciones
                 <br />
                 <span className="font-medium">especializadas</span>
               </h3>
-              <ul className="mt-12 text-2xl flex flex-col gap-6">
+              <ul className="text-2xl flex gap-6">
                 <li
                   onClick={() => handleMegaMenuClick(1)}
                   className="font-clash font-medium flex gap-2 cursor-pointer"
@@ -318,13 +318,13 @@ export default function Menu() {
                 </li>
               </ul>
             </div>
-            <div className="col-span-1">
+            <div className="flex gap-12 justify-between w-full items-center">
               <h3 className="text-primary font-extralight text-2xl font-clashdisplay !leading-none">
                 Soluciones by
                 <br />
                 <span className="font-medium">partners especializados</span>
               </h3>
-              <ul className="mt-12 text-2xl flex flex-col gap-6">
+              <ul className="text-2xl flex gap-6">
                 <li className="font-clash font-medium flex gap-2 cursor-pointer">
                   <Link href="/soluciones/adicionales">
                     <span className="font-extralight">05</span> Stages Indoor
@@ -341,28 +341,6 @@ export default function Menu() {
                   <Link href="/soluciones/adicionales">
                     <span className="font-extralight">07</span> Piso para
                     Gimnasios
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-span-1">
-              <h3 className="text-primary font-extralight text-2xl font-clashdisplay !leading-none">
-                Soluciones
-                <br />
-                <span className="font-medium">adicionales</span>
-              </h3>
-              <ul className="mt-12 text-2xl flex flex-col gap-6">
-                <li className="font-clash font-medium flex gap-2 cursor-pointer">
-                  <Link href="/soluciones/adicionales">
-                    <span className="font-extralight">08</span> Circuito Cerrado
-                    de TV
-                  </Link>
-                </li>
-                <li className="font-clash font-medium flex gap-2 cursor-pointer">
-                  <Link href="/soluciones/adicionales">
-                    <span className="font-extralight">09</span> Infraestructura
-                    de Red
                   </Link>
                 </li>
               </ul>

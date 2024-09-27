@@ -113,25 +113,9 @@ const cards = [
   {
     id: 3,
     number: "06",
-    title: "Pisos para Gimnasios",
-    image: "/img/pisos.jpg",
-    description: "Pisos de alta resistencia diseñados para gimnasios.",
-    theme: "light",
-  },
-  {
-    id: 4,
-    number: "08",
-    title: "Videovigilancia",
+    title: "Redes y seguridad",
     image: "/img/video.jpg",
-    description: "Sistemas de videovigilancia avanzados para seguridad.",
-    theme: "dark",
-  },
-  {
-    id: 5,
-    number: "09",
-    title: "Infraestructura de Red",
-    image: "/img/wifi.jpg",
-    description: "Infraestructura de red robusta y confiable.",
+    description: "Pisos de alta resistencia diseñados para gimnasios.",
     theme: "light",
   },
   // Add more cards
@@ -142,28 +126,28 @@ const servicesTabs = [
     id: 1,
     title: "01 Audio",
     description:
-      "Desarrollamos sistemas de sonido personalizados, con equipos especializados en fitness, contamos con la mayor experiencia en estudios boutique fitness. Nos involucramos en el tratamiento acústico desde el inicio del proyecto, para garantizar la mayor eficiencia sonora y con diseños personalizados para cada proyecto.",
+      "Desarrollamos <strong>sistemas de sonido personalizados</strong>, con equipos especializados en fitness, contamos con la mayor experiencia en estudios boutique fitness. Nos involucramos en el <strong>tratamiento acústico</strong> desde el inicio del proyecto, para garantizar la mayor eficiencia sonora y con diseños personalizados para cada proyecto.",
     videoSrc: "/videos/1.mp4",
   },
   {
     id: 2,
     title: "02 Iluminación",
     description:
-      "Creamos ambientes únicos con soluciones de iluminación personalizadas para mejorar la experiencia de entrenamiento.",
+      "Creamos <strong>ambientes únicos</strong> con soluciones de iluminación personalizadas para mejorar la <strong>experiencia de entrenamiento</strong>.",
     videoSrc: "/videos/2.mp4",
   },
   {
     id: 3,
     title: "03 Diseño",
     description:
-      "Diseñamos espacios que reflejan la identidad de cada proyecto, optimizando la funcionalidad y estética.",
+      "Diseñamos <strong>espacios que reflejan la identidad</strong> de cada proyecto, optimizando la <strong>funcionalidad</strong> y estética.",
     videoSrc: "/videos/1.mp4",
   },
   {
     id: 4,
     title: "04 Fitness Total",
     description:
-      "Un servicio integral que incluye diseño, instalación, equipos y seguridad para crear un espacio fitness de primera clase.",
+      "Un <strong>servicio integral</strong> que incluye diseño, instalación, equipos y seguridad para crear un <strong>espacio fitness de primera clase</strong>.",
     videoSrc: "/videos/2.mp4",
   },
 ];
@@ -194,7 +178,7 @@ const Home: FC = () => {
   }, []);
 
   const nextSlide = () => {
-    if (current < Math.max(products.length - 3, 0)) {
+    if (current < Math.max(products.length - 4, 0)) {
       setCurrent(current + 1);
     }
   };
@@ -206,7 +190,7 @@ const Home: FC = () => {
   };
 
   const progressWidth =
-    products.length > 3 ? (current / (products.length - 3)) * 100 : 0;
+    products.length > 3 ? (current / (products.length - 4)) * 100 : 0;
 
   const incrementQuantity = (id: number) => {
     setQuantities((prevQuantities) => ({
@@ -231,8 +215,8 @@ const Home: FC = () => {
 
   return (
     <div className="relative">
-      <div className="sticky top-[5px] z-0">
-        <main className="mx-[5px] sticky top-[5px] z-0 flex flex-col justify-center items-center min-h-[93vh] gap-32 md:gap-44 pb-12 md:pb-28 px-[20px] rounded-b-[64px] overflow-hidden bg-cover text-white before:absolute before:inset-0 before:bg-gradient-to-t before:from-secondary/60 before:to-secondary/5 before:z-20 z-4">
+      <div className="relative top-[5px] z-0">
+        <main className="mx-[5px] sticky top-[5px] z-0 flex flex-col justify-center items-center min-h-[70vh] gap-32 md:gap-44 pb-12 md:pb-28 px-[20px] rounded-b-[64px] overflow-hidden bg-cover text-white before:absolute before:inset-0 before:bg-gradient-to-t before:from-secondary/60 before:to-secondary/5 before:z-20 z-4">
           <video
             autoPlay
             loop
@@ -243,9 +227,9 @@ const Home: FC = () => {
             Your browser does not support the video tag.
           </video>
 
-          <div className="relative w-full max-w-[1600px] flex flex-col justify-center items-center text-center mt-auto mx-auto gap-8 lg:px-4 px-[10px] z-20">
+          <div className="relative w-full max-w-[1600px] flex flex-col justify-center items-center text-center pt-[100px] smx-auto gap-8 lg:px-4 px-[10px] z-20">
             <div className="flex flex-col gap-10 max-w-6xl z-11 relative">
-              <h1 className="text-2xl lg:text-8xl text-white font-clashdisplay font-light !leading-none">
+              <h1 className="text-2xl lg:text-6xl text-white font-clashdisplay font-light !leading-none">
                 Construyendo
                 <br />
                 <span className="font-medium">{typedText}</span>
@@ -282,7 +266,7 @@ const Home: FC = () => {
           </ButtonWithArrow>
         </div>
       </section>
-      <section className="p-[20px] bg-cover text-white z-20 h-[91vh] bg-white top-[74px]  sticky">
+      <section className="p-[20px] bg-cover text-white z-20 h-[70vh] bg-white top-[74px]  sticky">
         <div className="flex justify-center rounded-[64px] relative overflow-hidden h-full">
           <VideoPlayer />
         </div>
@@ -302,13 +286,13 @@ const Home: FC = () => {
       </section>
 
       <section className="w-full bg-[#f1f3f5] relative z-20 py-12">
-        <div className="mx-[20px] rounded-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center items-center min-h-[87vh]">
+        <div className="mx-[20px] rounded-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center items-center min-h-[70vh]">
           <video
             key={activeTab} // Ensure video reloads when tab changes
             autoPlay
             loop
             muted
-            className="absolute z-10 w-full object-cover min-h-[105vh] max-w-none"
+            className="absolute z-10 w-full object-cover min-h-[70vh] max-w-none"
           >
             <source
               src={servicesTabs[activeTab - 1].videoSrc}
@@ -340,8 +324,8 @@ const Home: FC = () => {
                   key={service.id}
                   className={`px-4 py-9 h-[120px] border-r-4 border-[#f1f3f5] "> ${
                     activeTab === service.id
-                      ? "bg-[#f1f3f5] text-primary text-2xl font-clashdisplay font-medium"
-                      : "bg-transparent text-white hover:bg-white hover:bg-opacity-15 last:border-none text-2xl font-clashdisplay font-medium transition ease-in-out duration-500 relative first:before:absolute first:before:-bottom-[0px] first:before:-left-[0px] first:before:w-[32px] first:before:h-[32px] first:before:bg-[url('/img/substract5.svg')] first:before:bg-no-repeat first:before:bg-contain first:before:rotate-180 last:before:absolute last:before:bottom-0 last:before:-right-[0px] last:before:w-[32px] last:before:h-[32px] last:before:bg-[url('/img/substract4.svg')] last:before:bg-no-repeat last:before:bg-contain"
+                      ? "bg-[#f1f3f5] text-primary text-xl lg:text-2xl font-clashdisplay font-medium"
+                      : "bg-transparent text-white hover:bg-white hover:bg-opacity-15 last:border-none text-xl lg:text-2xl font-clashdisplay font-medium transition ease-in-out duration-500 relative first:before:absolute first:before:-bottom-[0px] first:before:-left-[0px] first:before:w-[32px] first:before:h-[32px] first:before:bg-[url('/img/substract5.svg')] first:before:bg-no-repeat first:before:bg-contain first:before:rotate-180 last:before:absolute last:before:bottom-0 last:before:-right-[0px] last:before:w-[32px] last:before:h-[32px] last:before:bg-[url('/img/substract4.svg')] last:before:bg-no-repeat last:before:bg-contain"
                   }`}
                   onClick={() => setActiveTab(service.id)}
                 >
@@ -354,14 +338,19 @@ const Home: FC = () => {
         {/* Tab Content */}
         <div className="text-primary z-20 w-4/6 mx-auto py-20 text-xl flex font-extralight flex-col gap-8">
           <div className="flex justify-between items-center">
-            <h2 className="font-medium text-4xl font-clashdisplay">
+            <h2 className="font-medium text-3xl lg:text-5xl font-clashdisplay">
               {servicesTabs[activeTab - 1].title}
             </h2>
-            <ButtonWithArrow href="/services">Conocer más</ButtonWithArrow>
+            <ButtonWithArrow href="/contacto">
+              Contratar servicio
+            </ButtonWithArrow>
           </div>
-          <p className="text-primary text-opacity-80">
-            {servicesTabs[activeTab - 1].description}
-          </p>
+          <p
+            className="text-primary lg:text-xl text-opacity-80"
+            dangerouslySetInnerHTML={{
+              __html: servicesTabs[activeTab - 1].description,
+            }}
+          ></p>
         </div>
       </section>
       <hr className="h-px bg-gray-200 border-0 relative w-full z-20" />
@@ -369,7 +358,7 @@ const Home: FC = () => {
         <div className="mx-auto max-w-[1200px] flex flex-col gap-24">
           <div className="flex flex-col gap-8">
             <div className="flex gap-8 justify-between">
-              <h3 className="text-2xl lg:text-3xl text-left text-primary font-clashdisplay font-extralight w-full">
+              <h3 className="text-2xl lg:text-4xl text-left text-primary font-clashdisplay font-extralight w-full">
                 Soluciones por{" "}
                 <span className="font-medium">
                   partners
@@ -434,72 +423,6 @@ const Home: FC = () => {
                 </div>
               ))}
             </div>
-          </div>
-          <div className="grid grid-cols-3 gap-[30px]">
-            <div className="flex flex-col gap-8">
-              <h3 className="text-2xl lg:text-3xl text-left text-primary font-clashdisplay font-extralight w-full">
-                Soluciones{" "}
-                <span className="font-medium">
-                  <br />
-                  complementarias
-                </span>
-              </h3>
-              <p className="font-extralight text-lg">
-                Nuestras soluciones independientes están diseñadas para ofrecer{" "}
-                <span className="font-semibold">seguridad y conectividad</span>{" "}
-                sin igual, garantizando que{" "}
-                <span className="font-semibold">
-                  tu <i>fitness center </i> opere de manera óptima y segura.
-                </span>
-              </p>
-            </div>
-            {cards.slice(3, 5).map((card) => (
-              <div
-                key={card.id}
-                className={`relative w-full bg-cover bg-center rounded-xl overflow-hidden flex flex-col p-6 aspect-vertical border border-primary border-opacity-15 text-white ${
-                  card.theme === "dark" ? "bg-black" : "bg-white"
-                }`}
-              >
-                <div
-                  className="absolute inset-0 bg-cover top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-xl"
-                  style={{ backgroundImage: `url(${card.image})` }}
-                ></div>
-                <div
-                  className={`absolute inset-0 bg-gradient-to-b  from-black to-transparent opacity-70 top-1.5 left-1.5 right-1.5 bottom-1.5 rounded-xl`}
-                ></div>
-
-                <div className="z-20 relative flex flex-col gap-1 font-clashdisplay">
-                  <span className="font-extralight text-2xl">
-                    {card.number}
-                  </span>
-                  <br />
-                  <h3 className="text-4xl font-medium">{card.title}</h3>
-                </div>
-
-                <div className="absolute bottom-6 left-6">{card.icon}</div>
-
-                <div
-                  className={`absolute bottom-0 right-0 ${
-                    card.theme === "dark"
-                      ? "bg-primary before:bg-[url('/img/substract3.svg')] after:bg-[url('/img/substract3.svg')]"
-                      : "bg-white before:bg-[url('/img/substract2.svg')] after:bg-[url('/img/substract2.svg')]"
-                  } p-8 rounded-tl-[32px] cursor-pointer before:absolute before:bottom-1.5 before:-left-[32px] before:w-[32px] before:h-[32px]  before:bg-no-repeat before:bg-contain before:rotate-90
-                           after:absolute after:-top-[32px] after:right-1.5 after:w-[32px] after:h-[32px]  after:bg-no-repeat after:bg-contain after:rotate-90`}
-                  onClick={() => toggleDescription(card.id)}
-                >
-                  <PlusIcon
-                    dark={card.theme === "light"}
-                    className="h-8 w-8 relative -right-[2px]"
-                  />
-                </div>
-
-                {activeCard === card.id && (
-                  <div className="z-20 relative mt-4 p-4 bg-opacity-80 bg-primary text-white rounded-xl">
-                    <p>{card.description}</p>
-                  </div>
-                )}
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -570,28 +493,28 @@ const Home: FC = () => {
                 className="flex transition-transform duration-500 ease-in-out gap-1 w-full"
                 style={{
                   transform: `translateX(-${current * (100 / products.length)}%)`, // Mueve exactamente un tercio del contenedor
-                  width: `${(products.length * 100) / 3}%`, // Ajusta el ancho del contenedor
+                  width: `${(products.length * 100) / 4}%`, // Ajusta el ancho del contenedor
                 }}
               >
                 {products.map((product) => (
                   <div
                     key={product.id}
-                    className="w-1/3 bg-white flex flex-col justify-between p-4"
+                    className="w-1/3 bg-white flex flex-col justify-between py-2.5 px-3"
                   >
                     <Image
                       src={product.image}
                       alt={product.name}
-                      className="w-full object-cover"
+                      className="w-full object-cover max-h-[500px] my-auto"
                       width={700}
                       height={700}
                       quality={100}
                     />
-                    <div className="p-4 flex justify-between items-end gap-4">
+                    <div className="p-1.5 flex justify-between items-end gap-4">
                       <div>
                         <div className="text-lg text-mainGray font-light">
                           {product.category}
                         </div>
-                        <div className="text-2xl font-medium font-clashdisplay !leading-none">
+                        <div className="text-xl font-medium font-clashdisplay !leading-none">
                           {product.name}
                         </div>
                         <div className="text-lg font-clashdisplay">
@@ -599,7 +522,7 @@ const Home: FC = () => {
                           <span className="text-base">{product.currency}</span>
                         </div>
                       </div>
-                      <div className="flex items-center mt-4 border-2 border-black overflow-hidden">
+                      <div className="flex items-center mt-4 border-2 border-black overflow-hidden min-w-[140px] max-w-[150px]">
                         <button
                           className="w-10 h-10 flex items-center justify-center !text-4xl font-clash text-mainGray"
                           onClick={() => decrementQuantity(product.id)}
@@ -670,9 +593,9 @@ const Home: FC = () => {
       <section className="bg-gradient-to-b from-primary to-secondary py-24 -mt-20 relative z-30">
         <Marquee speed={40}>
           <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
-            Boutique Studio Fitness Centers · Indoor Cycling · Boutique Studio
-            Fitness Centers · Indoor Cycling · Boutique Studio Fitness Centers ·
-            Indoor Cycling ·{" "}
+            Boutique Studio · Fitness Centers · Indoor Cycling · Boutique Studio
+            · Fitness Centers · Indoor Cycling · Boutique Studio · Fitness
+            Centers · Indoor Cycling ·{" "}
           </div>
         </Marquee>
       </section>
@@ -690,7 +613,7 @@ const Home: FC = () => {
                   ¿Estás listo para impulsar tu
                   <br />
                   <span className="font-medium text-xl lg:text-5xl">
-                    fitness center?
+                    Fitness Center?
                   </span>
                 </h1>
                 <div className="flex flex-col gap-3">
@@ -698,10 +621,10 @@ const Home: FC = () => {
                     ¿Necesitas ayuda personalizada?
                   </span>
                   <Link
-                    href="mailto:info@gewinnsolutions.co"
+                    href="mailto:contacto@gewinnsolutions.co"
                     className="text-xl lg:text-3xl font-light tracking-wide"
                   >
-                    info@gewinnsolutions.com
+                    contacto@gewinnsolutions.com
                   </Link>
                   <Link
                     href="#"

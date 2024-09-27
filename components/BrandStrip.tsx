@@ -19,6 +19,7 @@ const brands = [
   { id: 9, name: "Dopamine", image: "/img/clients/dopamine.png" },
   { id: 10, name: "La Loma Golf", image: "/img/clients/laloma.png" },
   { id: 11, name: "Space Studio", image: "/img/clients/spacestudio.svg" },
+  { id: 12, name: "CTRL Indoor Cycling", image: "/img/clients/ctrl.svg" },
 ];
 
 const useIsMobile = () => {
