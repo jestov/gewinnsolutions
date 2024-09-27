@@ -424,12 +424,12 @@ const Home: FC = () => {
       <section className="pt-40 pb-28 bg-[#f1f3f5] w-full relative z-20 px-[20px] lg:px-64">
         {" "}
         <p className=" max-w-[1200px] mx-auto text-center container font-light text-2xl lg:text-5xl font-clash tracking-tight">
-          "Con{" "}
+          &quot;Con{" "}
           <span className="font-medium">
             pasión por la excelencia, hemos dejado una huella significativa en
             la industria del fitness,
           </span>{" "}
-          creando ambientes que inspiran bienestar."
+          creando ambientes que inspiran bienestar.&quot;
         </p>
       </section>
       <section className="pt-24 bg-[#f1f3f5] relative z-30 text-center">
