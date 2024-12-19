@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
 import { usePathname, useRouter } from "next/navigation";
 import Logo from "../components/Logo";
 import LogoDark from "../components/LogoDark";
@@ -10,6 +11,7 @@ import Link from "next/link";
 import PlusIcon from "./icons/PlusIcon";
 
 export default function Menu() {
+  const megaMenuRef = useRef<HTMLDivElement | null>(null);
   const [isScrolledPastMain, setIsScrolledPastMain] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,6 +20,27 @@ export default function Menu() {
   const pathname = usePathname();
   const router = useRouter();
   const [activeSection, setActiveSection] = useState<string>("");
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        megaMenuRef.current &&
+        !megaMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsMegaMenuOpen(false);
+      }
+    };
+
+    if (isMegaMenuOpen) {
+      document.addEventListener("click", handleClickOutside);
+    } else {
+      document.removeEventListener("click", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isMegaMenuOpen]);
 
   // Set searchParams using useEffect to ensure it's only used on the client-side
   useEffect(() => {
@@ -72,8 +95,14 @@ export default function Menu() {
   }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow =
-      isMobileMenuOpen || isMegaMenuOpen ? "hidden" : "";
+    if (isMegaMenuOpen) {
+      document.body.style.overflow = "auto";
+    } else if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -282,9 +311,11 @@ export default function Menu() {
 
       {isMegaMenuOpen && (
         <div
-          className={`mega-menu flex flex-col fixed !top-[72px] ${getMegaMenuBackgroundClass()} p-4 z-50 h-[30vh] border-b border-x border-secondary border-opacity-20 bg-[#F1F3F5] transition duration-300 rounded-b-[64px] items-center`}
+          ref={megaMenuRef}
+          className={`mega-menu flex flex-col fixed !top-[72px] ${getMegaMenuBackgroundClass()} px-4 z-50 h-[27vh] border-b border-x border-secondary border-opacity-20 bg-[#F1F3F5] transition duration-300 rounded-b-[64px] items-center overflow-auto`}
         >
           <div className="flex flex-col w-full gap-12 m-auto max-w-[1400px] h-full items-center justify-center">
+            {/* Contenido del MegaMenu */}
             <div className="flex gap-12 justify-between w-full items-center">
               <h3 className="text-primary font-extralight text-2xl font-clashdisplay !leading-none">
                 Soluciones
@@ -320,25 +351,25 @@ export default function Menu() {
             </div>
             <div className="flex gap-12 justify-between w-full items-center">
               <h3 className="text-primary font-extralight text-2xl font-clashdisplay !leading-none">
-                Soluciones by
+                Soluciones por
                 <br />
                 <span className="font-medium">partners especializados</span>
               </h3>
               <ul className="text-2xl flex gap-6">
                 <li className="font-clash font-medium flex gap-2 cursor-pointer">
-                  <Link href="/soluciones/adicionales">
+                  <Link href="/soluciones/adicionales#stages-indoor-bikes">
                     <span className="font-extralight">05</span> Stages Indoor
                     Bikes
                   </Link>
                 </li>
                 <li className="font-clash font-medium flex gap-2 cursor-pointer">
-                  <Link href="/soluciones/adicionales">
+                  <Link href="/soluciones/adicionales#equipamiento-de-gimnasios">
                     <span className="font-extralight">06</span> Equipamiento de
                     Gimnasios
                   </Link>
                 </li>
                 <li className="font-clash font-medium flex gap-2 cursor-pointer">
-                  <Link href="/soluciones/adicionales">
+                  <Link href="/soluciones/adicionales#redes-y-seguridad">
                     <span className="font-extralight">07</span> Redes y
                     Seguridad
                   </Link>

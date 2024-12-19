@@ -43,13 +43,14 @@ const Contacto: FC = () => {
                     ¿Necesitas ayuda personalizada?
                   </span>
                   <Link
-                    href="mailto:contacto@gewinnsolutions.co"
+                    href="mailto:contacto@gewinnsolutions.com"
                     className="text-xl lg:text-3xl font-light tracking-wide"
                   >
                     contacto@gewinnsolutions.com
                   </Link>
                   <Link
-                    href="#"
+                    href="https://api.whatsapp.com/send/?phone=523331004726"
+                    target="_blank"
                     className="text-xl lg:text-3xl font-light tracking-wide flex gap-3"
                   >
                     <WhatsAppIcon /> (+52) 1 33 3100 4726
@@ -76,47 +77,9 @@ const Contacto: FC = () => {
           </div>
         </div>
       </section>
-      <section className="bg-primary p-[10px] z-20 w-full rounded-t-[64px] overflow-hidden">
-        <div className="flex flex-col items-center h-full w-full bg-primary  min-h-[95vh] relative">
-          <Image
-            src="/img/ft_bg.jpg"
-            className="object-cover z-20 rounded-t-[60px] "
-            layout="fill"
-            alt="Fitness Total"
-          />
-          <div className="w-full h-full z-30 absolute bg-primary bg-opacity-40 flex flex-col p-20 justify-center items-center gap-10 text-center ">
-            <Image
-              src="/img/ft.svg"
-              width={200}
-              height={50}
-              alt="Fitness Total"
-            />
-            <h3 className="text-white text-3xl lg:text-8xl font-clashdisplay font-medium">
-              Llevamos tu
-              <br />
-              idea de 0 <ArrowIcon className="inline h-8 w-10" /> 100
-            </h3>
-            <p className="font-extralight text-lg text-white lg:max-w-2xl">
-              Transforma tu visión en realidad con nuestro servicio{" "}
-              <span className="font-semibold">
-                <i>Fitness Total.</i>
-              </span>{" "}
-              Este <span className="font-semibold">paquete completo</span>{" "}
-              incluye todo lo necesario para crear un{" "}
-              <span className="font-semibold">
-                espacio de fitness de primera clase,
-              </span>{" "}
-              desde el diseño y la instalación hasta el equipamiento y la
-              seguridad.
-            </p>
-            <ButtonWithArrow href="/services" dark={true}>
-              Contratar Fitness Total
-            </ButtonWithArrow>
-          </div>
-        </div>
-      </section>
+
       <section className="bg-white z-30 relative">
-        <div className="ml-auto w-full py-8 bg-primary relative z-30">
+        <div className="ml-auto max-w-[1350px] py-8 bg-primary rounded-tl-[64px] relative z-30">
           <div className="w-full bg-primary flex flex-col justify-center items-center gap-8 bottom-0 z-40 rounded-t-[64px]">
             <div className="absolute -top-[61px] right-0 w-[61px] h-[61px] bg-[url('/img/substract3.svg')] bg-no-repeat bg-contain rotate-90"></div>
             <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract3.svg')] bg-no-repeat bg-contain rotate-90"></div>
@@ -127,10 +90,10 @@ const Contacto: FC = () => {
 
       <section className="bg-gradient-to-b from-primary to-secondary py-24 relative z-30">
         <Marquee speed={40}>
-          <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
-            Boutique Studio · Fitness Centers · Indoor Cycling · Boutique Studio
-            · Fitness Centers · Indoor Cycling · Boutique Studio · Fitness
-            Centers · Indoor Cycling ·{" "}
+          <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap mr-[8px]">
+            Boutique Studios · Fitness Centers · Indoor Cycling · Gimnasios ·
+            Wellness Centers · Boutique Studios · Fitness Centers · Indoor
+            Cycling · Gimnasios · Wellness Centers ·{" "}
           </div>
         </Marquee>
       </section>

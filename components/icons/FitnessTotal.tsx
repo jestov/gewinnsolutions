@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function FitnessTotal() {
   return (
-    <Link href="https://jestov.xyz" target="_blank">
+    <Link href="#" target="_blank">
       <svg
         width="209"
         height="61"

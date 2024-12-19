@@ -16,6 +16,16 @@ import Marquee from "react-fast-marquee";
 import AddCartIcon from "@/components/icons/AddCartIcon";
 import ChevronIcon from "@/components/icons/ChevronIcon";
 import PlusIcon from "@/components/icons/PlusIcon";
+import StagesDark from "@/components/icons/StagesDark";
+import WifiDark from "@/components/icons/WifiDark";
+import GymDark from "@/components/icons/GymDark";
+import Light from "@/components/icons/Light";
+import Grid from "@/components/icons/Grid";
+import Speaker from "@/components/icons/Speaker";
+import FitnessTotal from "@/components/icons/FitnessTotal";
+import Stages from "@/components/icons/Stages";
+import Gym from "@/components/icons/Gym";
+import Wifi from "@/components/icons/Wifi";
 
 const products = [
   {
@@ -101,44 +111,7 @@ const cards = [
     image: "/img/cycling.jpg",
     description: "Descubre nuestras bicicletas indoor de alta calidad.",
     theme: "light", // Options: "light" or "dark"
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="64"
-        height="64"
-        viewBox="0 0 64 64"
-        fill="none"
-      >
-        <path
-          d="M37.3333 18.6667C40.2789 18.6667 42.6667 16.2789 42.6667 13.3333C42.6667 10.3878 40.2789 8 37.3333 8C34.3878 8 32 10.3878 32 13.3333C32 16.2789 34.3878 18.6667 37.3333 18.6667Z"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M48 56C52.4183 56 56 52.4183 56 48C56 43.5817 52.4183 40 48 40C43.5817 40 40 43.5817 40 48C40 52.4183 43.5817 56 48 56Z"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M16 56C20.4183 56 24 52.4183 24 48C24 43.5817 20.4183 40 16 40C11.5817 40 8 43.5817 8 48C8 52.4183 11.5817 56 16 56Z"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M30.6667 47.9998L34.6667 37.3332L21.6472 31.9998L29.6479 22.6667L37.6479 29.3333L46.9812 29.3333"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
+    icon: <Stages />,
   },
   {
     id: 2,
@@ -147,118 +120,16 @@ const cards = [
     image: "/img/equipamiento.jpg",
     description: "El mejor equipamiento para gimnasios de alto rendimiento.",
     theme: "dark",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="65"
-        height="64"
-        viewBox="0 0 65 64"
-        fill="none"
-      >
-        <path
-          d="M21.0499 18.6667H12.2833C11.7586 18.6667 11.3333 19.092 11.3333 19.6167V44.3834C11.3333 44.908 11.7586 45.3334 12.2833 45.3334H21.0499C21.5746 45.3334 21.9999 44.908 21.9999 44.3834V19.6167C21.9999 19.092 21.5746 18.6667 21.0499 18.6667Z"
-          stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M53.0499 18.6667H44.2833C43.7586 18.6667 43.3333 19.092 43.3333 19.6167V44.3834C43.3333 44.908 43.7586 45.3334 44.2833 45.3334H53.0499C53.5746 45.3334 53.9999 44.908 53.9999 44.3834V19.6167C53.9999 19.092 53.5746 18.6667 53.0499 18.6667Z"
-          stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M3.3335 39.05V24.95C3.3335 24.4253 3.75883 24 4.2835 24H10.3835C10.9082 24 11.3335 24.4253 11.3335 24.95V39.05C11.3335 39.5747 10.9082 40 10.3835 40H4.2835C3.75883 40 3.3335 39.5747 3.3335 39.05Z"
-          stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M62 39.05V24.95C62 24.4253 61.5747 24 61.05 24H54.95C54.4253 24 54 24.4253 54 24.95V39.05C54 39.5747 54.4253 40 54.95 40H61.05C61.5747 40 62 39.5747 62 39.05Z"
-          stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M22 32H43.3333"
-          stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    ),
+    icon: <Gym />,
   },
   {
     id: 3,
     number: "06",
-    title: "Redes y seguridad",
+    title: "Redes y Seguridad",
     image: "/img/video.jpg",
     description: "Pisos de alta resistencia diseñados para gimnasios.",
     theme: "light",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="56"
-        height="55"
-        viewBox="0 0 56 55"
-        fill="none"
-      >
-        <path
-          d="M2.625 48.125L9.82738 6.875H45.8393L53.0417 48.125H2.625Z"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M4.91675 37.8125H50.7501"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M7.20837 27.5H48.4584"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M9.5 17.1875H46.1667"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M27.8334 6.875V48.125"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M18.6667 8.02081L15.2292 46.9791"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M37 8.02081L40.4375 46.9791"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    ),
+    icon: <Wifi />,
   },
   // Add more cards
 ];
@@ -268,28 +139,28 @@ const servicesTabs = [
     id: 1,
     title: "01 Audio",
     description:
-      "Desarrollamos <strong>sistemas de sonido personalizados</strong>, con equipos especializados en fitness, contamos con la mayor experiencia en estudios boutique fitness. Nos involucramos en el <strong>tratamiento acústico</strong> desde el inicio del proyecto, para garantizar la mayor eficiencia sonora y con diseños personalizados para cada proyecto.",
+      "Instalamos sistemas de <span class='font-medium'>sonido personalizados,</span> con equipos y <span class='font-medium'>tratamiento acústico especializado</span> para garantizar un sonido extraordinario, <span class='font-medium'>adaptado a las exigencias de cada espacio,</span> creando <span class='font-medium'>experiencias envolventes y energizantes</span> que potencian el rendimiento en cada sesión.",
     videoSrc: "/videos/1.mp4",
   },
   {
     id: 2,
     title: "02 Iluminación",
     description:
-      "Creamos <strong>ambientes únicos</strong> con soluciones de iluminación personalizadas para mejorar la <strong>experiencia de entrenamiento</strong>.",
+      "Planificamos y ejecutamos <span class='font-medium'>diseños de iluminación adaptados a cualquier entorno,</span> con especialidad en LED pixel. <span class='font-medium'>Creamos efectos visuales dinámicos y personalizados</span> que no solo realzan la estética, sino que <span class='font-medium'>optimizan la funcionalidad de cada espacio.</span>",
     videoSrc: "/videos/2.mp4",
   },
   {
     id: 3,
     title: "03 Diseño",
     description:
-      "Diseñamos <strong>espacios que reflejan la identidad</strong> de cada proyecto, optimizando la <strong>funcionalidad</strong> y estética.",
+      "Nuestro equipo de arquitectos crea <span class='font-medium'>espacios que equilibran funcionalidad y estética,</span> cuidando cada detalle desde la distribución hasta la <span class='font-medium'>identidad única de cada proyecto.</span> Transformamos tus <span class='font-medium'>ideas en espacios que inspiran y motivan</span> la experiencia del usuario.",
     videoSrc: "/videos/1.mp4",
   },
   {
     id: 4,
     title: "04 Fitness Total",
     description:
-      "Un <strong>servicio integral</strong> que incluye diseño, instalación, equipos y seguridad para crear un <strong>espacio fitness de primera clase</strong>.",
+      "<span class='font-medium'>Convierte tu visión en realidad con Fitness Total.</span> Nuestro paquete integral abarca <span class='font-medium'>diseño, instalación y equipamiento para un espacio fitness de primera clase,</span> asegurando un entorno funcional y excepcional que <span class='font-medium'>eleva la experiencia de tus usuarios.</span>",
     videoSrc: "/videos/2.mp4",
   },
 ];
@@ -371,12 +242,11 @@ const Home: FC = () => {
 
           <div className="relative w-full max-w-[1600px] flex flex-col justify-center items-center text-center pt-[100px] smx-auto gap-8 lg:px-4 px-[10px] z-20">
             <div className="flex flex-col gap-10 max-w-6xl z-11 relative">
-              <h1 className="text-2xl lg:text-6xl text-white font-clashdisplay font-light !leading-none">
-                Construyendo
+              <h1 className="text-2xl lg:text-7xl text-white font-clashdisplay font-light !leading-none">
+                Diseñamos{" "}
+                <span className="font-medium">Experiencias Fitness</span>
                 <br />
-                <span className="font-medium">{typedText}</span>
-                <br />
-                con maestría
+                para <span className="font-medium">desafiar tus límites.</span>
               </h1>
             </div>
           </div>
@@ -394,43 +264,59 @@ const Home: FC = () => {
             <span className="text-mainGray text-xl relative font-light font-sans -top-0.5 tracking-normal">
               (01) Nosotros
             </span>{" "}
-            <span className="font-medium">Nuestra misión</span> es diseñar y
-            construir{" "}
+            Nuestra misión es{" "}
             <span className="font-medium">
-              espacios de fitness que cumplan con los más altos estándares de
-              funcionalidad y estética
+              diseñar y construir espacios{" "}
+              <span className="italic">fitness</span>
             </span>{" "}
-            y además que inspiren a las personas a alcanzar sus objetivos de
-            salud y bienestar
+            que cumplan con los{" "}
+            <span className="font-medium">más altos estándares</span> de{" "}
+            <span className="font-medium">funcionalidad y estética</span> y
+            además que inspiren a las personas a alcanzar sus objetivos{" "}
+            <span className="font-medium">de salud y bienestar</span>
           </h2>
           <ButtonWithArrow href="/nosotros">
             Conoce nuestra historia
           </ButtonWithArrow>
         </div>
       </section>
-      <section className="p-[20px] bg-cover text-white z-20 h-[70vh] bg-white top-[74px]  sticky">
+      <section className="mb-24 px-[20px] bg-cover text-white z-20 h-[70vh] bg-white top-[74px]  sticky lg:max-w-3/4 lg:w-3/4 mx-auto">
         <div className="flex justify-center rounded-[64px] relative overflow-hidden h-full">
           <VideoPlayer />
         </div>
       </section>
 
-      <section className="mx-auto text-center w-3/4 bg-gray-50 z-20 relative rounded-t-[64px] border-t border-mainGray border-opacity-20">
-        <div className=" w-full bg-[#f1f3f5] py-6 flex flex-col justify-center items-center gap-12 bottom-0 z-40 rounded-t-[64px]">
+      <section className="ml-auto text-center w-3/4 bg-gray-50 z-20 relative rounded-tl-[64px] border-t border-mainGray border-opacity-20">
+        <div className=" w-full bg-[#f1f3f5] py-6 flex flex-col justify-center items-center gap-12 bottom-0 z-40 rounded-tl-[64px]">
           <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain"></div>
-          <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-90"></div>
           <BrandStrip gradientColor={true} />
         </div>{" "}
       </section>
       <section className="pt-40 pb-28 bg-[#f1f3f5] w-full relative z-20 px-[20px] lg:px-64">
-        {" "}
-        <p className=" max-w-[1200px] mx-auto text-center container font-light text-2xl lg:text-5xl font-clash tracking-tight">
-          &quot;Con{" "}
+        <p className=" max-w-[1200px] mx-auto text-center container font-light text-2xl lg:text-5xl font-clash !leading-snug tracking-tight">
           <span className="font-medium">
-            pasión por la excelencia, hemos dejado una huella significativa en
-            la industria del fitness,
+            &quot;Con pasión por la excelencia, hemos dejado una huella
+            significativa
           </span>{" "}
-          creando ambientes que inspiran bienestar.&quot;
+          en la industria del fitness,{" "}
+          <span className="font-medium">
+            creando ambientes que inspiran bienestar.&quot;
+          </span>
         </p>
+
+        <div className="flex mx-auto justify-between py-12 items-center gap-4 w-2/3 animate-pulse">
+          <Speaker />
+          <Light />
+          <Grid />
+          <StagesDark />
+          <GymDark />
+          <WifiDark />
+        </div>
+        <h1 className="text-xl lg:text-2xl font-clashdisplay font-light !leading-none text-center min-h-[75px] ">
+          Construyendo con maestría
+          <br />
+          <span className="font-medium lg:text-5xl"> {typedText}</span>
+        </h1>
       </section>
       <section className="pt-24 bg-[#f1f3f5] relative z-30 text-center">
         <span className="text-mainGray text-xl relative font-light font-sans tracking-normal  mx-auto -bottom-[15px]">
@@ -454,30 +340,29 @@ const Home: FC = () => {
           </video>
 
           <div className="absolute w-7/12 bg-[#f1f3f5] pb-6 flex flex-col justify-center items-center gap-2 -top-[5px] z-40 rounded-b-[64px] h-[114px]">
-            <div className="absolute top-[5px] -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract5.svg')] bg-no-repeat bg-contain"></div>
-            <div className="absolute top-[5px] -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-180"></div>
+            <div className="absolute top-[5px] -left-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract5.svg')] bg-no-repeat bg-contain"></div>
+            <div className="absolute top-[5px] -right-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-180"></div>
 
             <h3 className="text-2xl lg:text-4xl text-primary text-center font-clashdisplay font-extralight">
-              Especialistas en{" "}
-              <span className="font-medium">
-                espacios fitness y<br /> experiencias de entrenamiento
-              </span>
+              <span className="font-medium">Especialistas</span> en{" "}
+              <span className="font-medium">espacios fitness</span> y<br />{" "}
+              <span className="font-medium">experiencias</span> de entrenamiento
             </h3>
           </div>
 
           <div className="absolute w-7/12 flex flex-col justify-center items-center gap-4 bottom-0 z-40">
-            <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain"></div>
-            <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-90"></div>
+            <div className="absolute bottom-0 -left-[60px] w-[60px] h-[60px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain"></div>
+            <div className="absolute bottom-0 -right-[60px] w-[60px] h-[60px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-90"></div>
 
             {/* Tab Navigation */}
-            <div className="w-full h-full grid grid-cols-4 rounded-t-[32px] border-t-4 border-l-4 border-r-4 border-[#f1f3f5] overflow-hidden">
+            <div className="w-full h-full grid grid-cols-4">
               {servicesTabs.map((service) => (
                 <button
                   key={service.id}
-                  className={`px-4 py-9 h-[120px] border-r-4 border-[#f1f3f5] "> ${
+                  className={`px-4 py-9 h-[124px] border-r-4 border-[#f1f3f5] first:border-l-4 last:border-t-4 last:border-r-4 first:rounded-tl-[64px] last:rounded-tr-[64px] rounded-[64px]"> ${
                     activeTab === service.id
-                      ? "bg-[#f1f3f5] text-primary text-xl lg:text-2xl font-clashdisplay font-medium"
-                      : "bg-transparent text-white hover:bg-white hover:bg-opacity-15 last:border-none text-xl lg:text-2xl font-clashdisplay font-medium transition ease-in-out duration-500 relative first:before:absolute first:before:-bottom-[0px] first:before:-left-[0px] first:before:w-[32px] first:before:h-[32px] first:before:bg-[url('/img/substract5.svg')] first:before:bg-no-repeat first:before:bg-contain first:before:rotate-180 last:before:absolute last:before:bottom-0 last:before:-right-[0px] last:before:w-[32px] last:before:h-[32px] last:before:bg-[url('/img/substract4.svg')] last:before:bg-no-repeat last:before:bg-contain"
+                      ? "bg-[#f1f3f5] text-primary text-xl lg:text-2xl font-clashdisplay font-medium w-full"
+                      : "bg-transparent text-white hover:bg-white hover:bg-opacity-15 text-xl lg:text-2xl font-clashdisplay font-medium transition ease-in-out duration-500 relative first:before:absolute first:before:-bottom-[0px] first:before:-left-[0px] first:before:w-[60px] first:before:h-[60px] first:before:bg-[url('/img/substract5.svg')] first:before:bg-no-repeat first:before:bg-contain first:before:rotate-180 last:before:absolute last:before:bottom-0 last:before:-right-[0px] last:before:w-[60px] last:before:h-[60px] last:before:bg-[url('/img/substract4.svg')] last:before:bg-no-repeat last:before:bg-contain border-t-4 border-r-4 border-[#f1f3f5]"
                   }`}
                   onClick={() => setActiveTab(service.id)}
                 >
@@ -493,8 +378,10 @@ const Home: FC = () => {
             <h2 className="font-medium text-3xl lg:text-5xl font-clashdisplay">
               {servicesTabs[activeTab - 1].title}
             </h2>
-            <ButtonWithArrow href="/contacto">
-              Contratar servicio
+            <ButtonWithArrow
+              href={`soluciones?tab=${servicesTabs[activeTab - 1].id}`}
+            >
+              Conocer más
             </ButtonWithArrow>
           </div>
           <p
@@ -519,10 +406,23 @@ const Home: FC = () => {
                 </span>
               </h3>
               <p className="font-extralight text-lg">
-                Descubre nuestras soluciones integrales ofrecidas a través de{" "}
-                <span className="font-semibold">
-                  socios confiables, diseñadas para satisfacer todas las
-                  necesidades de tu gimnasio.
+                Ofrecemos{" "}
+                <span className="font-medium">Soluciones Integrales</span> a
+                través de alianzas estratégicas con líderes de la industria,
+                diseñadas para
+                <span className="font-medium">
+                  {" "}
+                  optimizar cada aspecto de tu centro fitness.
+                </span>
+                <br /> <br />
+                Desde equipos y accesorios de alto rendimiento hasta{" "}
+                <span className="font-medium">
+                  sistemas avanzados de seguridad y conectividad,
+                </span>{" "}
+                garantizamos un entorno seguro, eficiente y de última
+                tecnología,{" "}
+                <span className="font-medium">
+                  impulsando el éxito de tu negocio.
                 </span>
               </p>
             </div>
@@ -552,26 +452,20 @@ const Home: FC = () => {
 
                   <div className="absolute bottom-6 left-6">{card.icon}</div>
 
-                  <div
+                  <Link
+                    href={`/soluciones/adicionales#${card.title.toLowerCase().replace(/\s+/g, "-")}`}
                     className={`absolute bottom-0 right-0 ${
                       card.theme === "dark"
                         ? "bg-primary before:bg-[url('/img/substract3.svg')] after:bg-[url('/img/substract3.svg')]"
                         : "bg-white before:bg-[url('/img/substract2.svg')] after:bg-[url('/img/substract2.svg')]"
                     } p-8 rounded-tl-[32px] cursor-pointer before:absolute before:bottom-1.5 before:-left-[32px] before:w-[32px] before:h-[32px]  before:bg-no-repeat before:bg-contain before:rotate-90
                            after:absolute after:-top-[32px] after:right-1.5 after:w-[32px] after:h-[32px]  after:bg-no-repeat after:bg-contain after:rotate-90`}
-                    onClick={() => toggleDescription(card.id)}
                   >
                     <PlusIcon
                       dark={card.theme === "light"}
                       className="h-8 w-8 relative -right-[2px]"
                     />
-                  </div>
-
-                  {activeCard === card.id && (
-                    <div className="z-20 relative mt-4 p-4 bg-opacity-80 bg-primary text-white  rounded-2xl">
-                      <p>{card.description}</p>
-                    </div>
-                  )}
+                  </Link>
                 </div>
               ))}
             </div>
@@ -601,19 +495,20 @@ const Home: FC = () => {
               idea de 0 <ArrowIcon className="inline" /> 100
             </h3>
             <p className="font-extralight text-lg text-white">
-              Transforma tu visión en realidad con nuestro servicio{" "}
+              Transforma tu{" "}
+              <span className="font-semibold">visión en realidad</span> con
+              nuestro servicio{" "}
+              <span className="font-semibold">Fitness TOTAL.</span> Este{" "}
+              <span className="font-semibold">paquete completo</span> incluye
+              todo lo necesario para{" "}
               <span className="font-semibold">
-                <i>Fitness Total.</i>
-              </span>{" "}
-              Este <span className="font-semibold">paquete completo</span>{" "}
-              incluye todo lo necesario para crear un{" "}
-              <span className="font-semibold">
-                espacio de fitness de primera clase,
-              </span>{" "}
-              desde el diseño y la instalación hasta el equipamiento y la
-              seguridad.
+                crear un espacio de <span className="italic">fitness</span> de
+                primera clase
+              </span>
+              , desde el diseño y la instalación, hasta el equipamiento,
+              seguridad y conectividad.
             </p>
-            <ButtonWithArrow href="/services" dark={true}>
+            <ButtonWithArrow href="/contacto" dark={true}>
               Contratar Fitness Total
             </ButtonWithArrow>
           </div>
@@ -744,10 +639,10 @@ const Home: FC = () => {
       </section>
       <section className="bg-gradient-to-b from-primary to-secondary py-24 -mt-20 relative z-30">
         <Marquee speed={40}>
-          <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap">
-            Boutique Studio · Fitness Centers · Indoor Cycling · Boutique Studio
-            · Fitness Centers · Indoor Cycling · Boutique Studio · Fitness
-            Centers · Indoor Cycling ·{" "}
+          <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap mr-[8px]">
+            Boutique Studios · Fitness Centers · Indoor Cycling · Gimnasios ·
+            Wellness Centers · Boutique Studios · Fitness Centers · Indoor
+            Cycling · Gimnasios · Wellness Centers ·{" "}
           </div>
         </Marquee>
       </section>
@@ -773,13 +668,14 @@ const Home: FC = () => {
                     ¿Necesitas ayuda personalizada?
                   </span>
                   <Link
-                    href="mailto:contacto@gewinnsolutions.co"
+                    href="mailto:contacto@gewinnsolutions.com"
                     className="text-xl lg:text-3xl font-light tracking-wide"
                   >
                     contacto@gewinnsolutions.com
                   </Link>
                   <Link
-                    href="#"
+                    href="https://api.whatsapp.com/send/?phone=523331004726"
+                    target="_blank"
                     className="text-xl lg:text-3xl font-light tracking-wide flex gap-3"
                   >
                     <WhatsAppIcon /> (+52) 1 33 3100 4726

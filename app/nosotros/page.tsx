@@ -20,25 +20,24 @@ const Nosotros: FC = () => {
             <span className="font-clash text-lg">Nosotros</span>
           </div>
           <h3 className="text-3xl lg:text-6xl text-primary font-clashdisplay font-extralight">
-            Especialistas en{" "}
-            <span className="font-medium">
-              espacios fitness y<br /> experiencias de entrenamiento
-            </span>
+            <span className="font-medium">Especialistas</span> en{" "}
+            <span className="font-medium">espacios fitness</span> y<br />{" "}
+            <span className="font-medium">experiencias</span> de entrenamiento
           </h3>
         </div>
         <div className="flex rounded-[64px] relative overflow-hidden h-[70vh]">
-          <div className="absolute ml-32 w-6/12 bg-white pb-8 px-14 flex flex-col justify-center items-center gap-2 -top-[5px] rounded-b-[64px] h-[124px] z-40">
+          <div className="absolute ml-40 w-6/12 bg-white pb-8 px-14 flex flex-col justify-center items-center gap-2 -top-[5px] rounded-b-[64px] h-[124px] z-40">
             <div className="absolute top-[5px] -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract2.svg')] bg-no-repeat bg-contain"></div>
             <div className="absolute top-[5px] -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract.svg')] bg-no-repeat bg-contain rotate-180"></div>
             <p className="font-extralight text-lg text-primary">
-              <span className="font-semibold">Nuestra misión </span>es diseñar y
-              construir{" "}
+              Nuestra misión es diseñar y construir{" "}
+              <span className="font-semibold">espacios de fitness</span> que no
+              solo cumplan con los{" "}
               <span className="font-semibold">
-                espacios de fitness que cumplan con los más altos estándares de
-                funcionalidad y estética
-              </span>
-              y además inspiren a las personas a alcanzar sus objetivos de salud
-              y bienestar.
+                más altos estándares de funcionalidad y estética,
+              </span>{" "}
+              sino que también inspiren a las personas a alcanzar sus objetivos
+              de <span className="font-semibold">salud y bienestar.</span>
             </p>
           </div>
           <VideoPlayer />
@@ -46,14 +45,20 @@ const Nosotros: FC = () => {
       </main>
       <section className="text-primary text-2xl lg:text-4xl mx-auto max-w-[1000px] text-center pt-28 pb-32">
         <h4 className="font-extralight tracking-tight leading-relaxed">
-          En nuestra firma, nos dedicamos a crear experiencias transformadoras a
-          través del diseño personalizado de sistemas de audio e iluminación
-          para estudios{" "}
+          En nuestra firma, nos dedicamos a{" "}
           <span className="font-semibold">
-            <i>boutique y Fitness Centers.</i> Desde la concepción
-            arquitectónica hasta la instalación final,
+            crear experiencias transformadoras
           </span>{" "}
-          cada proyecto es una obra de pasión y precisión.{" "}
+          a través del diseño personalizado de sistemas de audio e iluminación
+          para{" "}
+          <span className="font-semibold">
+            estudios
+            <i>boutique y Fitness Centers.</i>
+          </span>{" "}
+          Desde la concepción arquitectónica hasta la instalación final,{" "}
+          <span className="font-semibold">
+            cada proyecto es una obra de pasión y precisión.
+          </span>
         </h4>
       </section>
       <section className="bg-primary text-lg lg:text-xl mx-auto w-full text-white pt-28 pb-64 sticky z-20 top-[70px]">
@@ -64,7 +69,10 @@ const Nosotros: FC = () => {
               convertir la visión de nuestros clientes en realidades tangibles,
             </span>{" "}
             creando espacios que no solo son funcionales y eficientes, sino
-            también estéticamente deslumbrantes e inspiradores.
+            también{" "}
+            <span className="font-semibold">
+              estéticamente deslumbrantes e inspiradores.
+            </span>
           </h5>
           <h5 className="font-extralight tracking-tight leading-relaxed">
             Nuestro equipo de arquitectos cuida cada detalle,{" "}
@@ -72,10 +80,12 @@ const Nosotros: FC = () => {
               desde la distribución y armonía de los espacios, hasta la creación
               de renders de alta calidad que te permiten visualizar el resultado
               de tu sueño.
-            </span>
+            </span>{" "}
             Con pasión por la excelencia hemos dejado una huella significativa
-            en la industria del fitness, creando ambientes que inspiran
-            bienestar.
+            en la industria del fitness, creando{" "}
+            <span className="font-semibold">
+              ambientes que inspiran bienestar.
+            </span>
           </h5>
         </div>
       </section>
@@ -93,12 +103,16 @@ const Nosotros: FC = () => {
           <h2 className="text-center text-4xl font-medium mb-6 font-clashdisplay">
             Principios <span className="font-extralight">que nos</span> impulsan
           </h2>
-          <p className="text-center text-lg font-light mb-20 lg:w-2/4 mx-auto">
-            Con pasión por la excelencia{" "}
+          <p className="text-center text-lg font-light mb-20 lg:w-3/4 mx-auto">
+            Nuestros valores guían cada paso que damos, desde la{" "}
+            <span className="font-semibold">creación de espacios fitness</span>{" "}
+            hasta la implementación de{" "}
+            <span className="font-semibold">soluciones innovadoras.</span> Con
+            una <span className="font-semibold">visión</span> clara, buscamos{" "}
             <span className="font-semibold">
-              hemos dejado una huella significativa en la industria del fitness
-            </span>
-            , creando ambientes que inspiran bienestar.
+              inspirar bienestar y elevar el rendimiento
+            </span>{" "}
+            en cada proyecto.
           </p>
 
           <div>
@@ -122,7 +136,9 @@ const Nosotros: FC = () => {
               <p className="text-lg font-light lg:w-2/4 ">
                 Fomentamos la creatividad y la implementación de soluciones
                 vanguardistas con{" "}
-                <span className="font-semibold">tecnología premium.</span>
+                <span className="font-semibold">
+                  equipos de tecnología premium.
+                </span>
               </p>
             </div>
 
@@ -138,7 +154,7 @@ const Nosotros: FC = () => {
                 y promovemos la colaboración entre nuestros empleados, socios y
                 clientes para{" "}
                 <span className="font-semibold">
-                  alcanzar objetivos comunes.
+                  alcanzar objetivos en común.
                 </span>
               </p>
             </div>
@@ -184,7 +200,7 @@ const Nosotros: FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-32 max-w-[1400px] mx-auto z-2 relative w-full">
           <div className="flex flex-col gap-14 items-center md:items-start">
             <div className="flex gap-8 font-clash">
-              <span className="text-mainGray text-lg">(04)</span>
+              <span className="text-mainGray text-lg opacity-0">(04)</span>
               <div className="flex flex-col gap-16 font-normal tracking-wide text-lg">
                 Contacto
                 <h1 className="font-clash text-2xl lg:text-3xl relative font-light tracking-normal">
@@ -199,13 +215,15 @@ const Nosotros: FC = () => {
                     ¿Necesitas ayuda personalizada?
                   </span>
                   <Link
-                    href="mailto:contacto@gewinnsolutions.co"
+                    href="mailto:contacto@gewinnsolutions.com"
                     className="text-xl lg:text-3xl font-light tracking-wide"
+                    target="_blank"
                   >
                     contacto@gewinnsolutions.com
                   </Link>
                   <Link
-                    href="#"
+                    href="https://api.whatsapp.com/send/?phone=523331004726"
+                    target="_blank"
                     className="text-xl lg:text-3xl font-light tracking-wide flex gap-3"
                   >
                     <WhatsAppIcon /> (+52) 1 33 3100 4726

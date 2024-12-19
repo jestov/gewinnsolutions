@@ -25,23 +25,23 @@ const Soluciones: FC = () => {
       id: 1,
       title: "01 Audio",
       description:
-        "Desarrollamos <strong>sistemas de sonido personalizados</strong>, con equipos especializados en fitness, contamos con la mayor experiencia en estudios boutique fitness. Nos involucramos en el <strong>tratamiento acústico</strong> desde el inicio del proyecto, para garantizar la mayor eficiencia sonora y con diseños personalizados para cada proyecto.",
+        "Somos un equipo de <span class='font-semibold'>apasionados del audio</span>, dedicados a crear <span class='font-semibold'>sistemas de sonido personalizados</span> que se ajustan perfectamente a cada <span class='font-semibold'>espacio fitness</span>. Con <span class='font-semibold'>amplia experiencia</span> en <span class='font-semibold'>estudios boutique</span> y <span class='font-semibold'>wellness centers</span>, desarrollamos <span class='font-semibold'>soluciones únicas</span> que buscan <span class='font-semibold'>superar las expectativas</span> de nuestros clientes, siempre con un enfoque en <span class='font-semibold'>eficiencia</span> y <span class='font-semibold'>alto rendimiento</span>.<br /><br /> Colaboramos con <span class='font-semibold'>arquitectos</span> desde el inicio para garantizar un <span class='font-semibold'>tratamiento acústico especializado</span> que optimice la <span class='font-semibold'>calidad sonora</span>. Cada diseño es <span class='font-semibold'>personalizado</span> y asegura que el sonido se integre <span class='font-semibold'>armoniosamente</span> al espacio, elevando tanto la <span class='font-semibold'>estética</span> como la <span class='font-semibold'>experiencia auditiva</span>.",
       videoSrc: "/videos/1.mp4",
       img: ["/img/audio-1.jpg", "/img/audio-2.jpg", "/img/audio-3.jpg"],
       whyService:
-        "Nuestro equipo de arquitectos se especializa en el diseño de espacios fitness que combinan funcionalidad y estética. Cada proyecto es personalizado para asegurar que se maximice el rendimiento del espacio y se cree una atmósfera motivadora y atractiva.",
+        "En nuestro equipo de <span class='font-semibold'>Ingenieros de Sonido</span>, nos especializamos en diseñar <span class='font-semibold'>sistemas de audio personalizados</span> que no solo optimizan el <span class='font-semibold'>rendimiento de los equipos instalados</span>, sino que también elevan la <span class='font-semibold'>experiencia sonora</span> de los <span class='font-semibold'>espacios fitness</span>.<br /><br /> Con una <span class='font-semibold'>amplia trayectoria</span> en la industria, combinamos <span class='font-semibold'>ingeniería avanzada</span> con una <span class='font-semibold'>visión estética</span>, asegurándonos de que el sonido no solo sea <span class='font-semibold'>impecable</span>, sino que también se integre de manera <span class='font-semibold'>armónica</span> y <span class='font-semibold'>elegante</span> en el diseño del lugar.<br /><br /> Nuestro objetivo es lograr que cada espacio <span class='font-semibold'>suene sublime</span>, sin sacrificar su <span class='font-semibold'>esplendor visual</span>.",
       benefits: [
         "Diseño personalizado",
-        "Renders de Alta Calidad",
-        "Optimización del espacio",
-        "Materiales y Acabados Premium",
+        "Visión estética",
+        "Instalación impecable y segura",
+        "Excelencia sonora",
       ],
     },
     {
       id: 2,
       title: "02 Iluminación",
       description:
-        "Creamos <strong>ambientes únicos</strong> con soluciones de iluminación personalizadas para mejorar la <strong>experiencia de entrenamiento</strong>.",
+        "Nuestro equipo se especializa en el <span class='font-semibold'>diseño</span> y la <span class='font-semibold'>instalación de sistemas de iluminación avanzados</span> para <span class='font-semibold'>espacios fitness</span>, utilizando la <span class='font-semibold'>última tecnología en LED pixel</span>. Con <span class='font-semibold'>años de experiencia</span>, creamos <span class='font-semibold'>efectos visuales dinámicos</span> y <span class='font-semibold'>envolventes</span> que no solo transforman el ambiente, sino que también transportan a los usuarios a un <span class='font-semibold'>mundo imaginario</span> donde cada entrenamiento se siente <span class='font-semibold'>único</span>.<br /><br /> La <span class='font-semibold'>iluminación</span> no es solo un complemento, sino un <span class='font-semibold'>elemento clave</span> para elevar la <span class='font-semibold'>energía</span> y la <span class='font-semibold'>motivación</span> de los espacios, creando una <span class='font-semibold'>atmósfera</span> imposible de encontrar en otro lugar.",
       videoSrc: "/videos/2.mp4",
       img: [
         "/img/iluminacion-1.jpg",
@@ -49,35 +49,35 @@ const Soluciones: FC = () => {
         "/img/iluminacion-3.jpg",
       ],
       whyService:
-        "La iluminación adecuada puede transformar un espacio y potenciar la motivación durante el entrenamiento. Nuestro enfoque personalizado asegura que cada proyecto tenga la atmósfera ideal.",
+        "A lo largo de los años, hemos perfeccionado nuestro <span class='font-semibold'>enfoque</span> para ofrecer <span class='font-semibold'>soluciones eficientes</span>, <span class='font-semibold'>seguras</span> y <span class='font-semibold'>fáciles de usar</span>, tanto para los <span class='font-semibold'>coaches</span> como para los <span class='font-semibold'>riders</span>.<br /><br /> Planificamos cada detalle meticulosamente, asegurando que la <span class='font-semibold'>estética</span> se alinee con la <span class='font-semibold'>funcionalidad</span>. Nuestro compromiso con la <span class='font-semibold'>calidad</span> garantiza que cada espacio esté <span class='font-semibold'>iluminado de manera precisa</span>, optimizando su <span class='font-semibold'>rendimiento</span> mientras resalta su <span class='font-semibold'>belleza visual</span>.<br /><br /> No solo <span class='font-semibold'>iluminamos espacios</span>, <span class='font-semibold'>creamos experiencias</span> que <span class='font-semibold'>cautivan</span> y <span class='font-semibold'>motivan</span> a quienes los habitan.",
       benefits: [
-        "Diseño de iluminación a medida",
-        "Tecnología LED avanzada",
-        "Control de ambientes",
-        "Integración estética y funcional",
+        "Diseño personalizado",
+        "Tecnología LED de vanguardia",
+        "Instalación eficiente y segura",
+        "Amplia experiencia",
       ],
     },
     {
       id: 3,
       title: "03 Diseño",
       description:
-        "Diseñamos <strong>espacios que reflejan la identidad</strong> de cada proyecto, optimizando la <strong>funcionalidad</strong> y estética.",
+        "Nuestro equipo de <span class='font-semibold'>arquitectos</span> se especializa en crear <span class='font-semibold'>espacios que maximizan su rendimiento</span>, equilibrando <span class='font-semibold'>diseño</span>, <span class='font-semibold'>funcionalidad</span>, <span class='font-semibold'>eficiencia</span> y <span class='font-semibold'>estética</span>. Nos enfocamos en cada detalle, desde la <span class='font-semibold'>distribución</span> hasta la <span class='font-semibold'>identidad única</span> de cada proyecto, asegurando que cada espacio sea tan <span class='font-semibold'>armonioso</span> como <span class='font-semibold'>eficiente</span>.",
       videoSrc: "/videos/1.mp4",
       img: ["/img/diseno-1.jpg", "/img/diseno-2.jpg", "/img/diseno-3.jpg"],
       whyService:
-        "Cada espacio fitness debe ser único y representar la identidad de la marca. Nuestro equipo se enfoca en el diseño integral que fusiona estética con funcionalidad.",
+        "Transformamos tus ideas en realidad con <span class='font-semibold'>renders de alta calidad</span> que permiten <span class='font-semibold'>visualizar el proyecto</span> antes de su ejecución.<br /><br /> Creamos <span class='font-semibold'>entornos</span> que no solo cumplen su <span class='font-semibold'>función</span>, sino que <span class='font-semibold'>inspiran</span> y <span class='font-semibold'>motivan</span> la experiencia del usuario, siempre buscando el <span class='font-semibold'>equilibrio perfecto</span> entre <span class='font-semibold'>arte</span> y <span class='font-semibold'>practicidad</span>.",
       benefits: [
-        "Diseño arquitectónico",
-        "Selección de materiales",
+        "Diseño arquitectónico integral",
+        "Aprovechamiento del espacio",
         "Visualización en 3D",
-        "Coordinación del proyecto",
+        "Coordinación total del proyecto",
       ],
     },
     {
       id: 4,
       title: "04 Fitness Total",
       description:
-        "Un <strong>servicio integral</strong> que incluye diseño, instalación, equipos y seguridad para crear un <strong>espacio fitness de primera clase</strong>.",
+        "<span class='font-semibold'>Fitness Total</span> es nuestra <span class='font-semibold'>solución integral</span> que transforma tu <span class='font-semibold'>espacio de fitness</span> en una <span class='font-semibold'>experiencia única</span>. Combinamos <span class='font-semibold'>diseño arquitectónico de vanguardia</span>, <span class='font-semibold'>sistemas de sonido personalizados</span> y <span class='font-semibold'>iluminación LED avanzada</span> para crear un <span class='font-semibold'>entorno motivador</span> y <span class='font-semibold'>estéticamente impresionante</span>.<br /><br /> Imagina un <span class='font-semibold'>estudio de indoor cycling</span> o <span class='font-semibold'>gimnasio</span> donde cada detalle, desde el <span class='font-semibold'>sonido envolvente</span> hasta la <span class='font-semibold'>atmósfera inmersiva</span>, está diseñado para <span class='font-semibold'>inspirar</span> y <span class='font-semibold'>energizar</span>.",
       videoSrc: "/videos/2.mp4",
       img: [
         "/img/fitness-total-1.jpg",
@@ -85,12 +85,12 @@ const Soluciones: FC = () => {
         "/img/fitness-total-3.jpg",
       ],
       whyService:
-        "Con nuestro servicio Fitness Total, no solo diseñamos y equipamos, sino que también nos encargamos de la instalación y seguridad, ofreciendo una solución completa para espacios fitness.",
+        "También nos encargamos de equipar tu espacio con <span class='font-semibold'>maquinaria de última generación</span>, <span class='font-semibold'>sistemas de seguridad confiables</span> y <span class='font-semibold'>redes Wi-Fi de alto rendimiento</span>.<br /><br /> Colaboramos contigo para hacer realidad tu <span class='font-semibold'>visión</span>, asegurando que tu <span class='font-semibold'>gimnasio</span>, <span class='font-semibold'>estudio</span> o <span class='font-semibold'>wellness center</span> no solo funcione de manera <span class='font-semibold'>óptima</span>, sino que también ofrezca una <span class='font-semibold'>experiencia excepcional</span> para todos sus usuarios.",
       benefits: [
-        "Servicio llave en mano",
-        "Equipos de alta calidad",
-        "Instalación profesional",
-        "Seguridad y networking",
+        "Diseño Integral y Personalizado",
+        "Sistema de Sonido a la medida",
+        "Iluminación Avanzada",
+        "Equipamiento Completo y Conectividad",
       ],
     },
   ];
@@ -105,7 +105,10 @@ const Soluciones: FC = () => {
           </div>
           <h3 className="text-3xl lg:text-6xl font-clashdisplay font-extralight">
             Transforma tu Espacio Fitness
-            <br /> <span className="font-medium">con nuestras soluciones</span>
+            <br />{" "}
+            <span className="font-medium">
+              con nuestras Soluciones Especializadas
+            </span>
           </h3>
         </div>
       </main>
@@ -131,14 +134,14 @@ const Soluciones: FC = () => {
             <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract3.svg')] bg-no-repeat bg-contain rotate-180"></div>
 
             {/* Tab Navigation */}
-            <div className="w-full h-full grid grid-cols-4 rounded-t-[32px] border-t-4 border-l-4 border-r-4 border-primary overflow-hidden">
+            <div className="w-full h-full grid grid-cols-4">
               {servicesTabs.map((service) => (
                 <button
                   key={service.id}
-                  className={`px-4 py-9 h-[120px] border-r-4 border-primary ${
+                  className={`px-4 py-9 h-[120px] first:border-l-4 border-r-4 border-primary border-t-4 first:rounded-tl-[64px] last:rounded-tr-[64px] ${
                     activeTab === service.id
                       ? "bg-primary text-white text-2xl font-clashdisplay font-medium"
-                      : "bg-transparent text-white hover:bg-primary hover:bg-opacity-15 last:border-none text-2xl font-clashdisplay font-medium transition ease-in-out duration-500 relative first:before:absolute first:before:-bottom-[0px] first:before:-left-[0px] first:before:w-[32px] first:before:h-[32px] first:before:bg-[url('/img/substract3.svg')] first:before:bg-no-repeat first:before:bg-contain first:before:rotate-180 last:before:absolute last:before:bottom-0 last:before:-right-[0px] last:before:w-[32px] last:before:h-[32px] last:before:bg-[url('/img/substract3.svg')] last:before:rotate-90 last:before:bg-no-repeat last:before:bg-contain"
+                      : "bg-transparent text-white hover:bg-primary hover:bg-opacity-15 text-2xl font-clashdisplay font-medium transition ease-in-out duration-500 relative first:before:absolute first:before:-bottom-[0px] first:before:-left-[0px] first:before:w-[60px] first:before:h-[60px] first:before:bg-[url('/img/substract3.svg')] first:before:bg-no-repeat first:before:bg-contain first:before:rotate-180 last:before:absolute last:before:bottom-0 last:before:-right-[0px] last:before:w-[60px] last:before:h-[60px] last:before:bg-[url('/img/substract3.svg')] last:before:rotate-90 last:before:bg-no-repeat last:before:bg-contain"
                   }`}
                   onClick={() => setActiveTab(service.id)}
                 >
@@ -177,9 +180,12 @@ const Soluciones: FC = () => {
             <h2 className="font-medium text-4xl font-clashdisplay text-white">
               ¿Por qué necesito este servicio?
             </h2>
-            <p className="text-white text-lg">
-              {servicesTabs[activeTab - 1].whyService}
-            </p>
+            <p
+              className="text-white text-lg"
+              dangerouslySetInnerHTML={{
+                __html: servicesTabs[activeTab - 1].whyService,
+              }}
+            ></p>
           </div>
           <ul className="space-y-2 text-white">
             {servicesTabs[activeTab - 1].benefits.map((benefit, index) => (
@@ -217,13 +223,15 @@ const Soluciones: FC = () => {
                     ¿Necesitas ayuda personalizada?
                   </span>
                   <Link
-                    href="mailto:contacto@gewinnsolutions.co"
+                    href="mailto:contacto@gewinnsolutions.com"
+                    target="_blank"
                     className="text-xl lg:text-3xl font-light tracking-wide"
                   >
                     contacto@gewinnsolutions.com
                   </Link>
                   <Link
-                    href="#"
+                    href="https://api.whatsapp.com/send/?phone=523331004726"
+                    target="_blank"
                     className="text-xl lg:text-3xl font-light tracking-wide flex gap-3"
                   >
                     <WhatsAppIcon /> (+52) 1 33 3100 4726
