@@ -140,14 +140,14 @@ const servicesTabs = [
     title: "01 Audio",
     description:
       "Instalamos sistemas de <span class='font-medium'>sonido personalizados,</span> con equipos y <span class='font-medium'>tratamiento acústico especializado</span> para garantizar un sonido extraordinario, <span class='font-medium'>adaptado a las exigencias de cada espacio,</span> creando <span class='font-medium'>experiencias envolventes y energizantes</span> que potencian el rendimiento en cada sesión.",
-    videoSrc: "/videos/1.mp4",
+    videoSrc: "/videos/audio.mp4",
   },
   {
     id: 2,
     title: "02 Iluminación",
     description:
       "Planificamos y ejecutamos <span class='font-medium'>diseños de iluminación adaptados a cualquier entorno,</span> con especialidad en LED pixel. <span class='font-medium'>Creamos efectos visuales dinámicos y personalizados</span> que no solo realzan la estética, sino que <span class='font-medium'>optimizan la funcionalidad de cada espacio.</span>",
-    videoSrc: "/videos/2.mp4",
+    videoSrc: "/videos/iluminacion.mp4",
   },
   {
     id: 3,
@@ -161,7 +161,7 @@ const servicesTabs = [
     title: "04 Fitness Total",
     description:
       "<span class='font-medium'>Convierte tu visión en realidad con Fitness Total.</span> Nuestro paquete integral abarca <span class='font-medium'>diseño, instalación y equipamiento para un espacio fitness de primera clase,</span> asegurando un entorno funcional y excepcional que <span class='font-medium'>eleva la experiencia de tus usuarios.</span>",
-    videoSrc: "/videos/2.mp4",
+    videoSrc: "/videos/1.mp4",
   },
 ];
 
