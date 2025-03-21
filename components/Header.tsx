@@ -119,7 +119,6 @@ export default function Menu() {
       path: "#",
       isMegaMenu: true,
     },
-    { name: "Tienda", path: "/productos" },
   ];
 
   const handleMenuClick = (option: any) => {
@@ -262,11 +261,11 @@ export default function Menu() {
                   <Link href="/contacto">
                     <span
                       className={`inline-flex font-clash !leading-loose px-6 py-5 ${getHoverBackgroundClass()} transition duration-500 ${
-                        pathname === "/contacto"
-                          ? "bg-gray-50 text-primary"
+                        pathname === "/contacto" || pathname === "/nosotros"
+                          ? "bg-black text-white "
                           : pathname === "/soluciones" || pathname === "/"
-                            ? "text-white"
-                            : "text-black"
+                            ? "text-black bg-white"
+                            : "text-white bg-white"
                       }`}
                     >
                       Contacto
@@ -274,11 +273,6 @@ export default function Menu() {
                   </Link>
                 </li>
               </ul>
-
-              <Button href="/cotizador" className={getButtonStyles()}>
-                <QuoteIcon dark={!isNavbarWhite()} />
-                Carrito (2)
-              </Button>
             </div>
           </div>
         </div>

@@ -161,7 +161,7 @@ const servicesTabs = [
     title: "04 Fitness Total",
     description:
       "<span class='font-medium'>Convierte tu visión en realidad con Fitness Total.</span> Nuestro paquete integral abarca <span class='font-medium'>diseño, instalación y equipamiento para un espacio fitness de primera clase,</span> asegurando un entorno funcional y excepcional que <span class='font-medium'>eleva la experiencia de tus usuarios.</span>",
-    videoSrc: "/videos/1.mp4",
+    videoSrc: "/videos/2.mp4",
   },
 ];
 
@@ -522,122 +522,9 @@ const Home: FC = () => {
         </div>
       </section>
       <section className="bg-primary z-30 relative">
-        <div className="flex w-full bg-primary py-24">
-          <div className="w-2/12 flex flex-col justify-center items-center text-white py-10 px-4">
-            <div className="font-light text-mainGray text-lg">
-              (03) Productos
-            </div>
-            <div className="flex-1 flex items-center justify-center">
-              <h3 className="text-5xl font-clashdisplay leading-none transform -rotate-90 font-medium tracking-tight">
-                <span className="font-extralight">Nuestros</span> Top Picks
-              </h3>
-            </div>
-          </div>
-
-          <div className="w-10/12 bg-primary">
-            <div className="overflow-hidden" ref={carouselRef}>
-              <div
-                className="flex transition-transform duration-500 ease-in-out gap-1 w-full"
-                style={{
-                  transform: `translateX(-${current * (100 / products.length)}%)`, // Mueve exactamente un tercio del contenedor
-                  width: `${(products.length * 100) / 4}%`, // Ajusta el ancho del contenedor
-                }}
-              >
-                {products.map((product) => (
-                  <div
-                    key={product.id}
-                    className="w-1/3 bg-white flex flex-col justify-between py-2.5 px-3"
-                  >
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full object-cover max-h-[500px] my-auto"
-                      width={700}
-                      height={700}
-                      quality={100}
-                    />
-                    <div className="p-1.5 flex justify-between items-end gap-4">
-                      <div>
-                        <div className="text-lg text-mainGray font-light">
-                          {product.category}
-                        </div>
-                        <div className="text-xl font-medium font-clashdisplay !leading-none">
-                          {product.name}
-                        </div>
-                        <div className="text-lg font-clashdisplay">
-                          ${product.price}{" "}
-                          <span className="text-base">{product.currency}</span>
-                        </div>
-                      </div>
-                      <div className="flex items-center mt-4 border-2 border-black overflow-hidden min-w-[140px] max-w-[150px]">
-                        <button
-                          className="w-10 h-10 flex items-center justify-center !text-4xl font-clash text-mainGray"
-                          onClick={() => decrementQuantity(product.id)}
-                        >
-                          -
-                        </button>
-                        <span className="w-10 h-10 flex items-center justify-center font-clash font-medium text-primary">
-                          {String(quantities[product.id] || 1).padStart(2, "0")}
-                        </span>
-                        <button
-                          className="w-10 h-10 flex items-center justify-center !text-3xl font-clash text-mainGray"
-                          onClick={() => incrementQuantity(product.id)}
-                        >
-                          +
-                        </button>
-                        <button className="w-10 h-10 bg-black flex items-center justify-center aspect-square">
-                          <AddCartIcon />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center py-10">
-              <ButtonWithArrow href="/productos" dark={true}>
-                Ver todos los productos
-              </ButtonWithArrow>
-              <div className="flex items-center space-x-4 px-12">
-                <div className="text-white font-clash">
-                  {String(current + 1).padStart(2, "0")}
-                </div>
-                <div className="relative w-[200px] h-[1px] bg-mainGray bg-opacity-40">
-                  <div
-                    className="absolute -top-[1px] left-0 h-[3.5px]  bg-white transition duration-300"
-                    style={{ width: `${progressWidth}%` }}
-                  ></div>
-                </div>
-                <div className="text-white font-clash">
-                  {String(products.length).padStart(2, "0")}
-                </div>
-                <button
-                  onClick={prevSlide}
-                  className={`focus:outline-none transform  ${
-                    current === 0 ? "opacity-30 cursor-not-allowed" : ""
-                  }`}
-                  disabled={current === 0}
-                >
-                  <ChevronIcon className="h-7 text-white" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className={`focus:outline-none rotate-180 ${
-                    current === products.length - 3
-                      ? "opacity-30 cursor-not-allowed"
-                      : ""
-                  }`}
-                  disabled={current === products.length - 3}
-                >
-                  <ChevronIcon className="h-7 text-white" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="flex w-full bg-primary py-24"></div>
       </section>
-      <section className="bg-gradient-to-b from-primary to-secondary py-24 -mt-20 relative z-30">
+      <section className="bg-gradient-to-b from-primary to-secondary -mt-20 relative z-30">
         <Marquee speed={40}>
           <div className="font-clashdisplay font-medium text-5xl text-mainGray text-opacity-20 whitespace-nowrap mr-[8px]">
             Boutique Studios · Fitness Centers · Indoor Cycling · Gimnasios ·
