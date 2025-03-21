@@ -25,7 +25,8 @@ const menuItems = [
   {
     links: [
       { name: "Nosotros", href: "/nosotros" },
-      { name: "Soluciones", href: "#" },
+      { name: "Soluciones", href: "/soluciones?tab=1" },
+      { name: "Contacto", href: "/contacto" },
     ],
   },
 ];
