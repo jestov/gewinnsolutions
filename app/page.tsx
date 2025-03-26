@@ -227,8 +227,8 @@ const Home: FC = () => {
   };
 
   return (
-    <div>
-      <div className="relative top-[5px] z-0">
+    <>
+      <div className="relative top-[5px] z-0 overflow-hidden lg:overflow-visible">
         <main className="mx-[5px] sticky top-[5px] z-0 flex flex-col justify-center items-center min-h-[70vh] gap-32 md:gap-44 pb-12 md:pb-28 px-[20px] rounded-b-[64px] overflow-hidden bg-cover text-white before:absolute before:inset-0 before:bg-gradient-to-t before:from-secondary/60 before:to-secondary/5 before:z-20 z-4">
           <video
             autoPlay
@@ -324,9 +324,9 @@ const Home: FC = () => {
         </span>
       </section>
       <section className="w-full bg-[#f1f3f5] relative z-20 py-12">
-        <div className="flex lg:hidden relative lg:absolute w-full lg:w-7/12 bg-[#f1f3f5] pb-6flex-col justify-center items-center gap-2 -top-[5px] z-40 rounded-b-[64px] lg:h-[114px] mb-8 px-[15px]">
-          <div className="absolute top-[5px] -left-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract5.svg')] bg-no-repeat bg-contain"></div>
-          <div className="absolute top-[5px] -right-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-180"></div>
+        <div className="flex lg:hidden relative lg:absolute w-full lg:w-7/12 bg-[#f1f3f5] pb-6 flex-col justify-center items-center gap-2 -top-[5px] z-40 rounded-b-[64px] lg:h-[114px] mb-8 px-[15px]">
+          <div className="hidden lg:flex absolute top-[5px] -left-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract5.svg')] bg-no-repeat bg-contain"></div>
+          <div className="hidden lg:flex  absolute top-[5px] -right-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-180"></div>
 
           <h3 className="text-2xl lg:text-4xl text-primary text-center font-clashdisplay font-extralight">
             <span className="font-medium">Especialistas</span> en{" "}
@@ -368,7 +368,7 @@ const Home: FC = () => {
               {servicesTabs.map((service) => (
                 <button
                   key={service.id}
-                  className={`px-4 py-9 h-[124px] lg:first:border-l-4 border-r-2 lg:border-r-4 border-[#f1f3f5] border-t-2 lg:border-t-4 lg:first:rounded-tl-[64px] lg:last:rounded-tr-[64px] rounded-[64px]"> ${
+                  className={`px-4 py-9 lg:h-[124px] lg:first:border-l-4 border-r-2 lg:border-r-4 border-[#f1f3f5] border-t-2 lg:border-t-4 lg:first:rounded-tl-[64px] lg:last:rounded-tr-[64px] ${
                     activeTab === service.id
                       ? "bg-[#f1f3f5] text-primary text-xl lg:text-2xl font-clashdisplay font-medium w-full"
                       : "bg-transparent text-white hover:bg-white hover:bg-opacity-15 text-xl lg:text-2xl font-clashdisplay font-medium transition ease-in-out duration-500 relative first:before:absolute first:before:-bottom-[0px] first:before:-left-[0px] first:before:w-[60px] first:before:h-[60px] first:before:bg-[url('/img/substract5.svg')] first:before:bg-no-repeat first:before:bg-contain first:before:rotate-180 last:before:absolute last:before:bottom-0 last:before:-right-[0px] last:before:w-[60px] last:before:h-[60px] last:before:bg-[url('/img/substract4.svg')] last:before:bg-no-repeat last:before:bg-contain border-t-4 border-r-4 border-[#f1f3f5]"
@@ -587,7 +587,7 @@ const Home: FC = () => {
         </div>
       </section>
       <Footer />
-    </div>
+    </>
   );
 };
 

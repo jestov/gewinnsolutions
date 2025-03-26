@@ -166,7 +166,7 @@ export default function Menu() {
   return (
     <>
       <nav
-        className={`flex ${getNavBarStyles()} transition duration-300 fixed w-full z-50`}
+        className={`flex ${getNavBarStyles()} transition duration-300 fixed w-full z-50 max-w-[100vw]`}
       >
         <div className="flex gap-5 w-full justify-start mx-auto items-center pl-1 pr-6 lg:pl-2 lg:pr-0">
           {/* Logo + Menu */}
