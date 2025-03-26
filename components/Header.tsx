@@ -375,7 +375,7 @@ export default function Menu() {
                 <li className="font-clash font-medium flex gap-2 cursor-pointer text-lg lg:text-xl">
                   <Link
                     href="/soluciones/adicionales#stages-indoor-bikes"
-                    onClick={() => handleMegaMenuClick()}
+                    onClick={() => handleMegaMenuClick(1)}
                   >
                     <span className="font-extralight">05</span> Stages Indoor
                     Bikes
@@ -384,7 +384,7 @@ export default function Menu() {
                 <li className="font-clash font-medium flex gap-2 cursor-pointer text-lg lg:text-xl">
                   <Link
                     href="/soluciones/adicionales#equipamiento-de-gimnasios"
-                    onClick={() => handleMegaMenuClick()}
+                    onClick={() => handleMegaMenuClick(1)}
                   >
                     <span className="font-extralight">06</span> Equipamiento de
                     Gimnasios
@@ -393,7 +393,7 @@ export default function Menu() {
                 <li className="font-clash font-medium flex gap-2 cursor-pointer text-lg lg:text-xl">
                   <Link
                     href="/soluciones/adicionales#redes-y-seguridad"
-                    onClick={() => handleMegaMenuClick()}
+                    onClick={() => handleMegaMenuClick(1)}
                   >
                     <span className="font-extralight">07</span> Redes y
                     Seguridad
