@@ -16,9 +16,9 @@ import InstagramIcon from "@/components/icons/InstagramIcon";
 const Contacto: FC = () => {
   return (
     <div className="relative">
-      <main className="p-[20px] bg-cover text-white z-20 bg-white flex flex-col gap-20 pt-40">
-        <div className="px-44 flex flex-col gap-12">
-          <div className="flex gap-8 text-primary items-center -ml-10">
+      <main className="p-[20px] bg-cover text-white z-20 bg-white flex flex-col gap-20 pt-24 lg:pt-40">
+        <div className="px-4 lg:px-44 flex flex-col gap-6 lg:gap-12">
+          <div className="flex gap-4 lg:gap-8 text-primary items-center lg:-ml-10">
             <div className="h-2 w-2 bg-primary"></div>
             <span className="font-clash text-lg">Contacto</span>
           </div>
@@ -31,13 +31,13 @@ const Contacto: FC = () => {
 
       <section
         id="contact"
-        className="flex flex-col justify-end items-end gap-12 lg:gap-32 lg:pt-16 pb-1 lg:pb-28 px-[30px]  lg:px-[120px] bg-white bg-no-repeat bg-center bg-cover relative text-primary  z-40"
+        className="flex flex-col justify-end items-end gap-12 pb-12 lg:gap-32 lg:pt-16 lg:pb-28 px-[30px]  lg:px-[120px] bg-white bg-no-repeat bg-center bg-cover relative text-primary z-40"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-48 max-w-[1300px] mx-auto z-2 relative w-full">
           <ContactLight />
-          <div className="flex flex-col gap-14 items-center md:items-start">
+          <div className="flex flex-col gap-14 ">
             <div className="flex gap-8 font-clash">
-              <div className="flex flex-col gap-16 font-normal tracking-wide text-lg">
+              <div className="flex flex-col gap-8 lg:gap-16 font-normal tracking-wide text-lg">
                 <div className="flex flex-col gap-3">
                   <span className="text-mainGray text-base">
                     ¿Necesitas ayuda personalizada?

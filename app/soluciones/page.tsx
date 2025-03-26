@@ -109,9 +109,9 @@ const Soluciones: FC = () => {
 
   return (
     <div className="relative bg-primary">
-      <main className="p-[20px] bg-cover text-white z-20 bg-primary flex flex-col gap-20 pt-40">
-        <div className="px-44 flex flex-col gap-12">
-          <div className="flex gap-8 items-center -ml-10">
+      <main className="p-[20px] bg-cover text-white z-20 bg-primary flex flex-col gap-12 lg:gap-20 pt-24 lg:pt-40">
+        <div className="px-[15px] lg:px-44 flex flex-col gap-6 lg:gap-12">
+          <div className="flex gap-4 lg:gap-8 items-center lg:-ml-10">
             <div className="h-2 w-2 bg-white"></div>
             <span className="font-clash text-lg">Nuestra soluciones</span>
           </div>
@@ -126,7 +126,7 @@ const Soluciones: FC = () => {
       </main>
 
       <section className="w-full bg-primary relative z-20 py-12">
-        <div className="mx-[20px] rounded-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center items-center min-h-[70vh]">
+        <div className="lg:mx-[20px] rounded-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center items-center min-h-[70vh]">
           <video
             key={activeTab}
             autoPlay
@@ -141,7 +141,7 @@ const Soluciones: FC = () => {
             Your browser does not support the video tag.
           </video>
 
-          <div className="absolute w-7/12 flex flex-col justify-center items-center gap-4 bottom-0 z-40">
+          <div className="absolute w-full lg:w-7/12 flex flex-col justify-center items-center gap-4 bottom-0 z-40">
             <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract3.svg')] bg-no-repeat bg-contain rotate-90"></div>
             <div className="absolute bottom-0 -right-[61px] w-[61px] h-[61px] bg-[url('/img/substract3.svg')] bg-no-repeat bg-contain rotate-180"></div>
 
@@ -150,32 +150,33 @@ const Soluciones: FC = () => {
               {servicesTabs.map((service) => (
                 <button
                   key={service.id}
-                  className={`px-4 py-9 h-[120px] first:border-l-4 border-r-4 border-primary border-t-4 first:rounded-tl-[64px] last:rounded-tr-[64px] ${
+                  className={`px-4 py-9 h-[120px] lg:first:border-l-4 border-r-2 lg:border-r-4 border-primary border-t-2 lg:border-t-4 lg:first:rounded-tl-[64px] lg:last:rounded-tr-[64px] ${
                     activeTab === service.id
-                      ? "bg-primary text-white text-2xl font-clashdisplay font-medium"
-                      : "bg-transparent text-white hover:bg-primary hover:bg-opacity-15 text-2xl font-clashdisplay font-medium transition ease-in-out duration-500 relative first:before:absolute first:before:-bottom-[0px] first:before:-left-[0px] first:before:w-[60px] first:before:h-[60px] first:before:bg-[url('/img/substract3.svg')] first:before:bg-no-repeat first:before:bg-contain first:before:rotate-180 last:before:absolute last:before:bottom-0 last:before:-right-[0px] last:before:w-[60px] last:before:h-[60px] last:before:bg-[url('/img/substract3.svg')] last:before:rotate-90 last:before:bg-no-repeat last:before:bg-contain"
+                      ? "bg-primary text-white text-lg lg:text-2xl font-clashdisplay font-medium"
+                      : "bg-transparent text-white hover:bg-primary hover:bg-opacity-15 text-lg lg:text-2xl font-clashdisplay font-medium transition ease-in-out duration-500 relative first:before:absolute first:before:-bottom-[0px] first:before:-left-[0px] first:before:w-[60px] first:before:h-[60px] first:before:bg-[url('/img/substract3.svg')] first:before:bg-no-repeat first:before:bg-contain first:before:rotate-180 last:before:absolute last:before:bottom-0 last:before:-right-[0px] last:before:w-[60px] last:before:h-[60px] last:before:bg-[url('/img/substract3.svg')] last:before:rotate-90 last:before:bg-no-repeat last:before:bg-contain"
                   }`}
                   onClick={() => setActiveTab(service.id)}
                 >
-                  {service.title}
+                  <span className="inline lg:hidden">0{service.id}</span>
+                  <span className="hidden lg:inline">{service.title}</span>
                 </button>
               ))}
             </div>
           </div>
         </div>
         {/* Tab Content */}
-        <div className="text-white z-20 w-4/6 mx-auto py-20 text-xl flex font-extralight flex-col gap-8">
+        <div className="text-white z-20 px-[30px] w-full lg:w-4/6 mx-auto py-12 lg:py-20 text-xl flex font-extralight flex-col gap-8">
           <h2 className="font-medium text-3xl lg:text-5xl font-clashdisplay">
             {servicesTabs[activeTab - 1].title}
           </h2>
           <p
-            className="text-white lg:text-xl text-opacity-80 mt-4"
+            className="text-white text-lg lg:text-xl text-opacity-80 lg:mt-4"
             dangerouslySetInnerHTML={{
               __html: servicesTabs[activeTab - 1].description,
             }}
           ></p>
         </div>
-        <div className="grid grid-cols-4 relative w-full min-h-[500px] gap-[5px]">
+        <div className="grid lg:grid-cols-4 relative w-full min-h-[500px] gap-[5px]">
           {servicesTabs[activeTab - 1].img.map((image, index) => (
             <Image
               key={index}
@@ -188,7 +189,7 @@ const Soluciones: FC = () => {
             />
           ))}
         </div>
-        <div className="grid grid-cols-2 gap-20 mx-auto max-w-[1200px] pt-20 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 mx-auto max-w-[1200px] pt-12 lg:pt-20 items-start px-[15px]">
           <div className="flex flex-col gap-8 pt-12">
             <h2 className="font-medium text-4xl font-clashdisplay text-white">
               ¿Por qué necesito este servicio?
@@ -204,7 +205,7 @@ const Soluciones: FC = () => {
             {servicesTabs[activeTab - 1].benefits.map((benefit, index) => (
               <li
                 key={index}
-                className="flex lg:flex-row items-center py-12 border-b border-white border-opacity-20 text-2xl lg:text-3xl font-clash font-medium gap-6"
+                className="flex lg:flex-row items-center py-6 lg:py-12 border-b border-white border-opacity-20 text-xl lg:text-3xl font-clash font-medium gap-6"
               >
                 <span className="font-extralight">
                   {String(index + 1).padStart(2, "0")}
@@ -218,16 +219,16 @@ const Soluciones: FC = () => {
 
       <section
         id="contact"
-        className="flex flex-col justify-end items-end gap-12 md:gap-32 pt-4 lg:pt-24 pb-12 md:pb-20 px-[30px]  md:px-[60px] bg-no-repeat bg-center bg-cover relative text-white before:absolute before:rounded-t-[64px] before:inset-0  before:z-0 z-40"
+        className="flex flex-col justify-end items-end gap-12 md:gap-32 pt-4 lg:pt-24 pb-12 md:pb-20 px-[0]  md:px-[60px] bg-no-repeat bg-center bg-cover relative text-white before:absolute before:rounded-t-[64px] before:inset-0  before:z-0 z-40"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-4 max-w-[1400px] mx-auto z-2 relative w-full bg-white text-primary p-28 rounded-[64px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-4 max-w-[1400px] mx-auto z-2 relative w-full bg-white text-primary py-[40px] px-[30px] lg:p-28 rounded-[64px]">
           <div className="flex flex-col gap-14 items-center md:items-start">
             <div className="flex gap-8 font-clash ">
-              <div className="flex flex-col gap-16 font-normal tracking-wide text-lg justify-between">
+              <div className="flex flex-col gap-8 lg:gap-16 font-normal tracking-wide text-lg justify-between">
                 <h1 className="font-clash text-2xl lg:text-3xl relative font-light tracking-normal">
                   ¿Estás listo para impulsar tu
                   <br />
-                  <span className="font-medium text-xl lg:text-5xl">
+                  <span className="font-medium text-2xl lg:text-5xl">
                     Fitness Center?
                   </span>
                 </h1>

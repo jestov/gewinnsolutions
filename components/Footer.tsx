@@ -107,7 +107,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="flex gap-4 justify-between font-clash">
+        <div className="flex flex-col md:flex-row text-center md:text-left gap-4 justify-between font-clash">
           <p className="text-base text-secondaryGray">
             <span className="font-medium">
               © Gewinn Solutions {new Date().getFullYear()}.

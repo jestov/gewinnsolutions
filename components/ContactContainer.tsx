@@ -9,9 +9,9 @@ function ContactContainer({ theme = "light" }) {
       id="contact"
       className={`flex flex-col justify-end ${
         theme === "dark" ? "bg-black" : "bg-white"
-      } items-end gap-12 md:gap-32 pt-4 md:pt-36 pb-12 md:pb-20 px-[30px] md:px-[60px] bg-no-repeat bg-center bg-cover relative text-white before:absolute before:rounded-t-[64px] before:inset-0 before:z-0 z-40`}
+      } items-end gap-12 md:gap-32 pt-4 md:pt-36 pb-12 md:pb-20 px-[15px] md:px-[60px] bg-no-repeat bg-center bg-cover relative text-white before:absolute before:rounded-t-[64px] before:inset-0 before:z-0 z-40`}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-4 max-w-[1400px] mx-auto z-2 relative w-full bg-primary p-28 rounded-[64px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-4 max-w-[1400px] mx-auto z-2 relative w-full bg-primary py-[40px] px-[30px] lg:p-28 rounded-[64px]">
         <div className="flex flex-col gap-14 items-center md:items-start">
           <div className="flex gap-8 font-clash ">
             <div className="flex flex-col gap-16 font-normal tracking-wide text-lg justify-between">

@@ -41,11 +41,11 @@ const BrandStripClients = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center w-full pl-[10px] pr-[60px] gap-[20px] overflow-hidden">
+    <div className="flex flex-col lg:flex-row justify-center items-center w-full px-[15px] lg:pl-[60px] lg:pr-[30px] gap-[20px] lg:gap-[60px]  overflow-hidden">
       <h3 className="text-2xl lg:text-3xl text-center font-clashdisplay font-extralight text-white w-full min-w-[150px]">
         Nuestras <span className="font-medium">marcas</span>
       </h3>
-      <div className="min-w-4/6 w-2/3">
+      <div className="w-full lg:min-w-4/6 lg:w-2/3">
         <div className="marquee-container w-full">
           <Marquee
             gradient={true}

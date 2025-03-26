@@ -161,7 +161,7 @@ const servicesTabs = [
     title: "04 Fitness Total",
     description:
       "<span class='font-medium'>Convierte tu visión en realidad con Fitness Total.</span> Nuestro paquete integral abarca <span class='font-medium'>diseño, instalación y equipamiento para un espacio fitness de primera clase,</span> asegurando un entorno funcional y excepcional que <span class='font-medium'>eleva la experiencia de tus usuarios.</span>",
-    videoSrc: "/videos/2.mp4",
+    videoSrc: "/videos/main.mp4",
   },
 ];
 
@@ -242,7 +242,7 @@ const Home: FC = () => {
 
           <div className="relative w-full max-w-[1600px] flex flex-col justify-center items-center text-center pt-[100px] smx-auto gap-8 lg:px-4 px-[10px] z-20">
             <div className="flex flex-col gap-10 max-w-6xl z-11 relative">
-              <h1 className="text-2xl lg:text-7xl text-white font-clashdisplay font-light !leading-none">
+              <h1 className="text-3xl lg:text-7xl text-white font-clashdisplay font-light !leading-none">
                 Diseñamos{" "}
                 <span className="font-medium">Experiencias Fitness</span>
                 <br />
@@ -252,16 +252,16 @@ const Home: FC = () => {
           </div>
         </main>
       </div>
-      <div className="mx-auto w-32 h-32 rounded-full bg-white -mt-14 relative z-40 flex flex-col justify-center items-center gap-2">
-        <ArrowIcon className="rotate-90 h-12 w-12" dark={true} />
+      <div className="mx-auto w-24 h-24 md:w-32 md:h-32 rounded-full bg-white -mt-10 md:-mt-14 relative z-40 flex flex-col justify-center items-center gap-2">
+        <ArrowIcon className="rotate-90 h-8 w-8 md:h-12 md:w-12" dark={true} />
         <span className="text-mainGray font-extralight tracking-wide text-xs">
           SCROLL
         </span>
       </div>
-      <section className="bg-white px-[20px] w-full z-20 -mt-16  rounded-t-3xl z-4 relative">
-        <div className=" max-w-[1100px] mx-auto flex flex-col items-start gap-8 pt-12 pb-6 md:pt-32 md:pb-24 min-h-[60vh]">
-          <h2 className="text-5xl font-clash font-light !leading-snug tracking-tight">
-            <span className="text-mainGray text-xl relative font-light font-sans -top-0.5 tracking-normal">
+      <section className="bg-white px-[20px] w-full z-20 pt-8 md:pt-4 -mt-12 md:-mt-16  rounded-t-3xl z-4 relative">
+        <div className=" max-w-[1100px] mx-auto flex flex-col items-center lg:items-start gap-8 pt-12 pb-14 md:pt-32 md:pb-24 lg:min-h-[60vh]">
+          <h2 className="text-2xl lg:text-5xl font-clash font-light !leading-snug tracking-tight text-center md:text-left">
+            <span className="text-mainGray text-base lg:text-xl relative font-light font-sans -top-0.5 tracking-normal">
               (01) Nosotros
             </span>{" "}
             Nuestra misión es{" "}
@@ -280,20 +280,20 @@ const Home: FC = () => {
           </ButtonWithArrow>
         </div>
       </section>
-      <section className="mb-24 px-[20px] bg-cover text-white z-20 h-[70vh] bg-white top-[74px]  sticky lg:max-w-3/4 lg:w-3/4 mx-auto">
-        <div className="flex justify-center rounded-[64px] relative overflow-hidden h-full">
+      <section className="mb-12 lg:mb-24 px-[20px] bg-cover text-white z-20 lg:h-[70vh] bg-white top-[74px]  sticky lg:max-w-3/4 lg:w-3/4 mx-auto">
+        <div className="flex justify-center rounded-[32px] lg:rounded-[64px] relative overflow-hidden h-full">
           <VideoPlayer />
         </div>
       </section>
 
-      <section className="ml-auto text-center w-3/4 bg-gray-50 z-20 relative rounded-tl-[64px] border-t border-mainGray border-opacity-20">
+      <section className="ml-auto text-center w-full lg:w-3/4 bg-gray-50 z-20 relative rounded-tl-[64px] border-t border-mainGray border-opacity-20">
         <div className=" w-full bg-[#f1f3f5] py-6 flex flex-col justify-center items-center gap-12 bottom-0 z-40 rounded-tl-[64px]">
-          <div className="absolute bottom-0 -left-[61px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain"></div>
+          <div className="absolute bottom-0 lg:-left-[61px] lg:w-[61px] lg:h-[61px] lg:bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain"></div>
           <BrandStrip gradientColor={true} />
         </div>{" "}
       </section>
-      <section className="pt-40 pb-28 bg-[#f1f3f5] w-full relative z-20 px-[20px] lg:px-64">
-        <p className=" max-w-[1200px] mx-auto text-center container font-light text-2xl lg:text-5xl font-clash !leading-snug tracking-tight">
+      <section className="pt-14 lg:pt-40 pb-10 lg:pb-28 bg-[#f1f3f5] w-full relative z-20 px-[20px] lg:px-64">
+        <p className=" max-w-[1200px] mx-auto text-center container font-light text-xl lg:text-5xl font-clash !leading-snug tracking-tight">
           <span className="font-medium">
             &quot;Con pasión por la excelencia, hemos dejado una huella
             significativa
@@ -304,7 +304,7 @@ const Home: FC = () => {
           </span>
         </p>
 
-        <div className="flex mx-auto justify-between py-12 items-center gap-4 w-2/3 animate-pulse">
+        <div className="flex mx-auto justify-between px-[20px] py-8 lg:py-12 items-center gap-4 w-full lg:w-2/3 animate-pulse">
           <Speaker />
           <Light />
           <Grid />
@@ -319,12 +319,32 @@ const Home: FC = () => {
         </h1>
       </section>
       <section className="pt-24 bg-[#f1f3f5] relative z-30 text-center">
-        <span className="text-mainGray text-xl relative font-light font-sans tracking-normal  mx-auto -bottom-[15px]">
+        <span className="text-mainGray text-base lg:text-xl relative font-light font-sans tracking-normal  mx-auto -bottom-[15px]">
           (02) Soluciones
         </span>
       </section>
       <section className="w-full bg-[#f1f3f5] relative z-20 py-12">
-        <div className="mx-[20px] rounded-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center items-center min-h-[70vh]">
+        <div className="flex lg:hidden relative lg:absolute w-full lg:w-7/12 bg-[#f1f3f5] pb-6flex-col justify-center items-center gap-2 -top-[5px] z-40 rounded-b-[64px] lg:h-[114px] mb-8 px-[15px]">
+          <div className="absolute top-[5px] -left-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract5.svg')] bg-no-repeat bg-contain"></div>
+          <div className="absolute top-[5px] -right-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-180"></div>
+
+          <h3 className="text-2xl lg:text-4xl text-primary text-center font-clashdisplay font-extralight">
+            <span className="font-medium">Especialistas</span> en{" "}
+            <span className="font-medium">espacios fitness</span> y{" "}
+            <span className="font-medium">experiencias</span> de entrenamiento
+          </h3>
+        </div>
+        <div className="lg:mx-[20px] rounded-[64px] overflow-hidden relative bg-cover text-white z-4 flex justify-center items-center min-h-[70vh]">
+          <div className="hidden lg:flex relative lg:absolute w-full lg:w-7/12 bg-[#f1f3f5] pb-6 flex-col justify-center items-center gap-2 -top-[5px] z-40 rounded-b-[64px] lg:h-[114px]">
+            <div className="absolute top-[5px] -left-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract5.svg')] bg-no-repeat bg-contain"></div>
+            <div className="absolute top-[5px] -right-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-180"></div>
+
+            <h3 className="text-2xl lg:text-4xl text-primary text-center font-clashdisplay font-extralight">
+              <span className="font-medium">Especialistas</span> en{" "}
+              <span className="font-medium">espacios fitness</span> y<br />{" "}
+              <span className="font-medium">experiencias</span> de entrenamiento
+            </h3>
+          </div>
           <video
             key={activeTab} // Ensure video reloads when tab changes
             autoPlay
@@ -339,18 +359,7 @@ const Home: FC = () => {
             Your browser does not support the video tag.
           </video>
 
-          <div className="absolute w-7/12 bg-[#f1f3f5] pb-6 flex flex-col justify-center items-center gap-2 -top-[5px] z-40 rounded-b-[64px] h-[114px]">
-            <div className="absolute top-[5px] -left-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract5.svg')] bg-no-repeat bg-contain"></div>
-            <div className="absolute top-[5px] -right-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-180"></div>
-
-            <h3 className="text-2xl lg:text-4xl text-primary text-center font-clashdisplay font-extralight">
-              <span className="font-medium">Especialistas</span> en{" "}
-              <span className="font-medium">espacios fitness</span> y<br />{" "}
-              <span className="font-medium">experiencias</span> de entrenamiento
-            </h3>
-          </div>
-
-          <div className="absolute w-7/12 flex flex-col justify-center items-center gap-4 bottom-0 z-40">
+          <div className="absolute w-full lg:w-7/12 flex flex-col justify-center items-center gap-4 bottom-0 z-40">
             <div className="absolute bottom-0 -left-[60px] w-[60px] h-[60px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain"></div>
             <div className="absolute bottom-0 -right-[60px] w-[60px] h-[60px] bg-[url('/img/substract4.svg')] bg-no-repeat bg-contain rotate-90"></div>
 
@@ -359,21 +368,22 @@ const Home: FC = () => {
               {servicesTabs.map((service) => (
                 <button
                   key={service.id}
-                  className={`px-4 py-9 h-[124px] border-r-4 border-[#f1f3f5] first:border-l-4 last:border-t-4 last:border-r-4 first:rounded-tl-[64px] last:rounded-tr-[64px] rounded-[64px]"> ${
+                  className={`px-4 py-9 h-[124px] lg:first:border-l-4 border-r-2 lg:border-r-4 border-[#f1f3f5] border-t-2 lg:border-t-4 lg:first:rounded-tl-[64px] lg:last:rounded-tr-[64px] rounded-[64px]"> ${
                     activeTab === service.id
                       ? "bg-[#f1f3f5] text-primary text-xl lg:text-2xl font-clashdisplay font-medium w-full"
                       : "bg-transparent text-white hover:bg-white hover:bg-opacity-15 text-xl lg:text-2xl font-clashdisplay font-medium transition ease-in-out duration-500 relative first:before:absolute first:before:-bottom-[0px] first:before:-left-[0px] first:before:w-[60px] first:before:h-[60px] first:before:bg-[url('/img/substract5.svg')] first:before:bg-no-repeat first:before:bg-contain first:before:rotate-180 last:before:absolute last:before:bottom-0 last:before:-right-[0px] last:before:w-[60px] last:before:h-[60px] last:before:bg-[url('/img/substract4.svg')] last:before:bg-no-repeat last:before:bg-contain border-t-4 border-r-4 border-[#f1f3f5]"
                   }`}
                   onClick={() => setActiveTab(service.id)}
                 >
-                  {service.title}
+                  <span className="inline lg:hidden">0{service.id}</span>
+                  <span className="hidden lg:inline">{service.title}</span>
                 </button>
               ))}
             </div>
           </div>
         </div>
         {/* Tab Content */}
-        <div className="text-primary z-20 w-4/6 mx-auto py-20 text-xl flex font-extralight flex-col gap-8">
+        <div className="text-primary z-20 w-full lg:w-4/6 mx-auto py-8 lg:py-20 text-xl flex font-extralight flex-col gap-8 px-[15px]">
           <div className="flex justify-between items-center">
             <h2 className="font-medium text-3xl lg:text-5xl font-clashdisplay">
               {servicesTabs[activeTab - 1].title}
@@ -385,7 +395,7 @@ const Home: FC = () => {
             </ButtonWithArrow>
           </div>
           <p
-            className="text-primary lg:text-xl text-opacity-80"
+            className="text-primary text-base lg:text-xl text-opacity-80"
             dangerouslySetInnerHTML={{
               __html: servicesTabs[activeTab - 1].description,
             }}
@@ -393,10 +403,10 @@ const Home: FC = () => {
         </div>
       </section>
       <hr className="h-px bg-gray-200 border-0 relative w-full z-20" />
-      <section className="py-32 bg-white relative z-20">
+      <section className="py-12 lg:py-32 bg-white relative z-20 px-[15px]">
         <div className="mx-auto max-w-[1200px] flex flex-col gap-24">
           <div className="flex flex-col gap-8">
-            <div className="flex gap-8 justify-between">
+            <div className="flex flex-col lg:flex-row gap-8 justify-between">
               <h3 className="text-2xl lg:text-4xl text-left text-primary font-clashdisplay font-extralight w-full">
                 Soluciones por{" "}
                 <span className="font-medium">
@@ -405,7 +415,7 @@ const Home: FC = () => {
                   especializados
                 </span>
               </h3>
-              <p className="font-extralight text-lg">
+              <p className="font-extralight text-base lg:text-lg">
                 Ofrecemos{" "}
                 <span className="font-medium">Soluciones Integrales</span> a
                 través de alianzas estratégicas con líderes de la industria,
@@ -426,7 +436,7 @@ const Home: FC = () => {
                 </span>
               </p>
             </div>
-            <div className="grid grid-cols-3 gap-[40px]">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-[40px]">
               {cards.slice(0, 3).map((card) => (
                 <div
                   key={card.id}
@@ -447,7 +457,9 @@ const Home: FC = () => {
                       {card.number}
                     </span>
                     <br />
-                    <h3 className="text-4xl font-medium">{card.title}</h3>
+                    <h3 className="text-2xl lg:text-4xl font-medium">
+                      {card.title}
+                    </h3>
                   </div>
 
                   <div className="absolute bottom-6 left-6">{card.icon}</div>
@@ -463,7 +475,7 @@ const Home: FC = () => {
                   >
                     <PlusIcon
                       dark={card.theme === "light"}
-                      className="h-8 w-8 relative -right-[2px]"
+                      className="w-6 h-6 lg:h-8 lg:w-8 relative -right-[2px]"
                     />
                   </Link>
                 </div>
@@ -472,17 +484,17 @@ const Home: FC = () => {
           </div>
         </div>
       </section>
-      <section className="py-24 bg-white z-20 w-full sticky top-[60px]">
-        <div className="grid grid-cols-2 bg-primary rounded-[64px] overflow-hidden min-h-[75vh] mx-auto max-w-[1300px]">
-          <div className="w-full h-full relative">
+      <section className="py-24 bg-white z-20 w-full relative lg:sticky lg:top-[60px] px-[15px]">
+        <div className="grid lg:grid-cols-2 bg-primary rounded-[64px] overflow-hidden min-h-[75vh] mx-auto max-w-[1300px]">
+          <div className="w-full h-full relative min-h-[350px]">
             <Image
               src="/img/ft_bg.jpg"
-              className="object-cover"
+              className="object-cover "
               layout="fill"
               alt="Fitness Total"
             />
           </div>
-          <div className="w-full h-full bg-primary flex flex-col p-20 justify-center items-start gap-10">
+          <div className="w-full h-full bg-primary flex flex-col p-12 lg:p-20 justify-center items-start gap-6 lg:gap-10">
             <Image
               src="/img/ft.svg"
               width={200}
@@ -494,7 +506,7 @@ const Home: FC = () => {
               <br />
               idea de 0 <ArrowIcon className="inline" /> 100
             </h3>
-            <p className="font-extralight text-lg text-white">
+            <p className="font-extralight text-base lg:text-lg text-white">
               Transforma tu{" "}
               <span className="font-semibold">visión en realidad</span> con
               nuestro servicio{" "}
@@ -537,7 +549,7 @@ const Home: FC = () => {
         id="contact"
         className="flex flex-col justify-end items-end gap-12 md:gap-32 pt-12 md:pt-36 pb-12 md:pb-20 px-[30px]  md:px-[60px] bg-secondary bg-no-repeat bg-center bg-cover relative text-white before:absolute before:rounded-t-[64px] before:inset-0 before:bg-gradient-to-t before:from-secondary/30 before:to-secondary/100 before:z-0 z-40"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-32 max-w-[1400px] mx-auto z-2 relative w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-32 max-w-[1400px] lg:mx-auto z-2 relative w-full">
           <div className="flex flex-col gap-14 items-center md:items-start">
             <div className="flex gap-8 font-clash">
               <span className="text-mainGray text-lg">(04)</span>

@@ -24,7 +24,7 @@ export default function ButtonWithArrow({
   dark = false,
 }: ButtonWithArrowProps) {
   const baseClasses =
-    "border-2 flex font-medium justify-between items-center cursor-pointer transition font-clash text-base tracking-wide duration-300 rounded-r-[26px] !leading-5";
+    "border-2 flex font-medium justify-between items-center cursor-pointer transition font-clash text-base tracking-wide duration-300 rounded-r-[26px] !leading-5 max-h-[56px]";
 
   const fullWidthClass = fullWidth ? "w-full" : "";
 

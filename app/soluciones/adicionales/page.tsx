@@ -51,11 +51,11 @@ const SolucionesAdd: FC = () => {
 
   return (
     <div className="relative">
-      <main className="p-[20px] bg-cover text-white z-20 bg-white flex flex-col gap-20 pt-40">
-        <div className="px-44 flex flex-col gap-12">
-          <div className="flex gap-8 text-primary items-center -ml-10">
+      <main className="p-[20px] bg-cover text-white z-20 bg-white flex flex-col gap-12 lg:gap-20 pt-24 lg:pt-40">
+        <div className="px-[15px] lg:px-44 flex flex-col gap-6 lg:gap-12">
+          <div className="flex gap-4 lg:gap-8 text-primary items-center lg:-ml-10">
             <div className="h-2 w-2 bg-primary"></div>
-            <span className="font-clash text-lg">
+            <span className="font-clash text-base lg:text-lg">
               Soluciones por partners especializados
             </span>
           </div>
@@ -63,7 +63,7 @@ const SolucionesAdd: FC = () => {
             Transforma tu Espacio Fitness
             <br /> <span className="font-medium">con nuestras soluciones</span>
           </h3>
-          <p className="font-extralight text-lg text-primary lg:max-w-3xl">
+          <p className="font-extralight text-base lg:text-lg text-primary  w-full lg:max-w-3xl">
             Ofrecemos{" "}
             <span className="font-semibold">Soluciones Integrales</span> a
             través de alianzas estratégicas con líderes de la industria,
@@ -83,8 +83,8 @@ const SolucionesAdd: FC = () => {
         </div>
       </main>
 
-      <section className="pt-24 bg-white relative z-20">
-        <div className="mx-auto max-w-[1200px] flex flex-col gap-[80px]">
+      <section className="pt-12 lg:pt-24 bg-white relative z-20">
+        <div className="mx-auto max-w-[1200px] flex flex-col gap-[80px] px-[15px]">
           {cards.map((card) => (
             <CardWithGallery key={card.id} card={card} />
           ))}
@@ -156,20 +156,20 @@ const CardWithGallery: FC<{ card: any }> = ({ card }) => {
       </div>
 
       {/* Lado derecho: Contenido */}
-      <div className="w-full lg:w-1/2 flex flex-col gap-6 p-14">
-        <span className="font-clashdisplay font-extralight text-2xl text-primary">
+      <div className="w-full lg:w-1/2 flex flex-col gap-6 p-8 lg:p-14">
+        <span className="font-clashdisplay font-extralight text-xl lg:text-2xl text-primary">
           {card.number}
         </span>
-        <h3 className="text-4xl font-medium text-primary font-clashdisplay">
+        <h3 className="text-3xl lg:text-4xl font-medium text-primary font-clashdisplay">
           {card.title}
         </h3>
         <p
-          className="text-lg text-primary font-extralight"
+          className="text-base lg:text-lg text-primary font-extralight"
           dangerouslySetInnerHTML={{
             __html: card.description,
           }}
         ></p>
-        <div className="mt-4">{card.icon}</div>
+        <div className="lg:mt-4">{card.icon}</div>
       </div>
     </div>
   );

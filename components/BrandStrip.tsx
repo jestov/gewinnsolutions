@@ -50,11 +50,11 @@ const BrandStrip: React.FC<BrandStripProps> = ({ gradientColor }) => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="flex flex-col lg:flex-row justify-evenly items-center w-full pl-[60px] pr-[30px] gap-[60px] flex-1 overflow-hidden">
+    <div className="flex flex-col lg:flex-row justify-evenly items-center w-full px-[15px] lg:pl-[60px] lg:pr-[30px] gap-[20px] lg:gap-[60px] flex-1 overflow-hidden">
       <h3 className="text-2xl lg:text-3xl text-left text-primary font-clashdisplay font-extralight">
         Nuestros <span className="font-medium">clientes</span>
       </h3>
-      <div className="min-w-4/6 w-4/6">
+      <div className="w-full lg:min-w-4/6 lg:w-4/6">
         <div className="marquee-container w-full">
           <Marquee
             gradient={true}

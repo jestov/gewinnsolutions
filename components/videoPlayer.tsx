@@ -31,7 +31,7 @@ const VideoPlayer = () => {
 
   return (
     <div
-      className={`relative w-full ${isFullscreen ? "fixed inset-0 z-20" : "z-10"}`}
+      className={`relative rounded-[32px] overflow-hidden w-full ${isFullscreen ? "fixed inset-0 z-20" : "z-10"}`}
     >
       <video
         ref={videoRef}
@@ -49,7 +49,7 @@ const VideoPlayer = () => {
             onClick={handlePlay}
             className="hover:scale-105 transition duration-500"
           >
-            <PlayIcon className="w-8 h-8" color="#ffffff" />
+            <PlayIcon className="w-4 h-8 lg:w-8 lg:h-8" color="#ffffff" />
           </button>
         </div>
       )}
