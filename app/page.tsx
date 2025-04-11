@@ -13,8 +13,6 @@ import BrandStrip from "@/components/BrandStrip";
 import BrandStripClients from "@/components/BrandStripClients";
 import ArrowIcon from "@/components/icons/ArrowIcon";
 import Marquee from "react-fast-marquee";
-import AddCartIcon from "@/components/icons/AddCartIcon";
-import ChevronIcon from "@/components/icons/ChevronIcon";
 import PlusIcon from "@/components/icons/PlusIcon";
 import StagesDark from "@/components/icons/StagesDark";
 import WifiDark from "@/components/icons/WifiDark";
@@ -22,10 +20,10 @@ import GymDark from "@/components/icons/GymDark";
 import Light from "@/components/icons/Light";
 import Grid from "@/components/icons/Grid";
 import Speaker from "@/components/icons/Speaker";
-import FitnessTotal from "@/components/icons/FitnessTotal";
 import Stages from "@/components/icons/Stages";
 import Gym from "@/components/icons/Gym";
 import Wifi from "@/components/icons/Wifi";
+import
 
 const products = [
   {
@@ -154,7 +152,7 @@ const servicesTabs = [
     title: "03 Diseño",
     description:
       "Nuestro equipo de arquitectos crea <span class='font-medium'>espacios que equilibran funcionalidad y estética,</span> cuidando cada detalle desde la distribución hasta la <span class='font-medium'>identidad única de cada proyecto.</span> Transformamos tus <span class='font-medium'>ideas en espacios que inspiran y motivan</span> la experiencia del usuario.",
-    videoSrc: "/videos/1.mp4",
+    videoSrc: "/videos/diseno.mp4",
   },
   {
     id: 4,
@@ -234,6 +232,8 @@ const Home: FC = () => {
             autoPlay
             loop
             muted
+            playsInline
+            preload="auto"
             className="absolute z-10 w-auto min-h-[110vh] max-w-none"
           >
             <source src="/videos/1.mp4" type="video/mp4" />
