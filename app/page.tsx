@@ -23,7 +23,6 @@ import Speaker from "@/components/icons/Speaker";
 import Stages from "@/components/icons/Stages";
 import Gym from "@/components/icons/Gym";
 import Wifi from "@/components/icons/Wifi";
-import
 
 const products = [
   {

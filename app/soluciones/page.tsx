@@ -132,6 +132,7 @@ const Soluciones: FC = () => {
             autoPlay
             loop
             muted
+            preload="auto"
             className="absolute z-10 w-full object-cover min-h-[70vh] max-w-none"
           >
             <source
