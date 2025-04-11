@@ -133,6 +133,7 @@ const Soluciones: FC = () => {
             loop
             muted
             preload="auto"
+            playsInline
             className="absolute z-10 w-full object-cover min-h-[70vh] max-w-none"
           >
             <source
