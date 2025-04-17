@@ -336,7 +336,7 @@ export default function Menu() {
           <div className="flex flex-col w-full gap-8 lg:gap-12 m-auto max-w-[1400px] h-full lg:items-center lg:justify-center p-8 text-sm opacity-80">
             <div
               onClick={() => setIsMegaMenuOpen(false)}
-              className="text-black flex gap-1 -ml-1"
+              className="text-black flex gap-1 -ml-1 lg:hidden"
             >
               <ArrowIcon dark={true} className="h-5 rotate-180 opacity-80" />
               Menú
