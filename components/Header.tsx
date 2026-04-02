@@ -4,227 +4,149 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Logo from "../components/Logo";
 import LogoDark from "../components/LogoDark";
-import Button from "../components/Button";
-import QuoteIcon from "./icons/QuoteIcon";
 import Link from "next/link";
 import PlusIcon from "./icons/PlusIcon";
 import ArrowIcon from "./icons/ArrowIcon";
 
-export default function Menu() {
+export default function Header() {
   const megaMenuRef = useRef<HTMLDivElement | null>(null);
   const [isScrolledPastMain, setIsScrolledPastMain] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
-  const [searchParams, setSearchParams] = useState<string | null>(null);
   const pathname = usePathname();
   const router = useRouter();
-  const [activeSection, setActiveSection] = useState<string>("");
 
+  const isAV = pathname.startsWith("/av");
+  const isFitness = pathname.startsWith("/fitness");
+  const isHome = pathname === "/";
+  const isDark = isAV || isFitness || isHome;
+
+  // Close mega menu on outside click
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        megaMenuRef.current &&
-        !megaMenuRef.current.contains(event.target as Node)
-      ) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (megaMenuRef.current && !megaMenuRef.current.contains(e.target as Node)) {
         setIsMegaMenuOpen(false);
       }
     };
-
-    if (isMegaMenuOpen) {
-      document.addEventListener("click", handleClickOutside);
-    } else {
-      document.removeEventListener("click", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
+    if (isMegaMenuOpen) document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, [isMegaMenuOpen]);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setSearchParams(params.get("tab"));
-  }, []);
-
-  useEffect(() => {
-    const checkIfMobileView = () => {
-      setIsMobileView(window.innerWidth <= 1024);
-    };
-
+    const checkMobile = () => setIsMobileView(window.innerWidth <= 1024);
     const handleScroll = () => {
-      const sections = document.querySelectorAll("section");
-      let currentSection = "";
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        if (
-          window.scrollY >= sectionTop - sectionHeight / 3 &&
-          window.scrollY < sectionTop + sectionHeight - sectionHeight / 3
-        ) {
-          currentSection = section.getAttribute("id") || "";
-        }
-      });
-
-      setActiveSection(`#${currentSection}`);
-
-      if (pathname === "/") {
-        const main = document.querySelector("main");
-        if (main) {
-          const mainOffset =
-            main.offsetTop + main.offsetHeight - (main.offsetHeight - 100);
-          setIsScrolledPastMain(window.pageYOffset > mainOffset);
-        }
+      const main = document.querySelector("main");
+      if (main && pathname === "/fitness") {
+        setIsScrolledPastMain(window.pageYOffset > main.offsetTop + 100);
+      } else if (isAV) {
+        setIsScrolledPastMain(window.pageYOffset > 80);
       }
     };
-
-    checkIfMobileView();
-    if (pathname === "/") {
-      window.addEventListener("scroll", handleScroll);
-    }
-    window.addEventListener("resize", checkIfMobileView);
-
+    checkMobile();
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", checkMobile);
     return () => {
-      window.removeEventListener("resize", checkIfMobileView);
-      if (pathname === "/") {
-        window.removeEventListener("scroll", handleScroll);
-      }
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", checkMobile);
     };
-  }, [pathname]);
+  }, [pathname, isAV]);
 
   useEffect(() => {
-    if (isMegaMenuOpen) {
-      document.body.style.overflow = "auto";
-    } else if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isMobileMenuOpen, isMegaMenuOpen]);
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
-    setIsMegaMenuOpen(false);
-  }, [pathname]);
-
-  const menuOptions = [
-    { name: "Nosotros", path: "/nosotros" },
-    {
-      name: "Soluciones",
-      path: "#",
-      isMegaMenu: true,
-    },
-  ];
-
-  const handleMenuClick = (option: any) => {
-    if (option.isMegaMenu) {
-      setIsMegaMenuOpen(!isMegaMenuOpen);
-    } else {
-      setActiveSection(option.path);
-      setIsMobileMenuOpen(false);
-      setIsMegaMenuOpen(false);
-      router.push(option.path);
-    }
-  };
-
-  const handleMegaMenuClick = (tabId: number) => {
     setIsMegaMenuOpen(false);
     setIsMobileMenuOpen(false);
-    router.push(`/soluciones?tab=${tabId}`);
-  };
+  }, [pathname]);
 
-  const getNavBarStyles = () => {
-    if (pathname === "/soluciones") {
-      return "bg-primary text-white border-b border-white border-opacity-30";
-    } else if (pathname === "/") {
+  // Hide header on home (it's a full-screen split)
+  if (isHome) return null;
+
+  // ── AV NAV CONFIG ──
+  const avMenuOptions = [
+    { name: "Nosotros", path: "/av/nosotros" },
+    { name: "Servicios", path: "/av#servicios", isMegaMenu: true },
+  ];
+
+  const avMegaItems = [
+    { id: 1, label: "Audio Hi-Fi", path: "/av#servicios" },
+    { id: 2, label: "Pro Audio & Video", path: "/av#servicios" },
+    { id: 3, label: "Tratamiento Acústico", path: "/av#servicios" },
+  ];
+
+  // ── FITNESS NAV CONFIG ──
+  const fitnessMenuOptions = [
+    { name: "Nosotros", path: "/nosotros" },
+    { name: "Soluciones", path: "#", isMegaMenu: true },
+  ];
+
+  const fitnessMegaItems = [
+    { id: 1, label: "Audio", path: "/soluciones?tab=1" },
+    { id: 2, label: "Iluminación", path: "/soluciones?tab=2" },
+    { id: 3, label: "Diseño", path: "/soluciones?tab=3" },
+    { id: 4, label: "Fitness Total", path: "/soluciones?tab=4" },
+  ];
+
+  const menuOptions = isAV ? avMenuOptions : fitnessMenuOptions;
+  const megaItems = isAV ? avMegaItems : fitnessMegaItems;
+  const contactPath = isAV ? "/av/contacto" : "/contacto";
+  const homePath = isAV ? "/av" : "/fitness";
+
+  // ── STYLES ──
+  const getNavStyle = () => {
+    if (isAV) {
       return isScrolledPastMain
-        ? "bg-secondary bg-opacity-100 text-white border-b border-white border-opacity-30"
-        : "bg-transparent text-white border-b border-white border-opacity-20";
-    } else {
-      return "bg-white text-black border-b border-primary border-opacity-20";
+        ? "bg-[#080808]/95 backdrop-blur-md border-b border-white/10 text-white"
+        : "bg-transparent text-white border-b border-white/10";
     }
+    // fitness
+    return isScrolledPastMain
+      ? "bg-[#040404]/95 backdrop-blur-md text-white border-b border-white/20"
+      : "bg-transparent text-white border-b border-white/20";
   };
 
-  const getHoverBackgroundClass = () => {
-    return pathname === "/" || pathname === "/soluciones"
-      ? "hover:bg-black-200"
-      : "hover:bg-gray-100";
-  };
-
-  const getLogoComponent = () => {
-    if (pathname === "/soluciones" || pathname === "/") {
-      return <Logo className="h-6 lg:h-8" />;
-    } else {
-      return <LogoDark className="h-6 lg:h-8" />;
-    }
-  };
+  const borderColor = isDark ? "border-white/10" : "border-primary/20";
+  const hoverBg = isDark ? "hover:bg-white/5" : "hover:bg-gray-100";
+  const textColor = isDark ? "text-white" : "text-black";
+  const accentColor = isAV ? "#C9A96E" : undefined;
 
   return (
     <>
-      <nav
-        className={`flex ${getNavBarStyles()} transition duration-300 fixed w-full z-50 max-w-[100vw]`}
-      >
+      <nav className={`flex ${getNavStyle()} transition-all duration-500 fixed w-full z-50 max-w-[100vw]`}>
         <div className="flex gap-5 w-full justify-start mx-auto items-center pl-1 pr-6 lg:pl-2 lg:pr-0">
-          {/* Logo + Menu */}
           <div className="flex justify-between w-full items-center gap-8">
+            {/* Logo */}
             <div className="flex h-full items-center">
-              <div
-                className={`border-r h-full p-5 ${
-                  pathname === "/" || pathname === "/soluciones"
-                    ? "border-white border-opacity-30"
-                    : "border-primary border-opacity-20"
-                }`}
-              >
-                {getLogoComponent()}
-              </div>
+              <Link href={homePath} className={`border-r h-full p-5 ${borderColor} flex items-center`}>
+                <Logo className="h-6 lg:h-8" />
+              </Link>
 
-              {/* Desktop Menu */}
-              <ul className="hidden lg:flex gap-4 items-center h-full">
-                {menuOptions.map((option, index) => (
-                  <li key={index}>
+              {/* Desktop menu */}
+              <ul className="hidden lg:flex gap-0 items-center h-full ml-2">
+                {menuOptions.map((option, i) => (
+                  <li key={i}>
                     {option.isMegaMenu ? (
-                      <span
-                        onClick={() => handleMenuClick(option)}
-                        className={`cursor-pointer inline-flex items-center font-clash !leading-loose px-6 py-5 ${getHoverBackgroundClass()} transition duration-500 ${
-                          isMegaMenuOpen
-                            ? "text-primary bg-[#F1F3F5]"
-                            : pathname === "/soluciones" || pathname === "/"
-                              ? "text-white"
-                              : "text-black"
-                        }`}
+                      <button
+                        onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
+                        className={`cursor-pointer inline-flex items-center font-clash leading-loose px-6 py-5 ${hoverBg} transition-all duration-300 ${
+                          isMegaMenuOpen ? "bg-white/10" : ""
+                        } ${textColor}`}
                       >
                         <PlusIcon
-                          dark={
-                            isMegaMenuOpen ||
-                            (pathname !== "/" &&
-                              !pathname.startsWith("/soluciones"))
-                          }
-                          className={`mr-2 w-4 h-4 transition-transform duration-300 ${
-                            isMegaMenuOpen
-                              ? "transform rotate-45"
-                              : "transform rotate-0"
-                          }`}
+                          dark={false}
+                          className={`mr-2 w-4 h-4 transition-transform duration-300 ${isMegaMenuOpen ? "rotate-45" : ""}`}
                         />
                         {option.name}
-                      </span>
+                      </button>
                     ) : (
-                      <Link href={option.path}>
-                        <span
-                          onClick={() => handleMenuClick(option)}
-                          className={`cursor-pointer inline-flex font-clash !leading-loose px-6 py-5 ${getHoverBackgroundClass()} transition duration-500 ${
-                            pathname === option.path
-                              ? "text-primary bg-gray-50"
-                              : pathname === "/soluciones" || pathname === "/"
-                                ? "text-white"
-                                : "text-black"
-                          }`}
-                        >
-                          {option.name}
-                        </span>
+                      <Link
+                        href={option.path}
+                        className={`cursor-pointer inline-flex font-clash leading-loose px-6 py-5 ${hoverBg} transition-all duration-300 ${textColor}`}
+                      >
+                        {option.name}
                       </Link>
                     )}
                   </li>
@@ -232,175 +154,119 @@ export default function Menu() {
               </ul>
             </div>
 
-            {/* Hamburger Button */}
-            <div
-              className="lg:hidden flex flex-col items-center justify-center cursor-pointer"
+            {/* Hamburger */}
+            <button
+              className="lg:hidden flex flex-col items-center justify-center cursor-pointer gap-1.5 p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
             >
-              <div
-                className={`line transition-all duration-300 ${
-                  isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
-                } w-6 h-0.5 ${
-                  pathname === "/" || pathname === "/soluciones"
-                    ? "bg-white"
-                    : "bg-black"
-                }`}
-              />
-              <div
-                className={`line transition-all duration-300 ${
-                  isMobileMenuOpen ? "opacity-0" : ""
-                } w-6 h-0.5 mt-1 ${
-                  pathname === "/" || pathname === "/soluciones"
-                    ? "bg-white"
-                    : "bg-black"
-                }`}
-              />
-              <div
-                className={`line transition-all duration-300 ${
-                  isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
-                } w-6 h-0.5 mt-1 ${
-                  pathname === "/" || pathname === "/soluciones"
-                    ? "bg-white"
-                    : "bg-black"
-                }`}
-              />
-            </div>
+              <span className={`block w-6 h-px transition-all duration-300 bg-white ${isMobileMenuOpen ? "rotate-45 translate-y-[5px]" : ""}`} />
+              <span className={`block w-6 h-px transition-all duration-300 bg-white ${isMobileMenuOpen ? "opacity-0" : ""}`} />
+              <span className={`block w-6 h-px transition-all duration-300 bg-white ${isMobileMenuOpen ? "-rotate-45 -translate-y-[5px]" : ""}`} />
+            </button>
 
-            {/* Contacto */}
+            {/* Contact CTA */}
             <div className="hidden lg:flex">
-              <Link href="/contacto">
-                <span
-                  className={`inline-flex font-clash !leading-loose px-6 py-5 ${getHoverBackgroundClass()} transition duration-500 ${
-                    pathname === "/contacto" || pathname === "/nosotros"
-                      ? "bg-black text-white "
-                      : pathname === "/soluciones" || pathname === "/"
-                        ? "text-black bg-white"
-                        : "text-white bg-white"
-                  }`}
-                >
-                  Contacto
-                </span>
+              <Link
+                href={contactPath}
+                className={`inline-flex font-clash leading-loose px-6 py-5 transition-all duration-300 ${
+                  isAV
+                    ? "bg-white text-[#080808] hover:bg-[#C9A96E] hover:text-white"
+                    : "bg-white text-black hover:bg-gray-100"
+                }`}
+              >
+                Contacto
               </Link>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       {isMobileView && (
         <div
-          className={`lg:hidden fixed top-[65px] left-0 w-full border-b border-white border-opacity-30 bg-primary text-white transition-transform duration-300 z-50 ${
+          className={`lg:hidden fixed top-[65px] left-0 w-full bg-[#080808] border-b border-white/10 text-white transition-transform duration-300 z-50 ${
             isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <ul className="flex flex-col gap-4 p-8">
-            {menuOptions.map((option, index) => (
-              <li key={index}>
+          <ul className="flex flex-col p-8 gap-4">
+            {menuOptions.map((option, i) => (
+              <li key={i}>
                 <button
-                  onClick={() => handleMenuClick(option)}
-                  className="text-left w-full"
+                  onClick={() => {
+                    if (!option.isMegaMenu) {
+                      router.push(option.path);
+                      setIsMobileMenuOpen(false);
+                    } else {
+                      setIsMegaMenuOpen(!isMegaMenuOpen);
+                    }
+                  }}
+                  className="text-left w-full text-white font-clash text-lg py-2"
                 >
-                  <span
-                    className={`text-white font-clash text-base lg:text-lg py-2 block ${
-                      activeSection === option.path ? "font-semibold" : ""
-                    }`}
-                  >
-                    {option.name}
-                    {option.name === "Soluciones" && (
-                      <ArrowIcon className="h-4 inline-block ml-2" />
-                    )}
-                  </span>
+                  {option.name}
+                  {option.isMegaMenu && <ArrowIcon className="h-4 inline-block ml-2" />}
                 </button>
               </li>
             ))}
             <li>
               <Link
-                href="/contacto"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                href={contactPath}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-white font-clash text-lg py-2 block"
               >
-                <span className="text-white font-clash text-base lg:text-lg py-2 block">
-                  Contacto
-                </span>
+                Contacto
+              </Link>
+            </li>
+            <li className="pt-4 border-t border-white/10">
+              <Link
+                href="/"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-white/40 font-clash text-sm py-2 block tracking-[0.2em] uppercase"
+              >
+                ← Cambiar división
               </Link>
             </li>
           </ul>
         </div>
       )}
 
-      {/* Mega Menu */}
+      {/* Mega menu */}
       {isMegaMenuOpen && (
         <div
           ref={megaMenuRef}
-          className={`mega-menu w-full flex flex-col fixed top-[65px] lg:!top-[73px] ${pathname === "/soluciones" || pathname === "/" ? "bg-black-200" : "bg-white"} px-4 z-50 lg:h-[27vh] border-b border-x border-secondary border-opacity-20 bg-[#F1F3F5] transition duration-300 lg:rounded-b-[64px] items-center overflow-auto`}
+          className="fixed top-[65px] lg:top-[73px] w-full bg-[#0d0d0d] border-b border-white/10 z-50 px-8 lg:px-16 py-8 lg:py-10"
         >
-          <div className="flex flex-col w-full gap-8 lg:gap-12 m-auto max-w-[1400px] h-full lg:items-center lg:justify-center p-8 text-sm opacity-80">
-            <div
-              onClick={() => setIsMegaMenuOpen(false)}
-              className="text-black flex gap-1 -ml-1 lg:hidden"
-            >
-              <ArrowIcon dark={true} className="h-5 rotate-180 opacity-80" />
-              Menú
+          <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-8 lg:gap-16 lg:items-center justify-between">
+            <div>
+              <span className="text-white/30 text-xs tracking-[0.3em] uppercase font-clash block mb-2">
+                {isAV ? "Servicios A/V" : "Soluciones Fitness"}
+              </span>
+              {isAV && (
+                <p className="text-white/20 text-sm font-clash font-light max-w-xs">
+                  Integración de audio, video y acústica
+                </p>
+              )}
             </div>
-
-            <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 justify-between w-full lg:items-center">
-              <h3 className="text-primary font-extralight text-lg lg:text-2xl font-clashdisplay !leading-none">
-                Soluciones
-                <br />
-                <span className="font-medium">especializadas</span>
-              </h3>
-              <ul className="text-2xl flex flex-col lg:flex-row gap-2 lg:gap-6">
-                {[1, 2, 3, 4].map((tab) => (
-                  <li
-                    key={tab}
-                    onClick={() => handleMegaMenuClick(tab)}
-                    className="font-clash font-medium flex gap-2 cursor-pointer text-lg lg:text-xl"
-                  >
-                    <span className="font-extralight">0{tab}</span>{" "}
-                    {
-                      ["Audio", "Iluminación", "Diseño", "Fitness Total"][
-                        tab - 1
-                      ]
-                    }
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 justify-between w-full lg:items-center">
-              <h3 className="text-primary font-extralight text-lg lg:text-2xl font-clashdisplay !leading-none">
-                Soluciones por
-                <br />
-                <span className="font-medium">partners especializados</span>
-              </h3>
-              <ul className="text-2xl flex flex-col lg:flex-row gap-2 lg:gap-6">
-                <li className="font-clash font-medium flex gap-2 cursor-pointer text-lg lg:text-xl">
+            <ul className="flex flex-col lg:flex-row gap-4 lg:gap-8">
+              {megaItems.map((item) => (
+                <li key={item.id}>
                   <Link
-                    href="/soluciones/adicionales#stages-indoor-bikes"
-                    onClick={() => handleMegaMenuClick(1)}
+                    href={item.path}
+                    onClick={() => setIsMegaMenuOpen(false)}
+                    className="flex items-center gap-3 font-clash text-lg lg:text-xl text-white/70 hover:text-white transition-colors duration-200 group"
                   >
-                    <span className="font-extralight">05</span> Stages Indoor
-                    Bikes
+                    <span className="text-white/20 font-light text-sm">0{item.id}</span>
+                    {item.label}
+                    <svg
+                      className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all duration-200 -translate-x-1 group-hover:translate-x-0"
+                      fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
                   </Link>
                 </li>
-                <li className="font-clash font-medium flex gap-2 cursor-pointer text-lg lg:text-xl">
-                  <Link
-                    href="/soluciones/adicionales#equipamiento-de-gimnasios"
-                    onClick={() => handleMegaMenuClick(1)}
-                  >
-                    <span className="font-extralight">06</span> Equipamiento de
-                    Gimnasios
-                  </Link>
-                </li>
-                <li className="font-clash font-medium flex gap-2 cursor-pointer text-lg lg:text-xl">
-                  <Link
-                    href="/soluciones/adicionales#redes-y-seguridad"
-                    onClick={() => handleMegaMenuClick(1)}
-                  >
-                    <span className="font-extralight">07</span> Redes y
-                    Seguridad
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
           </div>
         </div>
       )}

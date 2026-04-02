@@ -89,7 +89,7 @@ const Soluciones: FC = () => {
       title: "04 Fitness Total",
       description:
         "<span class='font-semibold'>Fitness Total</span> es nuestra <span class='font-semibold'>solución integral</span> que transforma tu <span class='font-semibold'>espacio de fitness</span> en una <span class='font-semibold'>experiencia única</span>. Combinamos <span class='font-semibold'>diseño arquitectónico de vanguardia</span>, <span class='font-semibold'>sistemas de sonido personalizados</span> y <span class='font-semibold'>iluminación LED avanzada</span> para crear un <span class='font-semibold'>entorno motivador</span> y <span class='font-semibold'>estéticamente impresionante</span>.<br /><br /> Imagina un <span class='font-semibold'>estudio de indoor cycling</span> o <span class='font-semibold'>gimnasio</span> donde cada detalle, desde el <span class='font-semibold'>sonido envolvente</span> hasta la <span class='font-semibold'>atmósfera inmersiva</span>, está diseñado para <span class='font-semibold'>inspirar</span> y <span class='font-semibold'>energizar</span>.",
-      videoSrc: "/videos/0417.mp4",
+      videoSrc: "/videos/diseno.mp4",
       img: [
         "/img/fitness-total-1.jpg",
         "/img/fitness-total-2.jpg",

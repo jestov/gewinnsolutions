@@ -2,6 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes scrollLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(300%); }
+}
+
+@keyframes scrollDown {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(300%); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.5s cubic-bezier(1, 0, 0, 1);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.av-section p {
+  line-height: inherit !important;
+}
+
 html {
     margin: 0;
     width: 100%;
@@ -13,6 +52,7 @@ body {
     width: 100%;
     margin: 0;
 }
+
 .rfm-marquee-container {
     overflow: hidden;
 }
@@ -22,6 +62,7 @@ body {
         text-wrap: balance;
     }
 }
+
 @font-face {
     font-family: "Clash Grotesk";
     src: url("/fonts/ClashGrotesk-Extralight.ttf") format("truetype");
@@ -70,13 +111,9 @@ body {
     font-weight: 500;
     font-style: normal;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    fonf-family: "Clash Display" !important;
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Clash Display", sans-serif;
 }
 
 p {
