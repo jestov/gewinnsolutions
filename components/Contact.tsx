@@ -132,14 +132,10 @@ function Contact() {
         >
           <label
             htmlFor={field.id}
-            className={`flex gap-6 items-center transition-colors duration-500 ${
-              (field.id === "services" && selectedServices) ||
-              (field.id === "budget" && selectedBudget) ||
-              (field.id !== "services" &&
-                field.id !== "budget" &&
-                inputValues[field.id as InputFieldName])
-                ? "text-white text-opacity-40"
-                : ""
+            className={`flex gap-6 items-center transition-colors duration-300 ${
+              inputValues[field.id as InputFieldName]
+                ? "text-white/40"
+                : "text-white"
             }`}
           >
             {field.label}
@@ -152,7 +148,7 @@ function Contact() {
               required={field.required}
               rows={1}
               placeholder={field.placeholder}
-              className="appearance-none bg-transparent min-h-[30px] h-auto text-xl lg:text-2xl font-clash resize-none py-2 md:py-5 w-full placeholder-white placeholder-opacity-40 !outline-none col-span-2"
+              className="appearance-none bg-transparent min-h-[30px] h-auto text-xl lg:text-2xl font-clash resize-none py-2 md:py-5 w-full text-white placeholder-white/40 !outline-none col-span-2"
               onChange={handleInputChange}
             ></textarea>
           ) : (
@@ -162,7 +158,7 @@ function Contact() {
               name={field.id}
               required={field.required}
               placeholder={field.placeholder}
-              className="appearance-none text-xl lg:text-2xl font-clash bg-transparent py-2 md:py-5 w-full placeholder-white placeholder-opacity-40 !outline-none"
+              className="appearance-none text-xl lg:text-2xl font-clash bg-transparent py-2 md:py-5 w-full text-white placeholder-white/40 !outline-none"
               onChange={handleInputChange}
             />
           )}

@@ -6,7 +6,7 @@ import LogoWhite from "./LogoWhite";
 import { usePathname } from "next/navigation";
 import InstagramIcon from "../components/icons/InstagramIcon";
 import FacebookIcon from "../components/icons/FacebookIcon";
-import Jestov from "./icons/Jestov";
+import Osmium from "./icons/Osmium";
 
 const socialOptions = [
   {
@@ -24,8 +24,11 @@ const socialOptions = [
 const menuItems = [
   {
     links: [
+      { name: "Home", href: "/fitness" },
       { name: "Nosotros", href: "/nosotros" },
-      { name: "Soluciones", href: "/soluciones?tab=1" },
+      { name: "Soluciones", href: "/soluciones" },
+      { name: "Fitness Total", href: "/fitness#fitness-total" },
+      { name: "FAQ", href: "/fitness#faq" },
       { name: "Contacto", href: "/contacto" },
     ],
   },
@@ -115,7 +118,7 @@ export default function Footer() {
             Todos los derechos reservados.
           </p>
           <p className="text-base text-secondaryGray">
-            Diseñado y desarrollado por <Jestov />
+            Diseñado y desarrollado por <Osmium />
           </p>
         </div>
       </footer>

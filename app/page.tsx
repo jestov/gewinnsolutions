@@ -30,7 +30,7 @@ const HomePage: FC = () => {
     }
   }, [active]);
 
-  const handleMobileTap = (side: "av" | "fitness", href: string, e: React.MouseEvent) => {
+  const handleMobileTap = (side: "av" | "fitness", e: React.MouseEvent) => {
     // On touch devices, first tap activates, second navigates
     if (window.matchMedia("(hover: none)").matches) {
       if (active !== side) {
@@ -47,7 +47,7 @@ const HomePage: FC = () => {
       {/* ── A/V SIDE ── */}
       <Link
         href="/av"
-        onClick={(e) => handleMobileTap("av", "/av", e)}
+        onClick={(e) => handleMobileTap("av", e)}
         className={`relative flex flex-col justify-end overflow-hidden cursor-pointer transition-all duration-700 ease-in-out ${
           active === "fitness"
             ? "flex-[0.28] lg:flex-[0.35]"
@@ -67,7 +67,7 @@ const HomePage: FC = () => {
             filter: active === "fitness" ? "grayscale(1) blur(2px)" : "grayscale(0) blur(0px)",
           }}
         >
-          <source src="/videos/1.mp4" type="video/mp4" />
+          <source src="/videos/audioandvideo.mp4" type="video/mp4" />
         </video>
 
         {/* Gradient */}
@@ -92,10 +92,10 @@ const HomePage: FC = () => {
           {/* Tag */}
           <div className="flex items-center gap-3 mb-4 lg:mb-6">
             <div
-              className="h-px bg-[#C9A96E] transition-all duration-500"
+              className="h-px bg-white/50 transition-all duration-500"
               style={{ width: active === "av" ? "28px" : "14px" }}
             />
-            <span className="text-[#C9A96E] text-[9px] lg:text-[10px] tracking-[0.35em] uppercase font-clash">
+            <span className="text-white/50 text-[9px] lg:text-[10px] tracking-[0.35em] uppercase font-clash">
               Audio · Video · Acústica
             </span>
           </div>
@@ -135,10 +135,10 @@ const HomePage: FC = () => {
               pointerEvents: active === "av" ? "auto" : "none",
             }}
           >
-            <div className="border-2 border-white text-white flex font-medium justify-between items-center font-clash text-sm lg:text-base tracking-wide rounded-r-[26px] leading-5 max-h-[52px]">
-              <div className="py-3 px-4 lg:py-4 lg:px-5">Explorar</div>
-              <div className="aspect-square min-h-full rounded-r-[24px] p-3 lg:p-4 bg-white">
-                <ArrowIcon dark={true} />
+            <div className="border border-white text-white flex font-medium justify-between items-center font-clash text-sm tracking-wide rounded-r-full h-[48px] hover:opacity-80 transition-opacity">
+              <span className="pl-5 pr-4">Explorar</span>
+              <div className="w-[46px] h-[46px] rounded-r-full flex items-center justify-center bg-white">
+                <ArrowIcon dark={true} className="w-5 h-5" />
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@ const HomePage: FC = () => {
       {/* ── FITNESS SIDE ── */}
       <Link
         href="/fitness"
-        onClick={(e) => handleMobileTap("fitness", "/fitness", e)}
+        onClick={(e) => handleMobileTap("fitness", e)}
         className={`relative flex flex-col justify-end overflow-hidden cursor-pointer transition-all duration-700 ease-in-out ${
           active === "av"
             ? "flex-[0.28] lg:flex-[0.35]"
@@ -233,10 +233,10 @@ const HomePage: FC = () => {
               pointerEvents: active === "fitness" ? "auto" : "none",
             }}
           >
-            <div className="border-2 border-white text-white flex font-medium justify-between items-center font-clash text-sm lg:text-base tracking-wide rounded-r-[26px] leading-5 max-h-[52px]">
-              <div className="py-3 px-4 lg:py-4 lg:px-5">Explorar</div>
-              <div className="aspect-square min-h-full rounded-r-[24px] p-3 lg:p-4 bg-white">
-                <ArrowIcon dark={true} />
+            <div className="border border-white text-white flex font-medium justify-between items-center font-clash text-sm tracking-wide rounded-r-full h-[48px] hover:opacity-80 transition-opacity">
+              <span className="pl-5 pr-4">Explorar</span>
+              <div className="w-[46px] h-[46px] rounded-r-full flex items-center justify-center bg-white">
+                <ArrowIcon dark={true} className="w-5 h-5" />
               </div>
             </div>
           </div>
@@ -246,15 +246,12 @@ const HomePage: FC = () => {
       {/* ── CENTER LOGO ── */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
         <div
-          className={`flex flex-col items-center gap-4 lg:gap-6 transition-all duration-700 ${
+          className={`transition-all duration-700 ${
             mounted ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
           style={{ opacity: active ? 0 : undefined, transition: "opacity 0.4s ease" }}
         >
           <Logo className="h-7 lg:h-10 drop-shadow-2xl" />
-          <span className="text-[10px] lg:text-[12px] text-white/60 tracking-[0.5em] uppercase font-clash">
-            Select your experience
-          </span>
         </div>
       </div>
 

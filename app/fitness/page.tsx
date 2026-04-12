@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import FAQSection from "@/components/FAQSection";
 import useTyped from "@/hooks/useTyped";
 import ButtonWithArrow from "@/components/ButtonWithArrow";
 import WhatsAppIcon from "@/components/icons/WhatsappIcon";
@@ -23,6 +24,29 @@ import Speaker from "@/components/icons/Speaker";
 import Stages from "@/components/icons/Stages";
 import Gym from "@/components/icons/Gym";
 import Wifi from "@/components/icons/Wifi";
+
+const fitnessFaqs = [
+  {
+    question: "¿Qué servicios incluye Fitness Total?",
+    answer: "Fitness Total es nuestro paquete integral que incluye diseño arquitectónico, sistemas de audio e iluminación, equipamiento de gimnasio, instalación completa y capacitación. Es la solución completa para crear un espacio fitness de primera clase.",
+  },
+  {
+    question: "¿Trabajan con gimnasios de cualquier tamaño?",
+    answer: "Sí, trabajamos con proyectos de todos los tamaños: desde boutique studios y estudios de cycling hasta grandes fitness centers y cadenas de gimnasios. Adaptamos nuestras soluciones a las necesidades específicas de cada espacio.",
+  },
+  {
+    question: "¿Qué marcas de equipamiento manejan?",
+    answer: "Somos distribuidores autorizados de Stages Indoor Cycling, Fitness Audio, y trabajamos con las mejores marcas de equipamiento fitness. Seleccionamos el equipo ideal según el tipo de actividades y presupuesto de cada proyecto.",
+  },
+  {
+    question: "¿Ofrecen diseño de iluminación LED?",
+    answer: "Sí, somos especialistas en diseño de iluminación LED pixel para espacios fitness. Creamos ambientes dinámicos y personalizados que transforman la experiencia de entrenamiento y motivan a los usuarios.",
+  },
+  {
+    question: "¿Cuánto tiempo toma construir un gimnasio completo?",
+    answer: "El tiempo varía según el tamaño y complejidad del proyecto. Un boutique studio puede estar listo en 6-8 semanas, mientras que un fitness center completo puede requerir 3-6 meses desde el diseño hasta la apertura.",
+  },
+];
 
 const products = [
   {
@@ -258,9 +282,9 @@ const Home: FC = () => {
         </span>
       </div>
       <section className="bg-white px-[20px] w-full z-20 pt-8 md:pt-4 -mt-12 md:-mt-16  rounded-t-3xl z-4 relative">
-        <div className=" max-w-[1100px] mx-auto flex flex-col items-center lg:items-start gap-8 pt-12 pb-14 md:pt-32 md:pb-24 lg:min-h-[60vh]">
-          <h2 className="text-2xl lg:text-5xl font-clash font-light !leading-snug tracking-tight text-center md:text-left">
-            <span className="text-mainGray text-base lg:text-xl relative font-light font-sans -top-0.5 tracking-normal">
+        <div className=" max-w-[1000px] mx-auto flex flex-col items-center lg:items-start gap-8 pt-12 pb-14 md:pt-32 md:pb-24 lg:min-h-[60vh]">
+          <h2 className="text-2xl lg:text-4xl font-clash font-light !leading-snug tracking-tight text-center md:text-left">
+            <span className="text-mainGray text-base lg:text-lg margin-r-10 relative font-light font-sans -top-0.5 tracking-normal">
               (01) Nosotros
             </span>{" "}
             Nuestra misión es{" "}
@@ -292,7 +316,7 @@ const Home: FC = () => {
         </div>{" "}
       </section>
       <section className="pt-14 lg:pt-40 pb-10 lg:pb-28 bg-[#f1f3f5] w-full relative z-20 px-[20px] lg:px-64">
-        <p className=" max-w-[1200px] mx-auto text-center container font-light text-xl lg:text-5xl font-clash !leading-snug tracking-tight">
+        <p className=" max-w-[980px] mx-auto text-center container font-light text-xl lg:text-4xl font-clash !leading-snug tracking-tight">
           <span className="font-medium">
             &quot;Con pasión por la excelencia, hemos dejado una huella
             significativa
@@ -322,6 +346,7 @@ const Home: FC = () => {
           (02) Soluciones
         </span>
       </section>
+
       <section className="w-full bg-[#f1f3f5] relative z-20 py-12">
         <div className="flex lg:hidden relative lg:absolute w-full lg:w-7/12 bg-[#f1f3f5] pb-6 flex-col justify-center items-center gap-2 -top-[5px] z-40 rounded-b-[64px] lg:h-[114px] mb-8 px-[15px]">
           <div className="hidden lg:flex absolute top-[5px] -left-[59.9px] w-[61px] h-[61px] bg-[url('/img/substract5.svg')] bg-no-repeat bg-contain"></div>
@@ -483,7 +508,7 @@ const Home: FC = () => {
           </div>
         </div>
       </section>
-      <section className="py-24 bg-white z-20 w-full relative lg:sticky lg:top-[60px] px-[15px]">
+      <section id="fitness-total" className="py-24 bg-white z-20 w-full relative px-[15px]">
         <div className="grid lg:grid-cols-2 bg-primary rounded-[64px] overflow-hidden min-h-[75vh] mx-auto max-w-[1300px]">
           <div className="w-full h-full relative min-h-[350px]">
             <Image
@@ -525,6 +550,14 @@ const Home: FC = () => {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section - Sticky so brands scroll over it */}
+      <div className="lg:sticky lg:top-0 z-20 lg:min-h-[140vh]">
+        <div id="faq">
+          <FAQSection faqs={fitnessFaqs} contactLink="/contacto" />
+        </div>
+      </div>
+
       <section className="ml-auto max-w-[1350px] py-8 bg-primary rounded-tl-[64px] relative z-30">
         <div className="w-full bg-primary flex flex-col justify-center items-center gap-8 bottom-0 z-40 rounded-t-[64px]">
           <div className="absolute -top-[61px] right-0 w-[61px] h-[61px] bg-[url('/img/substract3.svg')] bg-no-repeat bg-contain rotate-90"></div>
@@ -544,6 +577,7 @@ const Home: FC = () => {
           </div>
         </Marquee>
       </section>
+
       <section
         id="contact"
         className="flex flex-col justify-end items-end gap-12 md:gap-32 pt-12 md:pt-36 pb-12 md:pb-20 px-[30px]  md:px-[60px] bg-secondary bg-no-repeat bg-center bg-cover relative text-white before:absolute before:rounded-t-[64px] before:inset-0 before:bg-gradient-to-t before:from-secondary/30 before:to-secondary/100 before:z-0 z-40"

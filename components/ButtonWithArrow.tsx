@@ -9,7 +9,7 @@ interface ButtonWithArrowProps {
   fullWidth?: boolean;
   target?: "_blank" | "_self" | "_parent" | "_top";
   onClick?: () => void;
-  type?: "submit" | "button" | "reset"; // Se eliminó "link" de aquí
+  type?: "submit" | "button" | "reset";
   dark?: boolean;
 }
 
@@ -20,11 +20,11 @@ export default function ButtonWithArrow({
   fullWidth = false,
   target = "_self",
   onClick,
-  type = "button", // Cambiado el valor por defecto a "button"
+  type = "button",
   dark = false,
 }: ButtonWithArrowProps) {
   const baseClasses =
-    "border-2 flex font-medium justify-between items-center cursor-pointer transition font-clash text-base tracking-wide duration-300 rounded-r-[26px] !leading-5 max-h-[56px]";
+    "border flex font-medium justify-between items-center cursor-pointer transition font-clash text-sm tracking-wide duration-300 rounded-r-full h-[48px] hover:opacity-80";
 
   const fullWidthClass = fullWidth ? "w-full" : "";
 
@@ -33,29 +33,28 @@ export default function ButtonWithArrow({
 
   const combinedClasses = `${baseClasses} ${dark ? darkClasses : lightClasses} ${fullWidthClass} ${className}`;
 
+  const content = (
+    <>
+      <span className="pl-5 pr-4">{children}</span>
+      <div
+        className={`w-[46px] h-[46px] rounded-r-full flex items-center justify-center ${dark ? "bg-white" : "bg-primary"}`}
+      >
+        <ArrowIcon dark={dark} className="w-5 h-5" />
+      </div>
+    </>
+  );
+
   if (href) {
     return (
-      <Link href={href} target={target}>
-        <div className={combinedClasses}>
-          <div className="py-4 px-5">{children}</div>
-          <div
-            className={`aspect-square min-h-full  rounded-r-[24px] p-4 ${dark ? "bg-white" : "bg-primary"}`}
-          >
-            <ArrowIcon dark={dark} />
-          </div>
-        </div>
+      <Link href={href} target={target} className={combinedClasses}>
+        {content}
       </Link>
     );
   }
 
   return (
     <button type={type} onClick={onClick} className={combinedClasses}>
-      <div className="py-4 px-5">{children}</div>
-      <div
-        className={`aspect-square min-h-full  rounded-r-[24px] p-4 ${dark ? "bg-white" : "bg-primary"}`}
-      >
-        <ArrowIcon dark={dark} />
-      </div>
+      {content}
     </button>
   );
 }

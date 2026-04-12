@@ -1,402 +1,426 @@
 "use client";
 
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import FooterAV from "@/components/FooterAV";
+import ButtonWithArrow from "@/components/ButtonWithArrow";
+import WhatsAppIcon from "@/components/icons/WhatsappIcon";
+import BrandStripAV from "@/components/BrandStripAV";
+import ProcessSection from "@/components/ProcessSection";
+import FAQSection from "@/components/FAQSection";
+import TestimonialsAV from "@/components/TestimonialsAV";
+import { Speaker, MonitorPlay, AudioWaveform } from "lucide-react";
 
-function useReveal(threshold = 0.06) {
+const avFaqs = [
+  {
+    question: "¿Qué tipo de proyectos realizan?",
+    answer: "Diseñamos e instalamos sistemas de audio, video y acústica para espacios residenciales, comerciales y corporativos. Desde home theaters y sistemas Hi-Fi hasta salas de conferencias, restaurantes y espacios de hospitalidad.",
+  },
+  {
+    question: "¿Trabajan con marcas específicas?",
+    answer: "Somos distribuidores autorizados de las mejores marcas del mercado como QSC, Shure, Allen & Heath, Electro-Voice, entre otras. Seleccionamos el equipo ideal según las necesidades específicas de cada proyecto.",
+  },
+  {
+    question: "¿Cómo es el proceso de un proyecto?",
+    answer: "Comenzamos con una consultoría para entender tus necesidades, seguido del diseño técnico, instalación profesional, calibración del sistema y capacitación. Ofrecemos soporte continuo post-instalación.",
+  },
+  {
+    question: "¿Ofrecen mantenimiento y soporte?",
+    answer: "Sí, ofrecemos planes de mantenimiento preventivo y soporte técnico continuo. Nuestro equipo está disponible para resolver cualquier necesidad que surja después de la instalación.",
+  },
+  {
+    question: "¿Cuánto tiempo toma un proyecto típico?",
+    answer: "El tiempo varía según la complejidad del proyecto. Un sistema residencial puede tomar 2-4 semanas, mientras que proyectos comerciales más grandes pueden requerir 2-3 meses desde el diseño hasta la entrega final.",
+  },
+];
+
+const services = [
+  {
+    id: 1,
+    number: "01",
+    title: "Audio Hi-Fi",
+    subtitle: "El sonido tiene el poder de transformar la manera en que vivimos un espacio.",
+    description: "Integramos sistemas de audio Hi-Fi de referencia mundial, desde configuraciones estéreo de alta fidelidad hasta cines en casa y comercios que buscan una experiencia inmersiva.",
+    image: "/img/audio-1.jpg",
+    tag: "Sonido inmersivo",
+    icon: Speaker,
+  },
+  {
+    id: 2,
+    number: "02",
+    title: "Pro Audio & Video",
+    subtitle: "Soluciones audiovisuales para espacios vanguardistas.",
+    description: "Instalaciones profesionales para entornos corporativos y comerciales: videoconferencia, pantallas interactivas, videowalls y sistemas de distribución.",
+    image: "/img/diseno-1.jpg",
+    tag: "Experiencia visual",
+    icon: MonitorPlay,
+  },
+  {
+    id: 3,
+    number: "03",
+    title: "Tratamiento Acústico",
+    subtitle: "El sonido de un espacio comienza con su diseño.",
+    description: "Soluciones acústicas personalizadas con materiales y elementos arquitectónicos que optimizan el comportamiento sonoro del entorno.",
+    image: "/img/diseno-2.jpg",
+    tag: "Control del sonido",
+    icon: AudioWaveform,
+  },
+];
+
+function useInView(threshold = 0.2) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
       { threshold }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, [threshold]);
-  return { ref, visible };
-}
-
-/* ── Reusable glass panel style ── */
-const glass = {
-  background: "rgba(255,255,255,0.03)",
-  backdropFilter: "blur(24px) saturate(160%)",
-  WebkitBackdropFilter: "blur(24px) saturate(160%)",
-  border: "1px solid rgba(255,255,255,0.07)",
-} as React.CSSProperties;
-
-const glassDark = {
-  background: "rgba(8,8,8,0.55)",
-  backdropFilter: "blur(32px) saturate(140%)",
-  WebkitBackdropFilter: "blur(32px) saturate(140%)",
-  border: "1px solid rgba(255,255,255,0.06)",
-} as React.CSSProperties;
-
-const services = [
-  {
-    number: "01",
-    title: "Audio Hi-Fi",
-    subtitle: "El sonido tiene el poder de transformar la manera en que vivimos un espacio.",
-    body: "Integramos sistemas de audio Hi-Fi de referencia mundial, desde configuraciones estéreo de alta fidelidad, cines en casa hasta comercios que buscan transformar cualquier espacio en una experiencia inmersiva. Cada proyecto es cuidadosamente diseñado para lograr un sonido extraordinario y una integración estética impecable.",
-    image: "/img/av/audio-hifi.jpg",
-    fallback: "/img/audio-1.jpg",
-    tag: "Residential · Commercial",
-  },
-  {
-    number: "02",
-    title: "Pro Audio & Video",
-    subtitle: "Soluciones audiovisuales diseñadas para los espacios vanguardistas.",
-    body: "Desarrollamos instalaciones profesionales de audio y video para entornos corporativos y comerciales, incluyendo videoconferencia avanzada, pantallas interactivas, videowalls y sistemas de distribución de video. Tecnología de vanguardia integrada con precisión y elegancia.",
-    image: "/img/av/pro-av.jpg",
-    fallback: "/img/diseno-1.jpg",
-    tag: "Corporate · Hospitality",
-  },
-  {
-    number: "03",
-    title: "Tratamiento Acústico",
-    subtitle: "El sonido de un espacio comienza con su diseño.",
-    body: "Creamos soluciones acústicas personalizadas utilizando una amplia variedad de materiales y elementos arquitectónicos que optimizan el comportamiento sonoro del entorno. Cada proyecto se desarrolla en conjunto con arquitectos y diseñadores, logrando espacios que suenan tan bien como se ven.",
-    image: "/img/av/acoustic.jpg",
-    fallback: "/img/diseno-2.jpg",
-    tag: "Architecture · Design",
-  },
-];
-
-type Service = typeof services[0];
-
-function ServiceCard({ service, index }: { service: Service; index: number }) {
-  const { ref, visible } = useReveal();
-  const [imgSrc, setImgSrc] = useState(service.image);
-  const isEven = index % 2 === 0;
-
-  return (
-    <div
-      ref={ref}
-      className={`mx-4 sm:mx-6 lg:mx-8 mb-4 rounded-2xl overflow-hidden transition-all duration-1000 ease-out ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
-      style={{ transitionDelay: `${index * 100}ms` }}
-    >
-      <div className={`grid grid-cols-1 lg:grid-cols-2 min-h-[520px] lg:min-h-[600px]`}>
-        {/* Image side */}
-        <div className={`relative overflow-hidden min-h-[56vw] lg:min-h-full ${isEven ? "lg:order-1" : "lg:order-2"}`}>
-          <img
-            src={imgSrc}
-            onError={() => setImgSrc(service.fallback)}
-            alt={service.title}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.6s] ease-out hover:scale-[1.05]"
-          />
-          {/* Grain overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.15] pointer-events-none"
-            style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")", backgroundSize: "128px" }}
-          />
-          {/* Glass number tag */}
-          <div
-            className="absolute top-6 left-6 px-3 py-1.5 rounded-full"
-            style={glassDark}
-          >
-            <span className="text-white/40 font-clash text-[10px] tracking-[0.4em] uppercase">{service.number}</span>
-          </div>
-          {/* Tag pill */}
-          <div
-            className="absolute bottom-6 right-6 px-3 py-1.5 rounded-full"
-            style={glassDark}
-          >
-            <span className="text-white/40 font-clash text-[10px] tracking-[0.3em] uppercase">{service.tag}</span>
-          </div>
-        </div>
-
-        {/* Text side — glass panel */}
-        <div
-          className={`flex flex-col justify-center px-8 py-12 lg:px-14 lg:py-16 ${isEven ? "lg:order-2" : "lg:order-1"}`}
-          style={{ background: "rgba(10,10,10,0.92)", borderLeft: isEven ? "1px solid rgba(255,255,255,0.05)" : "none", borderRight: !isEven ? "1px solid rgba(255,255,255,0.05)" : "none" }}
-        >
-          <div className="w-5 h-px bg-[#C9A96E]/50 mb-8" />
-          <h3 className="font-clashdisplay font-light text-[clamp(2.2rem,3.8vw,3.8rem)] text-white leading-[1.02] tracking-[-0.025em] mb-5">
-            {service.title}
-          </h3>
-          <p className="text-white/50 text-base lg:text-[17px] font-clashdisplay font-light italic leading-[1.5] mb-7">
-            {service.subtitle}
-          </p>
-          <p className="text-white/30 text-[14px] lg:text-[15px] leading-[1.9] font-clash font-light">
-            {service.body}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
+  
+  return { ref, isVisible };
 }
 
 const AVPage: FC = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const introReveal = useReveal();
-  const philReveal = useReveal();
-  const closingReveal = useReveal();
-  const contactReveal = useReveal();
+  const introAnim = useInView();
+  const ctaAnim = useInView();
+  const [activeService, setActiveService] = useState(0);
+  const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      
+      serviceRefs.current.forEach((ref, index) => {
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          const elementTop = rect.top + window.scrollY;
+          const elementBottom = elementTop + rect.height;
+          
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+            setActiveService(index);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="av-section min-h-screen overflow-x-hidden" style={{ background: "#080808", color: "#fff" }}>
-
-      {/* ─── AMBIENT BACKGROUND ORBS (persistent, fixed) ─── */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full opacity-[0.07]"
-          style={{ background: "radial-gradient(circle, #C9A96E 0%, transparent 70%)", filter: "blur(80px)" }} />
-        <div className="absolute bottom-[10%] right-[-15%] w-[60vw] h-[60vw] rounded-full opacity-[0.05]"
-          style={{ background: "radial-gradient(circle, #4a6fa5 0%, transparent 70%)", filter: "blur(100px)" }} />
-        <div className="absolute top-[50%] left-[30%] w-[40vw] h-[40vw] rounded-full opacity-[0.04]"
-          style={{ background: "radial-gradient(circle, #C9A96E 0%, transparent 70%)", filter: "blur(120px)" }} />
+    <div>
+      {/* Fixed Video Background */}
+      <div className="fixed inset-0 w-full h-screen z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/audioandvideo.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
       </div>
 
-      {/* ─── HERO ─── */}
-      <section className="relative h-screen min-h-[640px] flex flex-col justify-end z-10">
-        <video
-          autoPlay loop muted playsInline preload="auto"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ transform: `scale(${1 + scrollY * 0.00005})`, transformOrigin: "center" }}
-        >
-          <source src="/videos/1.mp4" type="video/mp4" />
-        </video>
-
-        {/* Grain on video */}
-        <div
-          className="absolute inset-0 opacity-[0.12] pointer-events-none z-10"
-          style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")", backgroundSize: "128px" }}
-        />
-
-        <div className="absolute inset-0 z-10" style={{ background: "linear-gradient(to top, #080808 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.1) 100%)" }} />
-
-        {/* Hero content — floating glass card at bottom */}
-        <div className="relative z-20 px-4 sm:px-6 lg:px-8 pb-8 lg:pb-12 max-w-[1400px] mx-auto w-full">
-          <div
-            className="rounded-2xl p-8 lg:p-12"
-            style={glassDark}
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-6 h-px bg-[#C9A96E]" />
-              <span className="text-[#C9A96E] text-[10px] tracking-[0.5em] uppercase font-clash">Engineering Exceptional Experiences</span>
-            </div>
-
-            <h1 className="font-clashdisplay font-light text-[clamp(2.2rem,5.5vw,5.5rem)] leading-[1.02] tracking-[-0.025em] max-w-4xl mb-8 text-white">
-              Diseñamos experiencias donde el sonido, la tecnología y el espacio se encuentran en{" "}
-              <em className="text-white/50">perfecta armonía.</em>
+      {/* Hero - Scrollable content over fixed video */}
+      <section className="relative z-10 h-[calc(100dvh+80px)] flex flex-col">
+        {/* Centered content */}
+        <div className="h-dvh flex items-center justify-center px-6 lg:px-12 pt-20">
+          <div className="max-w-4xl text-center">
+            <span className="text-white text-xs tracking-[0.2em] uppercase mb-8 block font-clash">
+              Audio & Video
+            </span>
+            <h1 className="text-2xl lg:text-5xl text-white font-light !leading-[1.2] mb-10">
+              Diseñamos experiencias donde el{" "}
+              <span className="font-medium">sonido</span>, la{" "}
+              <span className="font-medium">imagen</span> y la{" "}
+              <span className="font-medium">luz</span> trabajan en equilibrio con la arquitectura.
             </h1>
-
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-10">
-              <p className="text-white/30 text-[11px] tracking-[0.35em] uppercase font-clash">
-                Audio · Video · Acústica · Iluminación
-              </p>
-              <Link
-                href="#servicios"
-                className="group inline-flex items-center gap-3 px-5 py-2.5 rounded-full text-[11px] tracking-[0.25em] uppercase font-clash text-white/70 hover:text-white transition-all duration-500 cursor-pointer"
-                style={glass}
-              >
-                Explorar nuestros proyectos
-                <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12h14M12 19l7-7-7-7" />
-                </svg>
-              </Link>
+            <div className="flex justify-center">
+              <ButtonWithArrow href="#servicios" dark={true}>
+                Descubrir servicios
+              </ButtonWithArrow>
             </div>
           </div>
         </div>
+
+        {/* Brand strip - sticky at bottom, appears after 100dvh */}
+        <div className="sticky bottom-0 border-t border-white/10">
+          <BrandStripAV />
+        </div>
       </section>
 
-      {/* ─── INTRO ─── */}
-      <section className="relative z-10 py-16 lg:py-28 px-4 sm:px-6 lg:px-8">
-        <div
-          ref={introReveal.ref}
-          className={`max-w-[1400px] mx-auto transition-all duration-1000 ease-out ${
-            introReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div
-            className="rounded-2xl p-8 lg:p-14"
-            style={glass}
+      {/* Intro Statement + Services Start */}
+      <section id="servicios" className="relative z-20 bg-[#f5f5f3] pt-32 lg:pt-48 px-6 lg:px-16">
+        <div className="max-w-[1600px] mx-auto">
+          {/* Philosophy text */}
+          <div 
+            ref={introAnim.ref}
+            className={`flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-16 mb-24 lg:mb-40 transition-all duration-1000 ${
+              introAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
           >
-            <div className="grid grid-cols-1 lg:grid-cols-[160px_1fr] gap-10 lg:gap-20 items-start">
-              <div className="flex flex-col gap-3">
-                <div className="w-5 h-px bg-[#C9A96E]" />
-                <span className="text-white/20 text-[10px] tracking-[0.4em] uppercase font-clash leading-loose">
-                  Gewinn<br />Solutions
-                </span>
-              </div>
-              <p className="font-clashdisplay font-light text-[clamp(1.5rem,3vw,3rem)] leading-[1.3] tracking-[-0.015em] text-white/80">
-                En Gewinn Solutions creemos que la tecnología debe integrarse de forma natural a los espacios.{" "}
-                <span className="text-white/35">
-                  Diseñamos soluciones donde el sonido, la imagen y la luz trabajan en equilibrio con la arquitectura para crear experiencias excepcionales.
-                </span>
-              </p>
+            <div className="flex items-center gap-4 shrink-0">
+              <div className="w-2 h-2 bg-black"></div>
+              <span className="text-black text-sm lg:text-base font-clash uppercase tracking-wide">
+                Nuestra filosofía
+              </span>
+            </div>
+            <p className="text-lg lg:text-2xl font-light !leading-[1.5] text-black max-w-3xl">
+              Creemos que la tecnología debe ser <span className="font-medium">invisible pero transformadora.</span> Cada proyecto es una oportunidad de crear espacios que se experimentan de manera completamente distinta.
+            </p>
+          </div>
+
+          {/* First service images - intro to sticky */}
+          <div className="grid grid-cols-2 gap-4 lg:gap-6 pb-12">
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src={services[0].image}
+                alt={services[0].title}
+                fill
+                className="object-cover rounded-[12px]"
+              />
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden self-end">
+              <Image
+                src={services[1].image}
+                alt={services[1].title}
+                fill
+                className="object-cover rounded-[12px]"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── SERVICIOS ─── */}
-      <section id="servicios" className="relative z-10 pb-4">
-        <div className="px-4 sm:px-6 lg:px-8 py-8 max-w-[1400px] mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-5 h-px bg-[#C9A96E]" />
-            <span className="text-[#C9A96E] text-[10px] tracking-[0.5em] uppercase font-clash">Servicios</span>
+      {/* Services Intro Block */}
+      <section id="servicios-intro" className="relative z-20 bg-[#f5f5f3] pt-12 lg:pt-20 pb-16 lg:pb-2 px-6 lg:px-16">
+        <div className="max-w-[1100px] mx-auto text-center">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="w-2 h-2 bg-black"></div>
+            <span className="text-black text-sm lg:text-base font-clash uppercase tracking-wide">
+              Nuestros servicios
+            </span>
           </div>
-          <span className="text-white/10 text-[10px] tracking-[0.35em] uppercase font-clash hidden sm:block">
-            Integración de precisión
-          </span>
+          <h2 className="text-3xl lg:text-5xl font-light text-black !leading-[1.1] mb-6">
+            Soluciones integrales de<br />
+            <span className="font-medium">audio, video y acústica</span>
+          </h2>
+          <p className="text-black/60 text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
+            Cada espacio tiene necesidades únicas. Diseñamos e implementamos sistemas personalizados que transforman tu experiencia.
+          </p>
         </div>
-
-        {services.map((service, i) => (
-          <ServiceCard key={service.number} service={service} index={i} />
-        ))}
       </section>
 
-      {/* ─── FILOSOFÍA ─── */}
-      <section className="relative z-10 py-16 lg:py-28 px-4 sm:px-6 lg:px-8">
-        <div
-          ref={philReveal.ref}
-          className={`max-w-[1400px] mx-auto transition-all duration-1000 ease-out ${
-            philReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="rounded-2xl overflow-hidden" style={glass}>
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              {/* Left text */}
-              <div className="p-8 lg:p-14">
-                <div className="flex items-center gap-4 mb-10">
-                  <div className="w-5 h-px bg-[#C9A96E]" />
-                  <span className="text-[#C9A96E] text-[10px] tracking-[0.5em] uppercase font-clash">Filosofía</span>
-                </div>
-                <h2 className="font-clashdisplay font-light text-[clamp(2rem,3.5vw,3.5rem)] tracking-[-0.025em] text-white leading-[1.05] mb-10">
-                  Diseño, ingeniería<br />y pasión por el detalle
-                </h2>
-                <div className="flex flex-col gap-5">
-                  <p className="text-white/50 text-[15px] lg:text-base leading-[1.9] font-clash font-light">
-                    Gewinn Solutions está formado por un equipo de ingenieros especializados en audio y tecnología audiovisual, apasionados por crear experiencias que trascienden lo técnico.
-                  </p>
-                  <p className="text-white/30 text-[14px] leading-[1.9] font-clash font-light">
-                    Colaboramos con arquitectos, diseñadores y especialistas, integrando sonido, imagen, acústica e iluminación en proyectos donde cada elemento forma parte de un todo.
-                  </p>
-                  <p className="text-white/30 text-[14px] leading-[1.9] font-clash font-light">
-                    Nuestro enfoque combina ingeniería, estética y precisión, dando como resultado espacios que se experimentan de una manera completamente distinta.
-                  </p>
-                </div>
-              </div>
-
-              {/* Right — 2x2 glass pillars */}
-              <div className="grid grid-cols-2 border-l border-white/[0.05]">
-                {[
-                  { en: "Experience", es: "Experiencia" },
-                  { en: "Integration", es: "Integración" },
-                  { en: "Precision", es: "Precisión" },
-                  { en: "Craftsmanship", es: "Maestría" },
-                ].map((item, i) => (
-                  <div
-                    key={item.en}
-                    className={`flex flex-col justify-end p-7 lg:p-10 ${i < 2 ? "border-b border-white/[0.05]" : ""} ${i % 2 === 0 ? "border-r border-white/[0.05]" : ""}`}
-                    style={{ background: i % 2 === 0 ? "rgba(255,255,255,0.015)" : "transparent" }}
-                  >
-                    <span className="text-[#C9A96E]/60 text-[9px] tracking-[0.5em] uppercase font-clash mb-3">{item.en}</span>
-                    <span className="font-clashdisplay text-2xl lg:text-3xl font-light text-white/60 leading-tight">{item.es}</span>
-                  </div>
+      {/* Services - Sticky Scroll */}
+      <section id="servicios" className="relative z-20 bg-[#f5f5f3]">
+        <div className="grid lg:grid-cols-2 min-h-screen">
+          {/* Left side - Sticky image */}
+          <div className="hidden lg:block relative">
+            <div className="sticky top-0 h-screen flex items-center justify-center p-12">
+              <div className="relative w-full max-w-lg aspect-[4/5] rounded-[12px] overflow-hidden">
+                {services.map((service, index) => (
+                  <Image
+                    key={service.id}
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className={`object-cover transition-opacity duration-700 ${
+                      activeService === index ? "opacity-100" : "opacity-0"
+                    }`}
+                  />
                 ))}
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ─── BRAND STATEMENT ─── */}
-      <section className="relative z-10 py-16 lg:py-32 px-4 sm:px-6 lg:px-8">
-        <div
-          ref={closingReveal.ref}
-          className={`max-w-[1400px] mx-auto transition-all duration-[1200ms] ease-out ${
-            closingReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-          }`}
-        >
-          <div className="rounded-2xl p-10 lg:p-20 text-center relative overflow-hidden" style={glass}>
-            {/* Inner ambient glow */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{ background: "radial-gradient(ellipse 60% 40% at 50% 100%, rgba(201,169,110,0.06) 0%, transparent 70%)" }}
-            />
-            {/* Grain */}
-            <div
-              className="absolute inset-0 opacity-[0.08] pointer-events-none"
-              style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")", backgroundSize: "128px" }}
-            />
-            <div className="relative z-10">
-              <div className="flex items-center justify-center gap-5 mb-12">
-                <div className="w-5 h-px bg-[#C9A96E]/50" />
-                <span className="text-[#C9A96E]/60 text-[9px] tracking-[0.6em] uppercase font-clash">Technology in Perfect Harmony</span>
-                <div className="w-5 h-px bg-[#C9A96E]/50" />
-              </div>
-              <h2 className="font-clashdisplay font-light text-[clamp(2rem,5vw,5rem)] tracking-[-0.025em] text-white leading-[1.08] mb-10 max-w-4xl mx-auto">
-                Diseñando experiencias donde el sonido, la luz y la tecnología encuentran su lugar.
-              </h2>
-              <p className="text-white/25 text-base lg:text-lg font-clash font-light leading-[1.85] max-w-lg mx-auto">
-                Cada espacio tiene una historia por contar. En Gewinn Solutions creamos experiencias donde la tecnología y el diseño se convierten en parte natural del momento.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── CONTACTO ─── */}
-      <section id="contacto" className="relative z-10 py-16 lg:py-28 px-4 sm:px-6 lg:px-8">
-        <div
-          ref={contactReveal.ref}
-          className={`max-w-[1400px] mx-auto transition-all duration-1000 ease-out ${
-            contactReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="rounded-2xl overflow-hidden" style={glass}>
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              {/* Left */}
-              <div className="p-8 lg:p-14 flex flex-col gap-8 border-b lg:border-b-0 lg:border-r border-white/[0.05]">
-                <div className="flex items-center gap-4">
-                  <div className="w-5 h-px bg-[#C9A96E]" />
-                  <span className="text-[#C9A96E] text-[10px] tracking-[0.5em] uppercase font-clash">Contacto</span>
+          {/* Right side - Scrolling content */}
+          <div className="px-6 lg:px-16 py-20 lg:py-0">
+            {services.map((service, index) => (
+              <div
+                key={service.id}
+                ref={(el) => { serviceRefs.current[index] = el; }}
+                className="min-h-screen flex flex-col justify-center py-20 lg:py-32"
+              >
+                {/* Mobile image */}
+                <div className="lg:hidden relative w-full aspect-[4/5] rounded-[100px] overflow-hidden mb-10">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <h2 className="font-clashdisplay font-light text-[clamp(2.2rem,4vw,4rem)] tracking-[-0.025em] text-white leading-[1.05]">
-                  Hablemos sobre tu proyecto.
-                </h2>
-                <p className="text-white/30 text-[14px] font-clash font-light leading-[1.9] max-w-xs">
-                  Cuéntanos tu visión. Nuestro equipo está listo para crear algo extraordinario.
+
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-2 h-2 bg-black"></div>
+                  <span className="text-black text-sm font-clash uppercase tracking-wide">
+                    {service.tag}
+                  </span>
+                </div>
+                <div className="flex items-center gap-4 mb-6">
+                  {(() => {
+                    const IconComponent = service.icon;
+                    return <IconComponent className={`w-10 h-10 lg:w-12 lg:h-12 text-black/30 transition-all duration-500 ${
+                      activeService === index ? "opacity-100" : "lg:opacity-30"
+                    }`} strokeWidth={1} />;
+                  })()}
+                  <h3 className={`text-4xl lg:text-6xl font-clashdisplay font-medium text-black transition-all duration-500 ${
+                    activeService === index ? "opacity-100 translate-y-0" : "lg:opacity-30 lg:translate-y-4"
+                  }`}>
+                    {service.number} {service.title}
+                  </h3>
+                </div>
+                <p className={`text-lg lg:text-xl text-black !leading-[1.3] mb-6 max-w-sm transition-all duration-500 delay-100 ${
+                  activeService === index ? "opacity-100" : "lg:opacity-30"
+                }`}>
+                  {service.subtitle}
                 </p>
-                <div className="flex flex-col gap-3 mt-auto">
-                  <Link href="mailto:contacto@gewinnsolutions.com" className="link-underline text-white/40 hover:text-white/70 text-[14px] font-clash font-light transition-colors duration-300 w-fit">
-                    contacto@gewinnsolutions.com
-                  </Link>
-                  <Link href="https://api.whatsapp.com/send/?phone=523331004726" target="_blank" className="link-underline text-white/40 hover:text-white/70 text-[14px] font-clash font-light transition-colors duration-300 w-fit">
-                    (+52) 1 33 3100 4726
-                  </Link>
-                </div>
+                <p className={`text-base text-black/50 leading-relaxed max-w-md transition-all duration-500 delay-200 ${
+                  activeService === index ? "opacity-100" : "lg:opacity-30"
+                }`}>
+                  {service.description}
+                </p>
               </div>
-              {/* Right — form */}
-              <div className="p-8 lg:p-14">
-                <Contact />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <div className="relative z-10">
-        <Footer />
+      {/* Process Section */}
+      <div id="proceso">
+        <ProcessSection />
       </div>
 
-      <style jsx global>{`
-        @keyframes scrollDown {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(300%); }
-        }
-      `}</style>
+      {/* Testimonials */}
+      <div id="testimonios">
+        <TestimonialsAV />
+      </div>
+
+      {/* FAQ Section */}
+      <div id="faq">
+        <FAQSection faqs={avFaqs} contactLink="/av#contacto" />
+      </div>
+
+      {/* CTA + Clients Section - Transparent to show video */}
+      <section className="relative z-10 py-20 lg:py-32 overflow-hidden">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
+          {/* CTA Content */}
+          <div 
+            ref={ctaAnim.ref}
+            className={`text-center transition-all duration-1000 ${
+              ctaAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            {/* Badge */}
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="w-2 h-2 bg-white"></div>
+              <span className="text-white text-sm lg:text-base font-clash uppercase tracking-wide">
+                Espacios que confían en nosotros
+              </span>
+            </div>
+
+            {/* Title */}
+            <h2 className="text-3xl lg:text-5xl font-light text-white !leading-[1.1] mb-8">
+              Diseño, ingeniería y<br />
+              <span className="font-medium">pasión por el detalle.</span>
+            </h2>
+
+            {/* Description */}
+            <p className="text-white text-base lg:text-lg font-light max-w-2xl mx-auto mb-12">
+              Un equipo de ingenieros especializados en audio y tecnología audiovisual, 
+              apasionados por crear experiencias que trascienden lo técnico.
+            </p>
+
+            {/* Clients Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 border border-white/20 mb-12">
+              {[
+                { name: "Hiiver", image: "/img/clients/hiiver.svg" },
+                { name: "Alive", image: "/img/clients/alive.svg" },
+                { name: "Refuse", image: "/img/clients/refuse.svg" },
+                { name: "Space Studio", image: "/img/clients/spacestudio.svg" },
+                { name: "CTRL", image: "/img/clients/ctrl.svg" },
+                { name: "Kardio", image: "/img/clients/kardio.png" },
+                { name: "Vivo47", image: "/img/clients/vivo47.png" },
+                { name: "La Loma Golf", image: "/img/clients/laloma.png" },
+              ].map((client, index) => (
+                <div 
+                  key={client.name}
+                  className={`flex items-center justify-center p-8 lg:p-10 border-white/20 ${
+                    index % 4 !== 3 ? "border-r" : ""
+                  } ${index < 4 ? "border-b" : ""}`}
+                >
+                  <div className="relative h-6 lg:h-8 w-20 lg:w-28">
+                    <Image
+                      src={client.image}
+                      alt={client.name}
+                      fill
+                      style={{ objectFit: "contain", filter: "brightness(0) invert(1)" }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Button */}
+            <div className="flex justify-center">
+              <ButtonWithArrow href="#contacto" dark={true}>
+                Hablemos de tu proyecto
+              </ButtonWithArrow>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contacto" className="relative z-20 bg-secondary py-20 lg:py-32 px-6 lg:px-12">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+            <div>
+            <div className="flex items-center gap-4">
+              <div className="w-2 h-2 bg-white"></div>
+              <span className="text-white text-sm font-clash uppercase tracking-wide">Contacto</span>
+            </div>
+              <h2 className="text-3xl lg:text-5xl font-clashdisplay font-light text-white !leading-[1.1] mt-4 mb-8">
+                Listo para transformar<br />
+                <span className="font-medium">tu espacio?</span>
+              </h2>
+              
+              <div className="space-y-4 mb-12">
+                <p className="text-white/50 text-sm font-clash">¿Necesitas ayuda personalizada?</p>
+                <Link
+                  href="mailto:contacto@gewinnsolutions.com"
+                  className="text-white text-xl lg:text-3xl font-clash font-light block hover:text-white/80 transition-colors"
+                >
+                  contacto@gewinnsolutions.com
+                </Link>
+                <Link
+                  href="https://api.whatsapp.com/send/?phone=523331004726"
+                  target="_blank"
+                  className="text-white text-xl lg:text-3xl font-clash font-light flex items-center gap-3 hover:text-white/80 transition-colors"
+                >
+                  <WhatsAppIcon /> (+52) 1 33 3100 4726
+                </Link>
+              </div>
+            </div>
+            
+            <div>
+              <Contact />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="relative z-20">
+        <FooterAV />
+      </div>
     </div>
   );
 };
