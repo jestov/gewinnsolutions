@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Logo from "../components/Logo";
 import LogoDark from "../components/LogoDark";
 import Link from "next/link";
@@ -15,7 +15,6 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
 
   const isAV = pathname.startsWith("/av");
   const isFitness = pathname.startsWith("/fitness");
@@ -68,7 +67,7 @@ export default function Header() {
   if (isHome) return null;
 
   // ── NAV CONFIG ──
-  const avMenuOptions = [
+  const avMenuOptions: { name: string; path: string; isMegaMenu?: boolean }[] = [
     { name: "Filosofía", path: "/av#servicios" },
     { name: "Servicios", path: "/av#servicios-intro" },
     { name: "Proceso", path: "/av#proceso" },
@@ -76,7 +75,7 @@ export default function Header() {
     { name: "FAQ", path: "/av#faq" },
   ];
 
-  const fitnessMenuOptions = [
+  const fitnessMenuOptions: { name: string; path: string; isMegaMenu?: boolean }[] = [
     { name: "Home", path: "/fitness" },
     { name: "Nosotros", path: "/nosotros" },
     { name: "Soluciones", path: "#", isMegaMenu: true },
